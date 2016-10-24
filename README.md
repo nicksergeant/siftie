@@ -8,6 +8,11 @@ This repository is just the web app. There is a separate service that does the
 actual crawling of feeds, and it's called [Feedie](https://github.com/nicksergeant/feedie).
 You need to have both running if you want items to actually appear.
 
+Demo
+----
+
+![https://siftie.com/img/demo.gif](https://siftie.com/img/demo.gif)
+
 Install
 -------
 
