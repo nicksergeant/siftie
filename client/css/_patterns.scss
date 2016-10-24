@@ -1,0 +1,838 @@
+// UI Patterns
+
+
+// Colors
+
+$darkBlue: #242D37;
+$lightBlue: #50C6E0;
+$lightGreen: #63C0C1;
+$lightRed: #F96362;
+$yellow:  #FCD17C;
+$gray: #858DA2;
+$lightGray: #F2F2F2;
+$lightGray2: #F8F8F8;
+$defaultText: #304051;
+
+
+// Mixins
+
+@mixin borderRadius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+  background-clip: padding-box;
+}
+
+
+// Fonts
+
+$font-base: 16px;
+$font-base-line-height: 24px;
+
+@function em($target, $context: $font-base) {
+   @return #{$target / $context}em;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,600);
+@import "client/css/vendor/_ionicons.scss"; // Icons
+
+@mixin sansFont {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+@mixin serifFont {
+  font-family: 'Playfair Display', serif;
+  font-weight: 300;
+}
+
+
+// Base Styles
+
+* { box-sizing: border-box; }
+
+body {
+  color: $defaultText;
+  font-size: $font-base;
+  line-height: 1.5;
+  font-weight: 400;
+  @include sansFont;
+
+  > div {
+    min-height: 100%;
+  }
+}
+
+
+// Typography
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+h1 { font-size: em(32px); line-height: 1.2; }
+h2 { font-size: em(28px); line-height: 1.25; }
+h3 { font-size: em(21px); line-height: 1.3; }
+h4 { font-size: em(18px); line-height: 1.35; }
+h5 { font-size: em(16px); line-height: 1.4; }
+h6 { font-size: em(16px); line-height: 1.5; }
+
+hr {
+  background: #E4E4E4;
+  border: none;
+  height: 1px;
+}
+
+.section-label {
+  font-size: em(15px);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+h5.section-label {
+  margin-bottom: 1.5rem;
+}
+
+p {
+  margin-top: 0;
+}
+
+.tag {
+  background: $lightGray;
+  @include borderRadius(5px);
+  color: $gray;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: normal;
+  padding: 0.25em 0.5em;
+}
+
+// Links
+
+a {
+  color: $lightBlue;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: lighten($lightBlue, 10);
+  transition: color 0.2s ease;
+}
+
+
+// Buttons
+
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  background-color: $lightBlue;
+  border: none;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  color: #fff;
+  text-align: center;
+  font-size: em(13px);
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  outline: none;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  @include borderRadius(3px);
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+
+  .icon {
+    &.-left {
+      margin-right: 0.5rem;
+    }
+    &.-right {
+      margin-left: 0.5rem;
+    }
+  }
+
+  &:hover {
+    background-color: lighten($lightBlue, 5);
+    color: #fff;
+  }
+
+  &.-secondary {
+    background-color: #ddd;
+    color: #858D97;
+    font-size: em(11px);
+
+    &:hover {
+      background-color: lighten(#ddd, 3);
+      color: #858D97;
+    }
+  }
+
+  &.-dark {
+    background-color: $defaultText;
+    color: #fff;
+    font-size: em(11px);
+
+    &:hover {
+      background-color: lighten($defaultText, 3);
+      color: #fff;
+    }
+  }
+
+  &.-delete {
+    background-color: $lightRed;
+
+    &:hover {
+      background-color: lighten($lightRed, 5);
+    }
+  }
+ }
+
+
+// Lists
+
+ul {
+  list-style: circle inside; }
+ol {
+  list-style: decimal inside; }
+ol, ul {
+  padding-left: 0;
+  margin-top: 0; }
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin: 1.5rem 0 1.5rem 3rem;
+}
+li {
+  margin-bottom: 1rem; }
+
+
+// Forms
+
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  min-height: 45px;
+  padding: 0.75rem; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  @include borderRadius(4px);
+  box-shadow: none;
+  box-sizing: border-box; }
+/* Removes awkward default styles on some inputs for iOS */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; }
+textarea {
+  min-height: 85px;
+  padding: 1rem;}
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #33C3F0;
+  outline: 0; }
+label,
+legend {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 600; }
+fieldset {
+  padding: 0;
+  border-width: 0; }
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline; }
+label > .label-body {
+  display: inline-block;
+  margin-left: .5rem;
+  font-weight: normal; }
+
+label {
+  strong {
+    display: block;
+    font-weight: 400;
+    padding: 0.5rem 0;
+  }
+}
+
+button[type="submit"] {
+  margin-top: 1rem;
+}
+
+.delete-box {
+  margin-top: 7rem;
+}
+
+
+// Dropdown menus
+
+.dropdown-menu {
+  position: relative;
+
+  .trigger {
+    cursor: pointer;
+    -webkit-transition: color 0.2s ease;
+    -moz-transition: color 0.2s ease;
+    -ms-transition: color 0.2s ease;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $lightBlue;
+    }
+  }
+  .menu {
+    background-color: $darkBlue;
+    min-width: 225px;
+    opacity: 0;
+    padding: 0.75em 1em;
+    position: absolute;
+    right: -10px;
+    top: 40px;
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    -ms-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+    visibility: hidden;
+
+    a {
+      color: #fff;
+      display: block;
+      opacity: 0.75;
+      padding: 0.35em 0;
+      text-decoration: none;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    span.plus-button {
+      margin-right: 11px;
+      vertical-align: -1px;
+    }
+
+    .button, button {
+      margin: 0.5em 0 0.35em 0;
+      width: 100%;
+    }
+
+    &::before {
+      border: {
+        right: 10px solid transparent;
+        bottom: 10px solid $darkBlue;
+        left: 10px solid transparent;
+      }
+      content: "";
+      display: block;
+      height: 10px;
+      position: absolute;
+      right: 10px;
+      top: -20px;
+      width: 0;
+    }
+  }
+
+  &.-open {
+    .trigger {
+      color: $lightBlue;
+    }
+    .menu {
+      opacity: 1;
+      top: 45px;
+      -webkit-transition: all 0.15s ease;
+      -moz-transition: all 0.15s ease;
+      -ms-transition: all 0.15s ease;
+      transition: all 0.15s ease;
+      visibility: visible;
+    }
+  }
+}
+
+
+// Modals
+.modal {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  visibility: hidden;
+  z-index: 100;
+
+  &.-open {
+    visibility: visible;
+  }
+}
+.modal__bg {
+  background: rgba($darkBlue, 0.80);
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  top: 0;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  visibility: hidden;
+  width: 100%;
+}
+.modal.-open .modal__bg {
+  opacity: 1;
+  visibility: visible;
+}
+.modal__container {
+  background-color: $lightGray;
+  left: 50%;
+  max-height: 90%;
+  max-width: 90%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(1.2);
+  -moz-transform: translate(-50%, -50%) scale(1.2);
+  -ms-transform: translate(-50%, -50%) scale(1.2);
+  transform: translate(-50%, -50%) scale(1.2);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  width: 800px;
+}
+.modal.-open .modal__container {
+  opacity: 1;
+  -webkit-transform: translate(-50%, -50%) scale(1);
+  -moz-transform: translate(-50%, -50%) scale(1);
+  -ms-transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal__header {
+  background-color: #fff;
+  border-bottom: 1px solid $lightGray;
+  padding: 1.5rem;
+  position: relative;
+  width: 100%;
+
+  h1 {
+    font-size: em(24px);
+    margin: 0;
+    padding: 0;
+  }
+
+  .close {
+    color: $gray;
+    font-size: em(18px);
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: color 0.2s ease;
+    -moz-transition: color 0.2s ease;
+    -ms-transition: color 0.2s ease;
+    transition: color 0.2s ease;
+    right: 1.5rem;
+
+    &:hover {
+      color: $lightBlue;
+    }
+  }
+}
+.modal__body {
+  padding: 1.5rem;
+  max-height: 75vh;
+  position: relative;
+  overflow-y: auto;
+}
+
+// Photo Modal
+.modal.-photo {
+  .modal__container {
+    max-height: 90%;
+    max-width: 90%;
+    -webkit-transform: translate(-10%, -75%) scale(0.5);
+    -moz-transform: translate(-10%, -75%) scale(0.5);
+    -ms-transform: translate(-10%, -75%) scale(0.5);
+    transform: translate(-10%, -75%) scale(0.5);
+    width: auto;
+  }
+  .modal__body {
+    background-color: #000;
+    margin-bottom: -20px;
+    padding: 0;
+    text-align: center;
+    img {
+      margin-bottom: -8px;
+    }
+  }
+
+  &.-open .modal__container {
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%) scale(1);
+    -moz-transform: translate(-50%, -50%) scale(1);
+    -ms-transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+
+// Progress indicators
+
+.progress-indicators {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+
+  li {
+    color: #ccc;
+    display: inline-block;
+    line-height: 1rem;
+    list-style-type: none;
+    font-size: em(48px);
+
+    &.-active {
+      color: $lightGreen;
+    }
+  }
+}
+
+
+// Nick's initial styling -- Needs to be broken into component sass partials
+
+.page-container {
+  height: 100%;
+  overflow-y: scroll;
+  padding: 2rem;
+  position: fixed;
+  left: 275px;
+  -webkit-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  -ms-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  width: calc(100% - 275px);
+
+  @media only screen and (max-width: 1200px) {
+    left: 250px;
+    width: calc(100% - 250px);
+  }
+}
+
+.channels-hidden {
+  .page-container {
+    left: 75px;
+    width: calc(100% - 75px);
+  }
+}
+
+html {
+  background: white;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+body {
+  background: white;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+a {
+  cursor: pointer;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.primary {
+  a {
+    background: #f4f4f4;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 1rem 1rem 1rem 0;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+
+    &:hover {
+      background: #f0f0f0;
+    }
+  }
+}
+
+nav.main {
+  li {
+    list-style-type: none;
+
+    a {
+      background: #63C0C1;
+      border-radius: 5px;
+      color: white;
+      display: inline-block;
+      margin-right: 5px;
+      padding: 5px 10px;
+      text-decoration: none;
+
+      &:hover {
+        background: #58abab;
+      }
+    }
+  }
+}
+
+
+p.alert {
+  color: #464444;
+  cursor: pointer;
+  left: 0;
+  font-size: 16px;
+  font-weight: bold;
+  opacity: .95;
+  padding: 25px 15px;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 11;
+
+  a {
+    float: right;
+    margin-right: 10px;
+  }
+  &.error {
+    background: #F2DEDE;
+  }
+  &.success {
+    background: #E0F0D9;
+  }
+}
+
+h4 {
+  border-bottom: 1px solid #CCC;
+  margin-top: 20px;
+  padding-bottom: 0.5rem;
+}
+
+button.delete-team {
+  background: #C35556;
+}
+
+a.right-delete {
+  padding-right: 20px !important;
+}
+
+a.team-name {
+  color: #2E3E4F;
+  text-decoration: none;
+}
+
+nav.team-header {
+
+  a {
+    margin-right: 4px;
+  }
+}
+
+.emoji {
+  background-size: contain;
+  display: inline-block;
+  height: 22px;
+  margin-bottom: 0.2rem;
+  margin-top: 0 !important;
+  width: 22px;
+}
+
+input[type="text"], input[type="checkbox"], input[type="email"] {
+  margin-right: 10px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+.tour-point {
+  @include borderRadius(3px);
+  background-color: $lightGreen;
+  color: #fff;
+  display: inline-block;
+  font-weight: bold;
+  padding: 1rem;
+  position: fixed;
+
+  &:before {
+    content:"";
+    display: block;
+    height: 0;
+    position: absolute;
+  }
+}
+div.tour-create-channel {
+  top: 163px;
+
+  &:before {
+    border: {
+      top: 10px solid transparent;
+      right: 10px solid $lightGreen;
+      bottom: 10px solid transparent;
+    }
+    left: -20px;
+    top: 50%;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 10px;
+  }
+}
+
+div.tour-add-feed {
+  right: 10px;
+  top: 95px;
+
+  &:before {
+    border: {
+      right: 10px solid transparent;
+      bottom: 10px solid $lightGreen;
+      left: 10px solid transparent;
+    }
+    right: 15px;
+    top: -20px;
+    height: 10px;
+    width: 0;
+  }
+}
+
+div.notices-container {
+   bottom: 70px;
+   left: 0;
+   position: absolute;
+   width: 100%;
+}
+div.bottom-channel-panel-notice {
+   background: #2E3A46;
+   border-bottom: 2px solid #202831;
+   color: #8C9FB4;
+   font-size: 14px;
+   padding: 7px 0;
+   position: relative;
+   text-align: center;
+
+   a {
+     display: block;
+     margin-top: 2px;
+
+     &.close {
+       color: #8C9FB4;
+       position: absolute;
+       right: 13px;
+       top: 6px;
+     }
+   }
+
+   span {
+     margin-left: 3px;
+     vertical-align: -2px;
+   }
+ }
+
+
+// Members
+
+.members {
+  margin-bottom: 0;
+
+  &.-pending {
+    opacity: 0.5;
+
+    .members__item:first-child {
+      border-top: 1px solid $lightGray;
+    }
+  }
+}
+
+.members__item {
+  border-top: 1px solid $lightGray;
+  display: block;
+  margin: 0;
+  padding: 1rem 0;
+  list-style-type: none;
+
+  .avatar {
+    @include borderRadius(100px);
+    float: left;
+    margin-right: 1.5rem;
+    width: 45px;
+  }
+
+  .details {
+    float: left;
+    padding: 0.5rem 0;
+  }
+
+  .avatar-placeholder {
+    @include borderRadius(100px);
+    background: $lightGray;
+    color: rgba($gray, 0.5);
+    display: inline-block;
+    float: left;
+    font-size: 30px;
+    height: 45px;
+    margin-right: 1.5rem;
+    text-align: center;
+    width: 45px;
+  }
+
+  .delete {
+    float: right;
+    padding: 0.5rem 0;
+
+     i {
+       color: #aaa;
+
+       &:hover {
+         color: $lightBlue;
+       }
+     }
+  }
+
+  &:first-child {
+    border: none;
+  }
+}
+
+.invite-user {
+  margin-top: 2rem;
+}

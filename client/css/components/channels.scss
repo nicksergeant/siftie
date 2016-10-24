@@ -1,0 +1,658 @@
+/* Channels */
+
+// Main Channel Container
+
+section.channel-container {
+  padding-top: 75px;
+}
+
+
+// Channel Panel
+
+.channel-panel {
+  background-color: $darkBlue;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  -webkit-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  -ms-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  width: 275px;
+  z-index: 11;
+
+  @media only screen and (max-width: 1200px) {
+    width: 250px;
+  }
+}
+
+.channel-panel__header {
+  background-color: darken($darkBlue, 4);
+  border-bottom: 1px solid darken($darkBlue, 5);
+  min-height: 75px;
+  position: relative;
+  opacity: 1;
+  text-align: center;
+  -webkit-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  -ms-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+
+  .logo {
+    display: inline-block;
+    margin-left: 0;
+    padding: 20px 0 10px 0;
+
+    img {
+      width: 30px;
+    }
+  }
+
+  .panel-toggle {
+    color: rgba(255,255,255, 0.3);
+    cursor: pointer;
+    float: right;
+    font-size: em(19px);
+    height: 100%;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: all 0.35s ease;
+    -moz-transition: all 0.35s ease;
+    -ms-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+    width: 75px;
+
+    &:before {
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    &:hover {
+      color: rgba(255,255,255, 1);
+    }
+  }
+}
+
+.channel-panel__body {
+  height: calc(100% - 75px);
+  left: 0;
+  margin: {
+    right: 0;
+    left: 0;
+  }
+  opacity: 1;
+  overflow-y: auto;
+  padding: 1.5rem 1.5rem 75px 1.5rem; // padding-bottom to leave room for .channel-panel__footer
+  -webkit-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  -ms-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+
+  .team-selector {
+    @include borderRadius(4px);
+    background-color: lighten($darkBlue, 5);
+    color: #F2F2F2;
+    font-weight: normal;
+    font-size: em(14px);
+    position: relative;
+    z-index: 3;
+
+    .trigger {
+      color: #F2F2F2;
+      display: block;
+      font-weight: 600;
+      padding: 0.75em 1.25em;
+      text-decoration: none;
+    }
+
+    i.-team-icon {
+      margin-right: 1em;
+      position: relative;
+      top: 2px;
+      &::before {
+        font-size: em(21px, 14px);
+      }
+    }
+    i.-chevron {
+      display: block;
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+
+    .menu {
+      background-color: $lightGray2;
+      min-width: inherit;
+      right: 0;
+      top: 45px;
+      width: 100%;
+
+      a {
+        color: $darkBlue;
+        font-weight: 600;
+      }
+
+      &:before {
+        border-bottom: 10px solid #fff;
+        right: 12px;
+      }
+    }
+
+    &.-open {
+      .menu {
+        top: 50px;
+      }
+    }
+  }
+}
+
+.channel-panel__list {
+  margin-top: 2.5rem;
+  opacity: 1;
+
+  h3 {
+    color: #fff;
+    margin-bottom: 0.75rem;
+
+    .add-channel {
+      cursor: pointer;
+      float: right;
+      font-size: em(18px);
+      opacity: 0.75;
+      position: relative;
+      top: -3px;
+
+      &:hover {
+        color: $lightBlue;
+        opacity: 1;
+      }
+    }
+  }
+  li {
+    list-style-type: none;
+    margin: 0 -1.5rem;
+    position: relative;
+    width: auto;
+
+    a {
+      color: lighten($darkBlue, 45);
+      display: block;
+      font-size: em(15px);
+      font-weight: 400;
+      padding: 0.55em 1.5rem;
+      position: relative;
+      text-decoration: none;
+      text-transform: capitalize;
+    }
+
+    .icon {
+      margin-right: 0.75em;
+    }
+
+    &:hover {
+      background: darken($darkBlue, 2);
+    }
+    &.active-channel {
+
+      i.icon {
+        margin-right: 14px;
+      }
+    }
+    &.active {
+      background: darken($darkBlue, 3);
+
+      a {
+        color: #fff;
+      }
+
+      &:before { // Selected marker
+        background-color: $lightGreen;
+        content: "";
+        display: block;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        width: 5px;
+      }
+    }
+
+    &.new-stuff { // Channel has new items since last visit
+      a {
+        color: lighten($darkBlue, 75);
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.channel-panel__footer {
+  background: darken($darkBlue, 2);
+  border-top: 1px solid darken($darkBlue, 3);
+  bottom: 0;
+  color: #BCC1C7;
+  font-size: 14px;
+  height: 70px;
+  left: 0;
+  margin-top: 2rem;
+  opacity: 1;
+  padding: 10px 20px;
+  position: fixed;
+  -webkit-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  -ms-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  width: 275px;
+
+  .avatar {
+    position: absolute;
+    float: left;
+    left: 1.35rem;
+    margin-right: 1rem;
+    width: 40px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: all 0.35s ease;
+    -moz-transition: all 0.35s ease;
+    -ms-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+    z-index: 2;
+
+    img {
+      @include borderRadius(100px);
+      width: 100%;
+    }
+  }
+
+  .username {
+    margin: -2px 0 0 0;
+    padding: {
+      right: 1.5rem;
+      left: 60px;
+    }
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 1;
+
+    strong {
+      font-size: em(15px, 14px);
+      font-weight: 400;
+    }
+
+    a.account {
+      color: #BCC1C7;
+      text-decoration: none;
+    }
+  }
+
+  .logout {
+    display: block;
+    margin-top: -1px;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    width: 250px;
+  }
+}
+
+
+// Channel Bar
+
+.channel-header {
+  background-color: #fff;
+  border-bottom: 1px solid #e3e3e3;
+  height: 75px;
+  padding: 1.5rem 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding-right: 1.5rem;
+  width: 100%;
+  z-index: 10;
+
+  .active-icon {
+    margin-right: 0.5rem;
+  }
+
+  .dropdown-menu {
+    float: right;
+    top: -5px;
+
+    .trigger {
+      font-size: em(24px);
+    }
+  }
+
+  a.delete-channel {
+    color: $lightRed;
+    i {
+      margin-right: 0.25em;
+    }
+  }
+}
+
+.channel-header__title {
+  float: left;
+  position: relative;
+  text-transform: capitalize;
+  -webkit-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  -ms-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  left: 299px; // 275px(channel panel width) + 24px(1.5rem padding)
+
+  h2 {
+    display: inline-block;
+    font-size: em(24px);
+    margin: 0;
+  }
+
+  .channel-nav {
+    font-size: em(15px);
+    cursor: pointer;
+    opacity: 0.77;
+    position: relative;
+    top: -3px;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+
+    &.-prev {
+      margin-right: 0.75rem;
+
+    }
+    &.-next {
+      margin-right: 0.75rem;
+    }
+
+    &.-inactive {
+      cursor: default;
+      opacity: 0.15;
+
+      &:hover {
+        color: inherit;
+        opacity: 0.15;
+      }
+    }
+
+    &:hover {
+      color: $lightBlue;
+      opacity: 1;
+      -webkit-transition: all 0.2s ease;
+      -moz-transition: all 0.2s ease;
+      -ms-transition: all 0.2s ease;
+      transition: all 0.2s ease;
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    left: 274px;
+  }
+}
+
+li.channel-member-in-list {
+  > span {
+    float: left;
+  }
+  label.in-channel {
+    float: right;
+    font-size: 18px;
+    margin: 0;
+
+    input {
+      margin-left: 10px;
+    }
+  }
+}
+
+
+// Channels hidden state
+.collapsed-nav {
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 90px;
+  visibility: hidden;
+  width: 75px;
+
+  .nav-item {
+    color: #eee;
+    cursor: pointer;
+    display: block;
+    font-size: em(20px);
+    left: -80px;
+    padding: 0.5rem;
+    position: relative;
+    text-align: center;
+    width: 100%;
+
+    .icon { // icon
+      opacity: 0.65;
+      -webkit-transition: opacity 0.35s ease;
+      -moz-transition: opacity 0.35s ease;
+      -ms-transition: opacity 0.35s ease;
+      transition: opacity 0.35s ease;
+    }
+
+    .label {
+      background-color: #fff;
+      border: {
+        top: 1px solid #eee;
+        right: 1px solid #eee;
+        bottom: 1px solid #eee;
+      }
+      color: $darkBlue;
+      display: block;
+      font-size: em(10px);
+      font-style: normal;
+      left: 100%;
+      opacity: 0;
+      padding: 0.35rem 1em;
+      position: absolute;
+      top: calc(50% - 2px);
+      -webkit-transition: opacity 0.35s ease;
+      -moz-transition: opacity 0.35s ease;
+      -ms-transition: opacity 0.35s ease;
+      transition: opacity 0.35s ease;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      visibility: hidden;
+
+      &:before {
+        border: {
+          top: 7px solid transparent;
+          right: 7px solid #fff;
+          bottom: 7px solid transparent;
+        }
+        content: "";
+        display: block;
+        height: 0;
+        left: -7px;
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 0;
+      }
+    }
+
+    &:nth-child(1) {
+      -webkit-transition: left 0.25s ease 0.13s;
+      -moz-transition: left 0.25s ease 0.13s;
+      -ms-transition: left 0.25s ease 0.13s;
+      transition: left 0.25s ease 0.13s;
+    }
+    &:nth-child(2) {
+      -webkit-transition: left 0.25s ease 0.20s;
+      -moz-transition: left 0.25s ease 0.20s;
+      -ms-transition: left 0.25s ease 0.20s;
+      transition: left 0.25s ease 0.20s;
+    }
+    &:nth-child(3) {
+      -webkit-transition: left 0.25s ease 0.27s;
+      -moz-transition: left 0.25s ease 0.27s;
+      -ms-transition: left 0.25s ease 0.27s;
+      transition: left 0.25s ease 0.27s;
+    }
+
+    &:hover {
+      .icon {
+        opacity: 1;
+      }
+      .label {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.channels-hidden {
+  // Channel panel
+  .channel-panel {
+    left: -200px;
+    -webkit-transition: all 0.35s ease;
+    -moz-transition: all 0.35s ease;
+    -ms-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+    .channel-panel__body, .logo {
+      opacity: 0;
+      position: relative;
+      margin: {
+        right: 100px;
+        left: -100px;
+      }
+      visibility: hidden;
+      -webkit-transition: all 0.35s ease;
+      -moz-transition: all 0.35s ease;
+      -ms-transition: all 0.35s ease;
+      transition: all 0.35s ease;
+    }
+    .panel-toggle {
+      color: rgba(255,255,255, 0.7);
+      -webkit-transition: all 0.35s ease;
+      -moz-transition: all 0.35s ease;
+      -ms-transition: all 0.35s ease;
+      transition: all 0.35s ease;
+
+      &:hover {
+        color: rgba(255,255,255, 1);
+      }
+    }
+    .channel-panel__footer {
+      left: -200px;
+      -webkit-transition: all 0.35s ease;
+      -moz-transition: all 0.35s ease;
+      -ms-transition: all 0.35s ease;
+      transition: all 0.35s ease;
+      .avatar {
+        left: 220px;
+        -webkit-transition: all 0.35s ease;
+        -moz-transition: all 0.35s ease;
+        -ms-transition: all 0.35s ease;
+        transition: all 0.35s ease;
+      }
+      .username {
+        opacity: 0;
+        position: relative;
+        margin-left: -100px;
+        visibility: hidden;
+        -webkit--webkit-transition: all 0.35s ease;
+        -moz-transition: all 0.35s ease;
+        -ms-transition: all 0.35s ease;
+        transition: all 0.35s ease;
+      }
+    }
+
+    .collapsed-nav {
+      opacity: 1;
+      visibility: visible;
+      -webkit--webkit-transition: all 0.35s ease;
+      -moz-transition: all 0.35s ease;
+      -ms-transition: all 0.35s ease;
+      transition: all 0.35s ease;
+
+      .nav-item {
+        left: 0;
+      }
+    }
+
+    @media only screen and (max-width: 1200px) {
+      left: -175px;
+
+      .channel-panel__footer {
+        left: -175px;
+
+        .avatar {
+          left: 195px;
+        }
+      }
+    }
+  }
+
+  // Channel header
+  .channel-header__title {
+      left: 99px;
+      -webkit-transition: all 0.35s ease;
+      -moz-transition: all 0.35s ease;
+      -ms-transition: all 0.35s ease;
+      transition: all 0.35s ease;
+  }
+
+  // Posts panel
+  .posts-panel {
+    left: 75px;
+    -webkit-transition: all 0.35s ease;
+    -moz-transition: all 0.35s ease;
+    -ms-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+  }
+
+  // Post Detail panel
+  .post-detail-panel {
+    position: relative;
+    margin-left: 475px;
+    width: calc(100% - 475px);
+    -webkit-transition: all 0.35s ease;
+    -moz-transition: all 0.35s ease;
+    -ms-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+    .-featured .post__header {
+      min-height: 425px;
+      -webkit-transition: all 0.35s ease;
+      -moz-transition: all 0.35s ease;
+      -ms-transition: all 0.35s ease;
+      transition: all 0.35s ease;
+    }
+    @media only screen and (max-width: 1200px) {
+      margin-left: 400px;
+      width: calc(100% - 400px);
+    }
+  }
+}

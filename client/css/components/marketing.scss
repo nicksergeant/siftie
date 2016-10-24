@@ -1,0 +1,267 @@
+/* Marketing page */
+.fill {
+  background: $lightGray;
+  padding: 30px;
+}
+
+.marketing-page {
+  background: #fff;
+  box-shadow: 0 0 25px 0 rgba(0,0,0, 0.15);
+
+  h1 {
+    font-family: 'Playfair Display', serif !important;
+  }
+
+  h2 {
+    font-size: em(24px);
+    font-weight: 700;
+  }
+
+  .layer {
+    padding: 3rem 36px;
+
+    @media only screen and (max-width: 480px) {
+      padding: 3rem 0;
+    }
+  }
+
+  .billboard {
+    background: $darkBlue url('/img/bg_billboard.png') center top no-repeat;
+    background-size: cover;
+    color: #fff;
+    padding: 60px 36px 120px 36px;
+
+    nav {
+      margin-bottom: 2rem;
+      a {
+        border-bottom: 1px solid transparent;
+        color: #fff;
+        float: right;
+        margin-left: 1.5rem;
+        text-decoration: none;
+
+        &:hover {
+          border-color: #fff;;
+        }
+      }
+    }
+
+    .logo {
+      background: url('/img/logo_script.png') left center no-repeat;
+      background-size: 100%;
+      display: block;
+      height: 30px;
+      text-indent: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      position: relative;
+      width: 120px;
+    }
+
+    .beta-tag {
+      display: inline-block;
+      position: relative;
+
+      &:after {
+        @include borderRadius(5px);
+        background: #fff;
+        content: "Beta";
+        color: $darkBlue;
+        display: inline-block;
+        font-size: 13px;
+        padding: 0.1em 0.5em;
+        position: absolute;
+        right: -55px;
+        top: 50%;
+        transform: translateY(-45%);
+      }
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: em(48px);
+      font-weight: 300;
+      margin-top: 5rem;
+      margin-bottom: 1.25rem;
+    }
+    h1 + p {
+      font-size: em(21px);
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      max-width: 800px;
+    }
+
+    @media only screen and (max-width: 1024px) {
+      padding: 60px 2rem 4rem 2rem;
+
+      h1 {
+        margin-top: 3rem;
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+      padding: 36px 0 60px 0;
+
+      nav a {
+        font-size: em(14px);
+
+        &:last-child {
+          display: none;
+        }
+      }
+
+      h1 {
+        font-size: em(36px);
+        margin-top: 3rem;
+      }
+      h1 + p {
+        font-size: em(18px);
+      }
+      .logo {
+        height: 20px;
+        width: 80px;
+      }
+    }
+  }
+
+  .features {
+    margin-right: -1rem;
+    margin-left: -1rem;
+  }
+
+  .features__item {
+    display: inline-block;
+    float: left;
+    padding: 0 1rem;
+    width: 25%;
+    h2 {
+      font-size: em(21px);
+      margin: 0 0 1rem 0;
+      padding-top: 2rem;
+      position: relative;
+
+      .tag {
+        left: 0;
+        position: absolute;
+        top: 0;
+      }
+    }
+
+    .icon {
+      font-size: em(54px);
+
+    }
+
+    &:first-child {
+      .icon {
+        color: $lightBlue;
+      }
+    }
+    &:nth-child(2) {
+      .icon {
+        color: $lightRed;
+      }
+    }
+    &:nth-child(3) {
+      .icon {
+        color: $lightGreen;
+      }
+    }
+    &:last-child {
+      .icon {
+        color: $gray;
+      }
+    }
+
+    @media only screen and (max-width: 1024px) {
+        width: 50%;
+    }
+
+    @media only screen and (max-width: 480px) {
+        padding: 0 24px;
+        width: 100%;
+    }
+  }
+
+  .main-footer {
+    background-color: $darkBlue;
+    color: #fff;
+    padding-bottom: 2rem;
+  }
+
+  .main-footer__demo {
+    margin-top: 2rem;
+    padding-right: 5rem;
+
+    .screen {
+      background: url('/img/laptop_bg.png') top center no-repeat;
+      background-size: 100%;
+      padding: 7% 17% 15% 17%;
+      width: 100%;
+    }
+
+    @media only screen and (max-width: 1024px) {
+      padding-right: 1rem;
+      width: 50% !important;
+    }
+
+    @media only screen and (max-width: 480px) {
+      padding-right: 24px;
+      width: 100% !important;
+    }
+  }
+
+  .main-footer__content {
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+
+    h2 {
+      font-size: em(32px);
+      margin-bottom: 1rem;
+    }
+
+    h2 + p {
+      margin-bottom: 2rem;
+    }
+
+    @media only screen and (max-width: 1024px) {
+      padding-top: 1rem;
+      width: 50% !important;
+    }
+
+    @media only screen and (max-width: 480px) {
+      padding-top: 1rem;
+      width: 100% !important;
+    }
+  }
+
+  .main-footer__logo {
+    padding-top: 3rem;
+    text-align: center;
+
+    .logo {
+        background: url('/img/logo_script.png') left center no-repeat;
+        background-size: 100%;
+        display: inline-block;
+        height: 20px;
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 80px;
+    }
+
+    p {
+      font-size: em(12px);
+    }
+
+    .emojis {
+      font-size: em(28px);
+      letter-spacing: 0.5rem;
+      margin: {
+        top: 1rem;
+        bottom: 0.5rem;
+      }
+    }
+  }
+
+}

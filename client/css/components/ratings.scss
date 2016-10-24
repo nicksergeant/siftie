@@ -1,0 +1,92 @@
+/* Ratings */
+
+// Average post ratings
+
+.ratings {
+  padding-top: 0.25rem;
+
+  &.-detail { // Average ratings for post detail
+    margin: {
+      top: 1.5rem;
+      bottom: -8px;
+    }
+    padding-top: 5px;
+
+    .stars {
+      font-size: 20px;
+      margin-left: 15px;
+    }
+  }
+  .star {
+    color: #ccc;
+
+    &.-active {
+      color: $yellow;
+    }
+  }
+  .section-label {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 0;
+    text-transform: uppercase;
+  }
+}
+
+.ratings__count {
+  color: $gray;
+  font-size: 0.875em;
+  padding-left: 0.5rem;
+}
+
+.comment-count {
+  color: $gray;
+  font-size: 0.875em;
+
+  i {
+    font-size: em(18px, 14px);
+    top: 3px;
+    padding-right: 3px;
+    position: relative;
+  }
+}
+
+
+// User post rating
+
+.ratings--user {
+  background: white;
+  border: 1px solid #DDDDDD;
+  clear: both;
+  content: "";
+  display: table;
+  margin: 25px 0 25px;
+  padding: 0.75rem 1.5rem 1rem 1.5rem;
+  width: 100%;
+
+  span.label {
+    color: $darkBlue;
+    font-size: em(16px);
+    font-weight: bold;
+    float: left;
+    margin: {
+      top: 18px;
+      right: 20px;
+    }
+    text-transform: uppercase;
+  }
+  span.star {
+    font-size: em(36px);
+    margin-right: 2px;
+    vertical-align: -2px;
+    float: right;
+  }
+
+  a:hover {
+    .star,  ~ a .star {
+      color: lighten($yellow, 6);
+    }
+  }
+}
+.ratings__stars {
+  float: left;
+}

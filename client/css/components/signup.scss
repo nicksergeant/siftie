@@ -1,0 +1,193 @@
+/* Sign up */
+
+.fill {
+  &.-signup {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+
+    @media only screen and (max-width: 480px) {
+      position: relative;
+    }
+  }
+}
+// Sidebar
+
+.signup  {
+  height: 100%;
+  position: relative;
+  width: 100%;
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.signup__sidebar {
+  background: $darkBlue url('/img/bg_billboard.png') center top no-repeat;
+  background-size: cover;
+  color: #fff;
+  float: left;
+  height: 100%;
+  padding: 3rem 4rem;
+  width: 35%;
+
+  h1 {
+    font-size: em(48px);
+    font-weight: 300;
+    margin-top: 5rem;
+    margin-bottom: 1.25rem;;
+  }
+
+  p {
+    font-size: em(21px);
+    font-weight: 300;
+  }
+
+  .logo {
+    background: url('/img/logo.png') center top no-repeat;
+    background-size: 100%;
+    display: block;
+    margin-bottom: 3rem;
+    width: 40px;
+    height: 50px;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    padding: 36px;
+    width: 40%;
+
+    .logo {
+      background: url('/img/logo.png') center top no-repeat;
+      background-size: 100%;
+      display: block;
+      margin-bottom: 1rem;
+      width: 20px;
+      height: 30px;
+    }
+
+    h1 {
+      font-size: em(28px);
+      margin-top: 1rem;
+      margin-bottom: 0;
+
+      &+ p {
+        font-size: em(16px);
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    //max-height: 200px;
+    padding: 2rem;
+    position: relative;
+    width: 100%;
+
+    .logo {
+      background: url('/img/logo.png') center top no-repeat;
+      background-size: 100%;
+      display: block;
+      margin-bottom: 1rem;
+      width: 20px;
+      height: 30px;
+    }
+
+    h1 {
+      font-size: em(28px);
+      margin-top: 1rem;
+      margin-bottom: 0;
+
+      &+ p {
+        font-size: em(16px);
+        margin-top: 1rem;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.signup__forms {
+  float: left;
+  height: 100%;
+  overflow-y: scroll;
+  padding: 4rem 7rem 6rem 7rem;
+  width: 65%;
+
+  .progress-indicators {
+    margin-bottom: 2rem;
+  }
+
+  .field {
+    margin-bottom: 2.5rem;
+    width: 100%;
+  }
+
+  .field__label {
+    color: rgba($defaultText, 0.65);
+    display: block;
+    font-size: em(14px);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  input {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    @include borderRadius(0);
+    font-size: em(21px);
+    font-weight: 400;
+    width: 100%;
+
+    &[type="password"] {
+      font-size: em(30px);
+      padding-bottom: 0.35rem;
+    }
+
+    &:focus {
+      border: none;
+      border-bottom: 1px solid $lightBlue;
+    }
+  }
+
+  footer {
+    padding: 1rem 0;
+
+    p {
+      text-align: center;
+      font-size: em(14px);
+    }
+
+    button, .button {
+      font-size: em(14px);
+      margin-top: 1rem;
+
+      &.-right {
+        float: right;
+      }
+
+      &.-left {
+        float: left;
+      }
+    }
+
+    .cancel {
+      display: inline-block;
+      margin-top: 1rem;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    width: 60%;
+    padding: 2rem;
+  }
+
+  @media only screen and (max-width: 480px) {
+    height: inherit;
+    overflow-y: visible;
+    padding: 2rem;
+    width: 100%;
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "siftie",
+  "version": "0.0.1",
+  "description": "Siftie",
+  "main": "index.js",
+  "dependencies": {
+    "emojify.js": "^1.1.0",
+    "linkifyjs": "^2.0.2",
+    "meteor-node-stubs": "^0.2.3",
+    "node-uuid": "^1.4.7",
+    "raven": "^0.11.0",
+    "react": "^15.0.2",
+    "react-addons-create-fragment": "^15.0.2",
+    "react-addons-css-transition-group": "^15.0.2",
+    "react-addons-linked-state-mixin": "^15.0.2",
+    "react-addons-perf": "^15.0.2",
+    "react-addons-pure-render-mixin": "^15.0.2",
+    "react-addons-test-utils": "^15.0.2",
+    "react-addons-transition-group": "^15.0.2",
+    "react-addons-update": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "react-imageloader": "^2.1.0",
+    "slug": "^0.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicksergeant/siftie.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicksergeant/siftie/issues"
+  },
+  "homepage": "https://github.com/nicksergeant/siftie#readme"
+}

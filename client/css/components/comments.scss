@@ -1,0 +1,143 @@
+/* Comments */
+
+.comments {
+  border-top: 1px solid #ddd;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+}
+.comments__item {
+  margin-bottom: 1rem;
+  list-style-type: none;
+  padding-left: 65px;
+  position: relative;
+
+  .avatar {
+    float: left;
+    left: 0;
+    margin: {
+      top: 6px;
+      right: 1rem;
+    }
+    position: absolute;
+    width: 50px;
+
+    img {
+      @include borderRadius(100px);
+      width: 100%;
+    }
+  }
+
+  .body {
+    background-color: #fff;
+    border: 1px solid #e3e3e3;
+    @include borderRadius(4px);
+    display: block;
+    float: left;
+    padding: 1rem 1.25rem;
+    position: relative;
+    width: 100%;
+
+    img {
+      display: block;
+      margin-top: 1rem;
+      max-width: 100%;
+
+      &.emoji {
+        display: inline;
+      }
+    }
+
+    // Notch
+    &::before, &::after {
+      content: "";
+      display: block;
+      height: 0;
+      position: absolute;
+      top: 20px;
+      width: 10px;
+    }
+
+    &::before {
+      border: {
+        top: 10px solid transparent;
+        right: 10px solid #e3e3e3;
+        bottom: 10px solid transparent;
+      }
+      left: -20px;
+    }
+
+    &::after {
+      border: {
+        top: 10px solid transparent;
+        right: 10px solid #fff;
+        bottom: 10px solid transparent;
+      }
+      left: -19px;
+    }
+  }
+
+  .user {
+    display: inline-block;
+    font-size: em(16px);
+    margin-bottom: 0.25rem;
+  }
+
+  .timestamp {
+    color: $gray;
+    margin-left: 0.75rem;
+  }
+
+  .edit-toggle {
+    color: rgba($defaultText, 0.5);
+    display: none;
+    font-size: em(16px);
+    position: absolute;
+    right: 1.25rem;
+    top: 0.75rem;
+
+    &:hover {
+      color: $lightBlue;
+    }
+  }
+
+  &:hover {
+    .edit-toggle {
+      display: block;
+    }
+  }
+}
+
+.comments__create {
+  margin-top: 2rem;
+
+  button, .button {
+    float: right;
+    margin: 0.5rem 0 0 0;
+  }
+}
+
+.comment__editing {
+  textarea {
+    margin: 10px 0 0 0;
+    width: 100%;
+  }
+}
+
+.edit-comment {
+  margin-bottom: 0;
+
+  textarea {
+    margin-bottom: 1rem;
+  }
+  .button {
+    float: right;
+    margin-left: 1rem;
+  }
+  .cancel-link {
+    float: right;
+    margin: {
+      top: 0.65rem;
+      right: 0.5rem;
+    }
+  }
+}

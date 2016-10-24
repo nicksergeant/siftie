@@ -1,0 +1,60 @@
+/* Feeds */
+
+
+.feeds {
+  margin-top: 2rem;
+}
+
+.feeds__item {
+  border-bottom: 1px solid #e3e3e3;
+  list-style-type: none;
+  margin: 0;
+  padding: 1.5rem 1rem;
+  position: relative;
+
+  .delete-feed {
+    color: #aaa;
+    cursor: pointer;
+    opacity: 0.35;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $lightBlue;
+    }
+  }
+
+  &:hover {
+    .delete-feed {
+      opacity: 1;
+    }
+  }
+
+  &:last-child {
+    border: none;
+  }
+
+  &.feed-error {
+    color: red;
+  }
+}
+
+.add-feed {
+  display: block;
+  margin: 1.25rem auto;
+  width: 70%;
+
+  input[type="url"] {
+    margin-right: 1rem;
+    width: 75%;
+  }
+}

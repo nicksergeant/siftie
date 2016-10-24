@@ -1,0 +1,4 @@
+config = {
+  ITEMS_PER_PAGE: 10,
+  MAX_CHANNEL_ITEMS: 1000
+};

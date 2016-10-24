@@ -1,0 +1,19 @@
+{
+  "name": "siftie-private",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "dependencies": {
+    "MD5": "^1.2.1",
+    "bluebird": "^2.9.14",
+    "feedparser": "^1.0.0",
+    "iconv": "^2.1.6",
+    "lodash": "^3.5.0",
+    "mongodb": "^1.4.34",
+    "node-uuid": "^1.4.3",
+    "request": "^2.53.0",
+    "sanitize-html": "^1.6.1"
+  }
+}
