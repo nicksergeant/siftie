@@ -11,7 +11,7 @@ You need to have both running if you want items to actually appear.
 UI Screenshot
 -------------
 
-![https://siftie.com/img/demo.gif](https://siftie.com/img/demo.gif)
+![http://i.nick.sg/fddd1db0125d4c7e82a4253d6c30c936.gif](http://i.nick.sg/fddd1db0125d4c7e82a4253d6c30c936.gif)
 
 Install
 -------
