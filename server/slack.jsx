@@ -21,7 +21,7 @@ Slack = {
         data: {
           username: 'Siftie',
           text: text,
-          icon_url: 'http://i.nick.sg/image/0o433R110Q2a/mGM0x2RQ.png'
+          icon_url: 'https://siftie.s3.amazonaws.com/icon.png'
         }
       });
     }
