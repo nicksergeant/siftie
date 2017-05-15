@@ -12,6 +12,11 @@ keyBindings = {
     e.preventDefault();
     $('article.post.-active').next().click();
   },
+  nextTeam: function(e) {
+    e.preventDefault();
+    const next = $('nav.menu div a.active').next('a').get(0);
+    if (next) next.click();
+  },
   openItem: function(e) {
     e.preventDefault();
     const link = $('a.item-link').attr('href');
@@ -29,6 +34,11 @@ keyBindings = {
   prevItem: function(e) {
     e.preventDefault();
     $('article.post.-active').prev().click();
+  },
+  prevTeam: function(e) {
+    e.preventDefault();
+    const prev = $('nav.menu div a.active').prev('a').get(0);
+    if (prev) prev.click();
   },
   toggleChannels: function(e) {
     e.preventDefault();
@@ -67,6 +77,12 @@ $(document).bind('keydown', (e) => {
       break;
       case 67:
         keyBindings.toggleChannels(e);
+      break;
+      case 78:
+        keyBindings.nextTeam(e);
+      break;
+      case 80:
+        keyBindings.prevTeam(e);
       break;
     }
   }

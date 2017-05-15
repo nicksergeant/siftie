@@ -15,8 +15,14 @@ TeamList = React.createClass({
 
   render: function() {
     const teams = this.sorted().map((team) => {
+      let className = '';
+      if (this.props.activeTeam && this.props.activeTeam === team.name) {
+        className = 'active';
+      }
+
       return (
         <a
+          className={className}
           href={'/' + team.slug + '/active/'}
           key={team._id}
           onClick={this.props.onClick}>

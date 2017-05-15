@@ -41,6 +41,12 @@ App = React.createClass({
     };
   },
 
+  popoverHide: function(name, e) {
+    this.setState({
+      popoverShown: ''
+    });
+  },
+
   popoverToggle: function(name, e) {
     if (this.state.popoverShown !== name) {
       window.analytics.track('Popover Shown', {
@@ -123,6 +129,7 @@ App = React.createClass({
         <div onClick={this.handleClick}>
           <Sidebar
             channel={channel}
+            popoverHide={this.popoverHide}
             popoverShown={this.state.popoverShown}
             popoverToggle={this.popoverToggle}
             team={team}

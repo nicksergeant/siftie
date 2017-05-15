@@ -7,6 +7,7 @@ Sidebar = React.createClass({
 
   propTypes: {
     channel: React.PropTypes.object,
+    popoverHide: React.PropTypes.func,
     popoverShown: React.PropTypes.string,
     popoverToggle: React.PropTypes.func,
     team: React.PropTypes.object,
@@ -26,13 +27,13 @@ Sidebar = React.createClass({
       'active' : '';
   },
 
-  toggleTeamMenu: function(e) {
+  hideTeamMenu: function(e) {
     window.analytics.track('Team Menu Toggled', {
       channel: this.props.channel ? this.props.channel.name : null,
       team: this.props.team.name
     });
     e.stopPropagation();
-    this.props.popoverToggle('sidebar-team-selector');
+    this.props.popoverHide('sidebar-team-selector');
   },
 
   toggleChannels: function() {
@@ -45,6 +46,15 @@ Sidebar = React.createClass({
     Meteor.setTimeout(() => {
       $('body').toggleClass('channels-hidden');
     });
+  },
+
+  toggleTeamMenu: function(e) {
+    window.analytics.track('Team Menu Toggled', {
+      channel: this.props.channel ? this.props.channel.name : null,
+      team: this.props.team.name
+    });
+    e.stopPropagation();
+    this.props.popoverToggle('sidebar-team-selector');
   },
 
   showAddChannelModal: function() {
@@ -81,7 +91,7 @@ Sidebar = React.createClass({
           <i className="icon ion-chevron-down -chevron"></i>
         </a>
         <nav className="menu">
-          <TeamList onClick={this.toggleTeamMenu} teams={this.props.teams} />
+          <TeamList activeTeam={this.props.team.name} onClick={this.hideTeamMenu} teams={this.props.teams} />
           <a href="/signup"><span className="plus-button">➕</span>Create new team</a>
         </nav>
       </div>
