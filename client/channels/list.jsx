@@ -30,13 +30,16 @@ ChannelList = React.createClass({
 
   sorted: function() {
     if (!this.props.team.channels) return [];
-    return _(this.props.team.channels)
+    const sorted = _(this.props.team.channels)
       .map(function(channel) {
         channel.slug = channel.slug.toLowerCase();
         return channel;
       })
       .sortBy('name')
       .value();
+    return sorted.filter((channel) => {
+      return channel.slug !== 'curated';
+    });
   },
 
   render: function() {
@@ -44,6 +47,14 @@ ChannelList = React.createClass({
       <li className={'active-channel ' + this.isActive('active')}>
         <a href={'/' + this.props.team.slug + '/active'}>
           <i className="icon ion-ios-pulse-strong"></i>Active
+        </a>
+      </li>
+    );
+
+    const curatedChannel = (
+      <li className={'curated-channel ' + this.isActive('curated')}>
+        <a href={'/' + this.props.team.slug + '/curated'}>
+          <i className="icon ion-star"></i>Curated
         </a>
       </li>
     );
@@ -78,18 +89,11 @@ ChannelList = React.createClass({
         classes += 'new-stuff ';
       }
 
-      let channelName;
-      if (channel.id === 'curated') {
-        channelName = <span><i className="icon ion-star"></i>Curated</span>;
-      } else {
-        channelName = channel.name;
-      }
-
       return (
         <li className={classes} key={channel.id}>
           <a
            href={'/' + this.props.team.slug + '/' + channel.slug}>
-          {channelName}
+          {channel.name}
           </a>
         </li>
       );
@@ -98,6 +102,7 @@ ChannelList = React.createClass({
     return (
       <ul>
         {activeChannel}
+        {curatedChannel}
         {channels}
       </ul>
     );

@@ -35,6 +35,12 @@ ItemList = React.createClass({
             Items will appear here once someone on your team either rates or comments on an item.
           </div>
         );
+      } else if (this.props.channel.id === 'curated') {
+        return (
+          <div style={{ padding: '20px' }}>
+            Curated functionality coming soon!
+          </div>
+        );
       } else {
         return (
           <div style={{ padding: '20px' }}>
