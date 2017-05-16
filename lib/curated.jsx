@@ -20,7 +20,7 @@ Meteor.methods({
 
       const curatedItem = {
         content: response.data.content,
-        date_published: response.data.date_published,
+        date_published: new Date().toLocaleString(),
         excerpt: response.data.excerpt,
         lead_image_url: response.data.lead_image_url,
         teamId: team._id,
