@@ -53,6 +53,7 @@ logging@1.1.17
 meteor@1.6.1
 meteor-base@1.0.4
 meteorhacks:flow-router@1.19.0
+meteorhacks:picker@1.0.3
 minifier-css@1.2.16
 minifier-js@2.0.0
 minimongo@1.0.23

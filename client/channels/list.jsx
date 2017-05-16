@@ -78,11 +78,18 @@ ChannelList = React.createClass({
         classes += 'new-stuff ';
       }
 
+      let channelName;
+      if (channel.id === 'curated') {
+        channelName = <span><i className="icon ion-star"></i>Curated</span>;
+      } else {
+        channelName = channel.name;
+      }
+
       return (
         <li className={classes} key={channel.id}>
           <a
            href={'/' + this.props.team.slug + '/' + channel.slug}>
-          {channel.name}
+          {channelName}
           </a>
         </li>
       );

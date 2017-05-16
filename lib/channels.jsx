@@ -3,7 +3,7 @@ const uuid  = require('node-uuid');
 import { Meteor } from 'meteor/meteor';
 
 Meteor.methods({
-  createChannel: function(teamId, name) {
+  createChannel: function(teamId, name, id) {
     check(teamId, String);
     check(name, String);
 
@@ -13,7 +13,7 @@ Meteor.methods({
     //   throw new Meteor.Error('not-authorized');
     // }
     
-    const channelId = uuid.v4();
+    const channelId = id || uuid.v4();
 
     let channelSlug = name.replace(/\W/g, '-').toLowerCase();
 

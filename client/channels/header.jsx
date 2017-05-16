@@ -40,9 +40,11 @@ ChannelHeader = React.createClass({
   render: function() {
     const menuStatus = this.props.popoverShown === 'channel-menu' ? '-open' : '';
 
-    let activeIndicator;
+    let permanentChannelIndicator;
     if (this.props.channel.slug === 'active') {
-      activeIndicator = <i className="icon ion-ios-pulse-strong active-icon"></i>;
+      permanentChannelIndicator = <i className="icon ion-ios-pulse-strong active-icon"></i>;
+    } else if (this.props.channel.slug === 'curated') {
+      permanentChannelIndicator = <i className="icon ion-star active-icon"></i>;
     }
 
     const prevChannelButtonInactive = this.props.channelIsFirstInList() ? '-inactive' : '';
@@ -95,7 +97,7 @@ ChannelHeader = React.createClass({
               className={'channel-nav -next icon ion-chevron-right ' + nextChannelButtonInactive}
               onClick={keyBindings.nextChannel}>
             </i>
-            <h2>{activeIndicator} {this.props.channel.name}</h2>
+            <h2>{permanentChannelIndicator} {this.props.channel.name}</h2>
           </div>
           {dropdownMenu}
         </header>

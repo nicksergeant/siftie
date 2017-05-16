@@ -55,7 +55,7 @@ Meteor.methods({
         'Team username is not available. Please choose another.');
     }
 
-    return Teams.insert({
+    const teamId = Teams.insert({
       name: name,
       slug: teamSlug,
       invitations: [],
@@ -64,6 +64,15 @@ Meteor.methods({
       createdAt: new Date(),
       owner: Meteor.userId()
     });
+
+    Meteor.call('createChannel', teamId, 'Curated', 'curated');
+
+    const curatedFeedUrl = `${Meteor.absoluteUrl()}${name}/curated/rss`;
+    const feedId = Meteor.call('createFeed', curatedFeedUrl);
+
+    Meteor.call('subscribeFeed', feedId, teamId, 'curated');
+
+    return teamId;
   },
   deleteTeam: function(teamId) {
     check(teamId, String);
