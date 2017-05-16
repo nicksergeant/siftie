@@ -26,7 +26,7 @@ Messages = React.createClass({
     if (messages.length) {
       Meteor.setTimeout(function() {
         this.dismiss();
-      }.bind(this), 3000);
+      }.bind(this), 5000);
     }
 
     return (

@@ -38,7 +38,7 @@ ItemList = React.createClass({
       } else if (this.props.channel.id === 'curated') {
         return (
           <div style={{ padding: '20px' }}>
-            Curated functionality coming soon!
+            Share a link with the form above and it'll appear here.
           </div>
         );
       } else {

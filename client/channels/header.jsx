@@ -84,6 +84,11 @@ ChannelHeader = React.createClass({
       />
     );
 
+    let curatedForm;
+    if (this.props.channel.slug === 'curated') {
+      curatedForm = <CuratedForm team={this.props.team} />
+    }
+
     return (
       <div>
         {feedsModal}
@@ -99,6 +104,7 @@ ChannelHeader = React.createClass({
             </i>
             <h2>{permanentChannelIndicator} {this.props.channel.name}</h2>
           </div>
+          {curatedForm}
           {dropdownMenu}
         </header>
       </div>
