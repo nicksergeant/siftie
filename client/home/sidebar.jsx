@@ -162,15 +162,6 @@ Sidebar = React.createClass({
 
     let notices = (
       <div className="notices-container">
-        <Notice id="slack-support">
-          <div className="bottom-channel-panel-notice">
-            Use Slack? <span>😬</span>
-            <a target="_blank" href="https://slack.siftie.com">Join us for support and suggestions! </a>
-            <a className="close" onClick={dismissNotice.bind(this, 'slack-support')}>
-              <i className="close icon ion-close-round"></i>
-            </a>
-          </div>
-        </Notice>
         <Notice id="download-mac-app-0.0.4">
           <div className="bottom-channel-panel-notice">
             On a Mac? <span>🍎</span>
