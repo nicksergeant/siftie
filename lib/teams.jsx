@@ -67,7 +67,7 @@ Meteor.methods({
 
     Meteor.call('createChannel', teamId, 'Curated', 'curated');
 
-    const curatedFeedUrl = `${Meteor.absoluteUrl()}${name}/curated/rss`;
+    const curatedFeedUrl = `${Meteor.absoluteUrl()}${teamSlug}/curated/rss`;
     const feedId = Meteor.call('createFeed', curatedFeedUrl);
 
     Meteor.call('subscribeFeed', feedId, teamId, 'curated');
