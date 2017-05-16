@@ -46,7 +46,7 @@ ChannelList = React.createClass({
     const activeChannel = (
       <li className={'active-channel ' + this.isActive('active')}>
         <a href={'/' + this.props.team.slug + '/active'}>
-          <i className="icon ion-ios-pulse-strong"></i>Active
+          <i className="icon ion-arrow-graph-up-right"></i>Active
         </a>
       </li>
     );

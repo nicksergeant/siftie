@@ -42,7 +42,7 @@ ChannelHeader = React.createClass({
 
     let permanentChannelIndicator;
     if (this.props.channel.slug === 'active') {
-      permanentChannelIndicator = <i className="icon ion-ios-pulse-strong active-icon"></i>;
+      permanentChannelIndicator = <i className="icon ion-arrow-graph-up-right active-icon"></i>;
     } else if (this.props.channel.slug === 'curated') {
       permanentChannelIndicator = <i className="icon ion-star active-icon"></i>;
     }
