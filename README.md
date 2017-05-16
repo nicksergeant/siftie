@@ -30,6 +30,7 @@ Deploy
 
 1. `heroku create --buildpack https://github.com/AdmitHub/meteor-buildpack-horse.git`
 2. `heroku addons:create mongolab:sandbox`
+3. `heroku config:set FEEDIE_KEY='...'`
 3. `heroku config:set ROOT_URL='http://siftie.com'`
-3. `heroku config:set POSTMARK_API_KEY='<apikey>'`
+3. `heroku config:set POSTMARK_API_KEY='...'`
 4. `git push heroku`
