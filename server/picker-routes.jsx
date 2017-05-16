@@ -18,8 +18,7 @@ Picker.route('/:teamSlug/curated/rss', function(params, req, res, next) {
     return itemizer(item);
   });
 
-  res.end(`
-    <?xml version="1.0" encoding="utf-8" ?>
+  res.end(`<?xml version="1.0" encoding="utf-8" ?>
     <rss version="2.0">
       <channel>
         ${itemsXml}
