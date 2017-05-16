@@ -48,10 +48,7 @@ ChannelHeader = React.createClass({
     const prevChannelButtonInactive = this.props.channelIsFirstInList() ? '-inactive' : '';
     const nextChannelButtonInactive = this.props.channelIsLastInList() ? '-inactive' : '';
 
-    let deleteChannel;
-    if (this.isOwner()) {
-      deleteChannel = <ChannelDelete channel={this.props.channel} team={this.props.team} />;
-    }
+    let deleteChannel = <ChannelDelete channel={this.props.channel} team={this.props.team} />;
 
     const manageFeeds = (
       <a onClick={this.showFeedsModal}>
