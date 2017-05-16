@@ -35,7 +35,7 @@ $font-base-line-height: 24px;
 
 @import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic);
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,600);
-@import "client/css/vendor/_ionicons.scss"; // Icons
+@import "vendor/_ionicons.scss"; // Icons
 
 @mixin sansFont {
   font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;

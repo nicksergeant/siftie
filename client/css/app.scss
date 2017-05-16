@@ -5,16 +5,16 @@
 
 
 // Global Styles
-@import "client/css/vendor/_normalize.scss";
-@import "client/css/_layout.scss";
-@import "client/css/_patterns.scss";
+@import "vendor/_normalize.scss";
+@import "_layout.scss";
+@import "_patterns.scss";
 
 
 // Components
-@import "client/css/components/channels.scss";
-@import "client/css/components/comments.scss";
-@import "client/css/components/feeds.scss";
-@import "client/css/components/posts.scss";
-@import "client/css/components/ratings.scss";
-@import "client/css/components/signup.scss";
-@import "client/css/components/marketing.scss";
+@import "components/channels.scss";
+@import "components/comments.scss";
+@import "components/feeds.scss";
+@import "components/posts.scss";
+@import "components/ratings.scss";
+@import "components/signup.scss";
+@import "components/marketing.scss";
