@@ -15,7 +15,12 @@ keyBindings = {
   nextTeam: function(e) {
     e.preventDefault();
     const next = $('nav.menu div a.active').next('a').get(0);
-    if (next) next.click();
+    if (next) {
+      next.click();
+    } else {
+      const first = $('nav.menu div a').first().get(0);
+      first.click();
+    }
   },
   openItem: function(e) {
     e.preventDefault();
@@ -38,7 +43,12 @@ keyBindings = {
   prevTeam: function(e) {
     e.preventDefault();
     const prev = $('nav.menu div a.active').prev('a').get(0);
-    if (prev) prev.click();
+    if (prev) {
+      prev.click();
+    } else {
+      const last = $('nav.menu div a').last().get(0);
+      last.click();
+    }
   },
   toggleChannels: function(e) {
     e.preventDefault();
