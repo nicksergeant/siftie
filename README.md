@@ -28,14 +28,8 @@ Develop
 Deploy
 ------
 
-1. `git remote add dokku dokku@<your-dokku-server>:siftie`
-2. `git push dokku`
-
-You then need to configure the following environment variables:
-
-```
-ROOT_URL='http://siftie.com'
-BUILDPACK_URL='https://github.com/AdmitHub/meteor-buildpack-horse.git'
-MONGO_OPLOG_URL='mongodb://siftie_oplog:<db>@candidate.61.mongolayer.com:<port>,candidate.62.mongolayer.com:<port>/local?authSource=siftie'
-MONGO_URL='mongodb://siftie_primary:<db>@candidate.61.mongolayer.com:<port>,candidate.62.mongolayer.com:<port>/siftie'
-```
+1. `heroku create --buildpack https://github.com/AdmitHub/meteor-buildpack-horse.git`
+2. `heroku addons:create mongolab:sandbox`
+3. `heroku config:set ROOT_URL='http://siftie.com'`
+3. `heroku config:set POSTMARK_API_KEY='<apikey>'`
+4. `git push heroku`

@@ -1,10 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(function () {
-
   const smtp = {
-    username: '<username>',
-    password: '<password>',
+    username: process.env.POSTMARK_API_KEY,
+    password: process.env.POSTMARK_API_KEY,
     server: 'smtp.postmarkapp.com',
     port: 587
   };
@@ -19,5 +18,4 @@ Meteor.startup(function () {
   Accounts.emailTemplates.verifyEmail.text = function(user, url) {
     return 'Please confirm your email by visiting ' + url;
   };
-
 });
