@@ -59,7 +59,8 @@ ChannelHeader = React.createClass({
     );
 
     let dropdownMenu;
-    if (this.props.channel.slug !== 'active') {
+    if (this.props.channel.slug !== 'active' &&
+        this.props.channel.slug !== 'curated') {
       dropdownMenu = (
         <div className={'dropdown-menu ' + menuStatus}>
           <i
