@@ -17,7 +17,7 @@ Picker.route('/:teamSlug/active/rss', function(params, req, res, next) {
     return `
       <item>
         <title><![CDATA[${item.title}]]></title>
-        <link><![CDATA{${item.link}]]></link>
+        <link><![CDATA[${item.link}]]></link>
         <description><![CDATA[${item.description}]]></description>
         <pubDate>${item.pubDate}</pubDate>
       </item>
@@ -51,7 +51,7 @@ Picker.route('/:teamSlug/curated/rss', function(params, req, res, next) {
     return `
       <item>
         <title><![CDATA[${item.title}]]></title>
-        <link><![CDATA{${item.url}]]></link>
+        <link><![CDATA[${item.url}]]></link>
         <description><![CDATA[${item.content}]]></description>
         <pubDate>${item.date_published}</pubDate>
       </item>
