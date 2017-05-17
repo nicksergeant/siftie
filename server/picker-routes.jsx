@@ -16,7 +16,7 @@ Picker.route('/:teamSlug/active/rss', function(params, req, res, next) {
   const itemizer = (item) => {
     return `
       <item>
-        <title>${item.title}</title>
+        <title><![CDATA[${item.title}]]></title>
         <link><![CDATA{${item.link}]]></link>
         <description><![CDATA[${item.description}]]></description>
         <pubDate>${item.pubDate}</pubDate>
@@ -50,7 +50,7 @@ Picker.route('/:teamSlug/curated/rss', function(params, req, res, next) {
   const itemizer = (item) => {
     return `
       <item>
-        <title>${item.title}</title>
+        <title><![CDATA[${item.title}]]></title>
         <link><![CDATA{${item.url}]]></link>
         <description><![CDATA[${item.content}]]></description>
         <pubDate>${item.date_published}</pubDate>
