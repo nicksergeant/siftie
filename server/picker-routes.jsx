@@ -26,7 +26,7 @@ Picker.route('/:teamSlug/active/rss', function(params, req, res, next) {
 
   const itemsXml = items.map((item) => {
     return itemizer(item);
-  });
+  }).join('');
 
   res.setHeader('Content-Type', 'text/xml');
   res.end(`<?xml version="1.0" encoding="utf-8" ?>
@@ -60,7 +60,7 @@ Picker.route('/:teamSlug/curated/rss', function(params, req, res, next) {
 
   const itemsXml = items.map((item) => {
     return itemizer(item);
-  });
+  }).join('');
 
   res.setHeader('Content-Type', 'text/xml');
   res.end(`<?xml version="1.0" encoding="utf-8" ?>
