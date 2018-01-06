@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Siftie",
   "main": "index.js",
+  "engines": {
+    "npm": "9.x"
+  },
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "bcrypt": "^1.0.3",
