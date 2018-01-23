@@ -1,7 +1,7 @@
 Siftie
 ======
 
-[Siftie](https://siftie.com) is a feed reader for teams. It's a web app, and
+[Siftie](https://siftie.com) is an RSS reader for everyone. It's a web app, and
 it's built with the [Meteor](https://www.meteor.com/) framework.
 
 This repository is just the web app. There is a separate service that does the
