@@ -19,11 +19,21 @@ Home = React.createClass({
         Meteor.setTimeout(
           function() {
             var team = this.props.teams[0];
-            if (team.channels && team.channels.length && team.channels.length > 2) {
+            if (
+              team.channels &&
+              team.channels.length &&
+              team.channels.length > 2
+            ) {
               return FlowRouter.go('/' + this.props.teams[0].slug + '/active');
             } else {
               return FlowRouter.go('/' + this.props.teams[0].slug);
             }
+          }.bind(this)
+        );
+      } else {
+        Meteor.setTimeout(
+          function() {
+            return FlowRouter.go('/signup');
           }.bind(this)
         );
       }
