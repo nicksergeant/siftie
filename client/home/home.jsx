@@ -1,6 +1,8 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
+const YEAR = new Date().getFullYear();
+
 Home = React.createClass({
   displayName: 'Home',
 
@@ -70,7 +72,7 @@ Home = React.createClass({
               <div className="row">
                 <div className="main-footer__logo large-12 columns">
                   <p className="emojis">📖👯💯</p>
-                  <p>&copy; 2016 Siftie</p>
+                  <p>&copy; {YEAR} Siftie</p>
                 </div>
               </div>
             </footer>
