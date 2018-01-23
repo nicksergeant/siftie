@@ -25,14 +25,16 @@ App = React.createClass({
   },
 
   getMeteorData: function() {
-    if (Meteor.user() && !analyticsInitialized && Meteor.absoluteUrl() === 'http://siftie.com/') {
-      analyticsInitialized = true;
+    if (!analyticsInitialized && Meteor.absoluteUrl() === 'http://siftie.com/') {
       const user = Meteor.user();
+      analyticsInitialized = true;
       window.analytics.load('fSyh4K1pVqOVEi0loRHZST7wKzm79qyX');
       window.analytics.page()
-      window.analytics.identify(user._id, {
-        email: userEmail(user)
-      });
+      if (user) {
+        window.analytics.identify(user._id, {
+          email: userEmail(user)
+        });
+      }
     }
 
     return {
