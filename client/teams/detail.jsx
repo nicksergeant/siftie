@@ -12,8 +12,7 @@ TeamDetail = React.createClass({
     if (this.props.team && this.props.team.channels && this.props.team.channels.length) {
       return (
         <div>
-          <h1>Welcome back!</h1>
-          <div className="tour-point tour-create-channel">Create another channel by clicking the "+" here.</div>
+          <div className="tour-point tour-create-channel">Create a channel by clicking the "+" here.</div>
         </div>
       );
     } else {
