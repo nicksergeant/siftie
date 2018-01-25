@@ -23,7 +23,7 @@ ItemCommenters = React.createClass({
     });
     return (
       <div className="commenters">
-        <i className="icon ion-ios-chatbubble" />
+        {avatars.length ? <i className="icon ion-ios-chatbubble" /> : null}
         {avatars}
       </div>
     );
