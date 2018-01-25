@@ -48,18 +48,6 @@
     hr {
       display: none;
     }
-    img {
-      border: 10px solid #eeeeee;
-      float: right;
-      height: 72px;
-      margin-bottom: 20px;
-      margin-left: 20px;
-      width: auto;
-
-      @media only screen and (max-width: 1200px) {
-        display: none;
-      }
-    }
     &:first-of-type {
       margin-top: 0;
     }
