@@ -1,4 +1,4 @@
-const uuid  = require('node-uuid');
+const uuid = require('node-uuid');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -31,9 +31,14 @@ userName = function(userId) {
   }
 };
 
+userAvatar = function(userId) {
+  const hash = new CryptoJS.MD5(userEmail(userId)).toString();
+  return `https://secure.gravatar.com/avatar/${hash}?s=50`;
+};
+
 imagePreloader = function() {
-  return <div></div>;
-}
+  return <div />;
+};
 
 // Meteor's ecmascript package doesn't yet support String.repeat.
 // This is a polyfill from:
@@ -42,7 +47,7 @@ if (!String.prototype.repeat) {
   String.prototype.repeat = function(count) {
     'use strict';
     if (this == null) {
-      throw new TypeError('can\'t convert ' + this + ' to object');
+      throw new TypeError("can't convert " + this + ' to object');
     }
     var str = '' + this;
     count = +count;
@@ -63,7 +68,9 @@ if (!String.prototype.repeat) {
     // main part. But anyway, most current (August 2014) browsers can't handle
     // strings 1 << 28 chars or longer, so:
     if (str.length * count >= 1 << 28) {
-      throw new RangeError('repeat count must not overflow maximum string size');
+      throw new RangeError(
+        'repeat count must not overflow maximum string size'
+      );
     }
     var rpt = '';
     for (;;) {
@@ -77,5 +84,5 @@ if (!String.prototype.repeat) {
       str += str;
     }
     return rpt;
-  }
+  };
 }

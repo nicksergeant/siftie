@@ -1,7 +1,6 @@
-@import "../_patterns.scss";
+@import '../_patterns.scss';
 
 /* Posts */
-
 
 // Posts Panel
 
@@ -33,7 +32,8 @@
     }
     padding: 1.25rem 0 0.75rem 0.5rem;
 
-    .post__body, .post__header {
+    .post__body,
+    .post__header {
       opacity: 1;
     }
     p:first-child {
@@ -49,7 +49,7 @@
       display: none;
     }
     img {
-      border: 10px solid #EEEEEE;
+      border: 10px solid #eeeeee;
       float: right;
       height: 72px;
       margin-bottom: 20px;
@@ -64,7 +64,8 @@
       margin-top: 0;
     }
     &.-read {
-      .post__body, .post__header {
+      .post__body,
+      .post__header {
         opacity: 0.75;
       }
       &::after {
@@ -74,7 +75,7 @@
     &:after {
       background-color: $lightBlue;
       @include borderRadius(10px);
-      content: "";
+      content: '';
       display: block;
       height: 10px;
       position: absolute;
@@ -86,13 +87,15 @@
       background-color: $lightGray2;
       padding-right: 0;
 
-      .post__body, .post__header {
+      .post__body,
+      .post__header {
         opacity: 1;
       }
 
-      &:before { // Selected marker
+      &:before {
+        // Selected marker
         background-color: $lightGreen;
-        content: "";
+        content: '';
         display: block;
         height: 100%;
         position: absolute;
@@ -103,7 +106,6 @@
     }
   }
 }
-
 
 // Posts Detail Panel
 
@@ -124,7 +126,7 @@
     margin-top: 20px;
 
     img {
-      border: 10px solid #EEEEEE;
+      border: 10px solid #eeeeee;
       box-sizing: border-box;
       display: block;
       margin: 20px 0;
@@ -137,7 +139,6 @@
     width: calc(100% - 575px);
   }
 }
-
 
 // Individual Post
 
@@ -154,7 +155,7 @@
   padding: 0 1.5rem 0.25em 1.5rem;
 
   h1 {
-    color: #2C3C4C;
+    color: #2c3c4c;
     font-size: em(18px);
     font-weight: 700;
     line-height: 1.35;
@@ -163,7 +164,9 @@
   a {
     text-decoration: none;
   }
-  .timestamp, .post-date, .post-channel {
+  .timestamp,
+  .post-date,
+  .post-channel {
     @include sansFont;
     font-weight: 500;
   }
@@ -176,7 +179,7 @@
     float: right;
   }
   .post-channel {
-    color: #2C3C4C;
+    color: #2c3c4c;
     display: inline-block;
     font-size: em(11px);
     font-weight: 600;
@@ -191,17 +194,16 @@
 }
 .post__footer {
   @include sansFont;
-   padding: 0.75rem 1.5rem 0 1.5rem;
-   .ratings {
-     display: inline-block;
-     float: left;
-   }
-   .comment-count {
-     display: inline-block;
-     float: right;
-   }
+  padding: 0.75rem 1.5rem 0 1.5rem;
+  .ratings {
+    display: inline-block;
+    float: left;
+  }
+  .commenters {
+    float: right;
+    margin-top: 6px;
+  }
 }
-
 
 // Individual Post (Detail Variation)
 
@@ -209,7 +211,7 @@
   cursor: default;
 
   &:hover {
-    background: #F8F8F8;
+    background: #f8f8f8;
   }
 
   .post__header {
@@ -264,6 +266,14 @@
         position: relative;
         top: 2px;
       }
+      .commenters {
+        position: relative;
+        top: 4px;
+
+        i {
+          top: -7px;
+        }
+      }
     }
 
     .article-tools {
@@ -295,7 +305,7 @@
       text-align: center;
     }
     img {
-      border: 10px solid #EEEEEE;
+      border: 10px solid #eeeeee;
       box-sizing: border-box;
       margin: 20px 0;
       max-width: 100%;
@@ -306,7 +316,8 @@
     text-align: center;
   }
 
-  &.-featured { // For posts with a featured img
+  &.-featured {
+    // For posts with a featured img
     .post__header {
       background-color: darken($darkBlue, 5);
       min-height: 375px;
@@ -329,13 +340,13 @@
         padding: 2rem;
         position: absolute;
         text-align: center;
-        text-shadow: 0 0 10px rgba(0,0,0, 0.35);
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
         width: 100%;
         left: 0;
         bottom: 0;
         z-index: 3;
       }
-      img {
+      .imageloader > img {
         display: block;
         position: absolute;
         top: 0;
@@ -350,9 +361,13 @@
         z-index: 1;
       }
 
-      &:before { // Gradient overlay to make headline easier to read
-        background-image: linear-gradient(rgba($darkBlue, 0.25), rgba(darken($darkBlue, 5), 0.90) 95%);
-        content: "";
+      &:before {
+        // Gradient overlay to make headline easier to read
+        background-image: linear-gradient(
+          rgba($darkBlue, 0.25),
+          rgba(darken($darkBlue, 5), 0.9) 95%
+        );
+        content: '';
         display: block;
         height: 100%;
         left: 0;
@@ -364,7 +379,6 @@
     }
   }
 }
-
 
 .posts-panel__pagination {
   border-right: 1px solid #e3e3e3;
