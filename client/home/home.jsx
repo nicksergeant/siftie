@@ -30,12 +30,6 @@ Home = React.createClass({
             }
           }.bind(this)
         );
-      } else {
-        Meteor.setTimeout(
-          function() {
-            return FlowRouter.go('/signup');
-          }.bind(this)
-        );
       }
     } else {
       home = (
