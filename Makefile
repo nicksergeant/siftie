@@ -1,5 +1,5 @@
 deploy:
-	@git push heroku
+	@git push dokku
 
 run:
 	@meteor
