@@ -33,5 +33,5 @@ Deploy
 3. `heroku config:set FEEDIE_KEY='...'`
 4. `heroku config:set MERCURY_API_KEY='...'`
 5. `heroku config:set POSTMARK_API_KEY='...'`
-6. `heroku config:set ROOT_URL='http://siftie.com'`
+6. `heroku config:set ROOT_URL='https://siftie.com'`
 7. `git push heroku`

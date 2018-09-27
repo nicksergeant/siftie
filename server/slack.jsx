@@ -16,7 +16,7 @@ const hasProp = {}.hasOwnProperty;
 
 Slack = {
   notify: function(text, slackWebhookUrl) {
-    if (Meteor.absoluteUrl() === 'http://siftie.com/') {
+    if (Meteor.absoluteUrl() === 'https://siftie.com/') {
       HTTP.post(slackWebhookUrl, {
         data: {
           username: 'Siftie',

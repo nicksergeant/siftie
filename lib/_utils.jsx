@@ -12,7 +12,7 @@ elem = function(key, ctx) {
 
 userEmail = function(userId, forDelivery) {
   if (!userId) return;
-  if (forDelivery && Meteor.absoluteUrl() !== 'http://siftie.com/') {
+  if (forDelivery && Meteor.absoluteUrl() !== 'https://siftie.com/') {
     const user = Meteor.users.findOne(forDelivery);
     if (user) return user.emails[0].address;
   } else {
