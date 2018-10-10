@@ -30,7 +30,12 @@ Meteor.methods({
 
       CuratedItems.insert(curatedItem);
 
-      const feed = Feeds.findOne({ url: `${Meteor.absoluteUrl()}${team.slug}/curated/rss` })
+      const feed = Feeds.findOne({
+        $or: [
+          { url: `${Meteor.absoluteUrl()}${team.slug}/curated/rss` },
+          { url: `http://siftie.com/${team.slug}/curated/rss` }
+        ]
+      });
 
       Meteor.call('crawlFeed', feed._id);
     }
