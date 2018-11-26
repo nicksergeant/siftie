@@ -21,7 +21,7 @@
     "react-addons-test-utils": "^15.0.2",
     "react-addons-transition-group": "^15.0.2",
     "react-addons-update": "^15.0.2",
-    "react-dom": "^15.6.2",
+    "react-dom": "^16.0.1",
     "react-imageloader": "^2.1.0",
     "slug": "^0.9.1"
   },
