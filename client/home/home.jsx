@@ -40,7 +40,7 @@ Home = React.createClass({
                 <div className="small-2 large-8 columns">
                   <div className="beta-tag">
                     <a className="logo" href="/">
-                      Siftie
+                      Siftie Reader
                     </a>
                   </div>
                 </div>
@@ -55,7 +55,7 @@ Home = React.createClass({
                     An RSS reader for <em>everyone</em>
                   </h1>
                   <p>
-                    Siftie is a simple RSS reader with built-in rating and
+                    Siftie Reader is a simple RSS reader with built-in rating and
                     commenting features for friends, family, and team members
                     (or just yourself!).
                   </p>

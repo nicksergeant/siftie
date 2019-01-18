@@ -33,7 +33,7 @@ Meteor.methods({
       const feed = Feeds.findOne({
         $or: [
           { url: `${Meteor.absoluteUrl()}${team.slug}/curated/rss` },
-          { url: `http://siftie.com/${team.slug}/curated/rss` }
+          { url: `http://reader.siftie.com/${team.slug}/curated/rss` }
         ]
       });
 

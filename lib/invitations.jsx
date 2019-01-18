@@ -26,7 +26,7 @@ Meteor.methods({
           Email.send({
             from: 'team@siftie.com',
             to: userEmail(team.owner, userId),
-            subject: userEmail(userId) + ' has accepted your invitation to join ' + team.name + ' on Siftie.',
+            subject: userEmail(userId) + ' has accepted your invitation to join ' + team.name + ' on Siftie Reader.',
             text: 'Congrats! Visit your team here: ' + Meteor.absoluteUrl() + team.slug
           });
         });
@@ -59,8 +59,8 @@ Meteor.methods({
         Email.send({
           from: 'team@siftie.com',
           to: email,
-          subject: 'Invitation to join ' + team.name + ' on Siftie.',
-          text: 'You\'ve been invited to join ' + team.name + ' on Siftie.\n\n' + 
+          subject: 'Invitation to join ' + team.name + ' on Siftie Reader.',
+          text: 'You\'ve been invited to join ' + team.name + ' on Siftie Reader.\n\n' + 
             'Join the team: ' + Meteor.absoluteUrl() + 'invite/' + invitationToken
         });
       });

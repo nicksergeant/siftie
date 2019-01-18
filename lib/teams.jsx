@@ -33,7 +33,7 @@ Meteor.methods({
             Email.send({
               from: 'team@siftie.com',
               to: userEmail(team.owner, userId),
-              subject: userName(userId) + ' has joined ' + team.name + ' on Siftie.',
+              subject: userName(userId) + ' has joined ' + team.name + ' on Siftie Reader.',
               text: 'Congrats! Visit your team here: ' + Meteor.absoluteUrl() + team.slug
             });
           });

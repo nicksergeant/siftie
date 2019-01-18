@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 Meteor.methods({
   crawlFeed: function(feedId) {
     if (Meteor.isServer) {
-      HTTP.get('https://feedie.siftie.com/' + process.env.FEEDIE_KEY + '/crawl/' + feedId);
+      HTTP.get('https://feeds.siftie.com/' + process.env.FEEDIE_KEY + '/crawl/' + feedId);
     }
   },
   createFeed: function(url) {

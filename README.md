@@ -1,11 +1,11 @@
-Siftie
-======
+Siftie Reader
+=============
 
-[Siftie](https://siftie.com) is an RSS reader for everyone. It's a web app, and
+[Siftie Reader](https://reader.siftie.com) is an RSS reader for everyone. It's a web app, and
 it's built with the [Meteor](https://www.meteor.com/) framework.
 
 This repository is just the web app. There is a separate service that does the
-actual crawling of feeds, and it's called [Feedie](https://github.com/nicksergeant/feedie).
+actual crawling of feeds, and it's called [Siftie Feeds](https://github.com/siftie/feeds).
 You need to have both running if you want items to actually appear.
 
 UI Screenshot
@@ -21,7 +21,7 @@ Install
 Develop
 -------
 
-1. `cd /path/to/siftie`
+1. `cd /path/to/siftie-reader`
 2. `meteor`
 3. Visit [http://localhost:3000/](http://localhost:3000/).
 
@@ -33,5 +33,5 @@ Deploy
 3. `heroku config:set FEEDIE_KEY='...'`
 4. `heroku config:set MERCURY_API_KEY='...'`
 5. `heroku config:set POSTMARK_API_KEY='...'`
-6. `heroku config:set ROOT_URL='https://siftie.com'`
+6. `heroku config:set ROOT_URL='https://reader.siftie.com'`
 7. `git push heroku`

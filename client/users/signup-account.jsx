@@ -43,7 +43,7 @@ SignupAccount = React.createClass({
         <div className="signup__sidebar">
           <a className="logo" href="/"></a>
           <h1>Sign up</h1>
-          <p>In order to try out the beta, you're going to need a Siftie account.</p>
+          <p>In order to try out the beta, you're going to need a Siftie Reader account.</p>
         </div>
         <div className="signup__forms">
           <ol className="progress-indicators">

@@ -10,10 +10,10 @@ Meteor.startup(function () {
 
   process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
 
-  Accounts.emailTemplates.from = 'Siftie <team@siftie.com>';
-  Accounts.emailTemplates.siteName = 'Siftie';
+  Accounts.emailTemplates.from = 'Siftie Reader <team@siftie.com>';
+  Accounts.emailTemplates.siteName = 'Siftie Reader';
   Accounts.emailTemplates.verifyEmail.subject = function(user) {
-    return '[Siftie] Confirm your email';
+    return '[Siftie Reader] Confirm your email';
   };
   Accounts.emailTemplates.verifyEmail.text = function(user, url) {
     return 'Please confirm your email by visiting ' + url;

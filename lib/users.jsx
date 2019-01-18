@@ -28,8 +28,8 @@ Meteor.methods({
       Email.send({
         from: 'team@siftie.com',
         to: email,
-        subject: 'Password reset request on Siftie.',
-        text: `Someone (hopefully you) has requested that your password be reset for Siftie.com.
+        subject: 'Password reset request on Siftie Reader.',
+        text: `Someone (hopefully you) has requested that your password be reset for reader.siftie.com.
           If you would like to reset your password, click the following link:
 
           ${Meteor.absoluteUrl() + 'forgot-password/' + resetPasswordToken}

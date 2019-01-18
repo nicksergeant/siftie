@@ -1,7 +1,7 @@
 {
-  "name": "siftie",
+  "name": "siftie-reader",
   "version": "0.0.1",
-  "description": "Siftie",
+  "description": "Siftie Reader",
   "main": "index.js",
   "engines": {
     "npm": "9.x"
@@ -31,12 +31,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nicksergeant/siftie.git"
+    "url": "git+https://github.com/siftie/reader.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nicksergeant/siftie/issues"
+    "url": "https://github.com/siftie/reader/issues"
   },
-  "homepage": "https://github.com/nicksergeant/siftie#readme"
+  "homepage": "https://github.com/siftie/reader#readme"
 }

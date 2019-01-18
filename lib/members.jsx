@@ -26,8 +26,8 @@ Meteor.methods({
         Email.send({
           from: 'team@siftie.com',
           to: userEmail(memberId, userId),
-          subject: 'Removed from ' + team.name + ' on Siftie',
-          text: 'You have been removed from the ' + team.name + ' team on Siftie.\n\n' +
+          subject: 'Removed from ' + team.name + ' on Siftie Reader',
+          text: 'You have been removed from the ' + team.name + ' team on Siftie Reader.\n\n' +
             'If you feel this action has been made in error, please contact the team owner.'
         });
       });
