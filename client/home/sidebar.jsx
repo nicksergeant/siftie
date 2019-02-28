@@ -165,7 +165,7 @@ Sidebar = React.createClass({
         <Notice id="download-mac-app-0.0.4">
           <div className="bottom-channel-panel-notice">
             On a Mac? <span>🍎</span>
-            <a target="_blank" href="http://download.siftie.com.s3.amazonaws.com/Siftie-0.0.4.dmg">Download the Siftie Reader OS X app (v0.0.4)</a>
+            <a target="_blank" href="http://download.siftie.com.s3.amazonaws.com/Siftie%20Reader.zip">Download the Siftie Reader OS X app (v0.0.4)</a>
             <a className="close" onClick={dismissNotice.bind(this, 'download-mac-app-0.0.4')}>
               <i className="close icon ion-close-round"></i>
             </a>
