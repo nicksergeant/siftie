@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
+    "bcrypt": "^3.0.4",
     "emojify.js": "^1.1.0",
     "linkifyjs": "^2.1.5",
     "meteor-node-stubs": "^0.2.11",
