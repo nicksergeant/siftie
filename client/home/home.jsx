@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 const YEAR = new Date().getFullYear();
 
-Home = React.createClass({
+Home = createReactClass({
   displayName: 'Home',
 
   propTypes: {
-    teams: React.PropTypes.array,
+    teams: PropTypes.array,
   },
 
   render: function() {

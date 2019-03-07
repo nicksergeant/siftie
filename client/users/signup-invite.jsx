@@ -1,11 +1,12 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
-SignupInvite = React.createClass({
+SignupInvite = createReactClass({
 
   displayName: 'SignupInvite',
 
   propTypes: {
-    switchToTab: React.PropTypes.func
+    switchToTab: PropTypes.func
   },
 
   handleSubmit: function(e) {

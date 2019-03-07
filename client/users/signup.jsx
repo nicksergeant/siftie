@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-Signup = React.createClass({
+Signup = createReactClass({
 
   displayName: 'Signup',
 

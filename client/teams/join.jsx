@@ -1,6 +1,6 @@
 import React from 'react';
 
-TeamJoin = React.createClass({
+TeamJoin = createReactClass({
 
   displayName: 'TeamJoin',
 

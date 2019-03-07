@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
-ItemAverageRating = React.createClass({
+ItemAverageRating = createReactClass({
 
   displayName: 'ItemAverageRating',
 
   propTypes: {
-    detail: React.PropTypes.bool,
-    team: React.PropTypes.object,
-    teamItem: React.PropTypes.object
+    detail: PropTypes.bool,
+    team: PropTypes.object,
+    teamItem: PropTypes.object
   },
 
   stars: function() {

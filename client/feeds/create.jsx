@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-FeedCreate = React.createClass({
+FeedCreate = createReactClass({
 
   displayName: 'FeedCreate',
 
   propTypes: {
-    channel: React.PropTypes.object,
-    team: React.PropTypes.object
+    channel: PropTypes.object,
+    team: PropTypes.object
   },
 
   getInitialState: function() {

@@ -2,18 +2,19 @@ const emojify = require('emojify.js');
 const linkify = require('linkifyjs');
 const linkifyHtml = require('linkifyjs/html');
 
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 
-CommentDetail = React.createClass({
+CommentDetail = createReactClass({
 
   displayName: 'CommentDetail',
 
   propTypes: {
-    comment: React.PropTypes.object,
-    team: React.PropTypes.object,
-    teamItem: React.PropTypes.object
+    comment: PropTypes.object,
+    team: PropTypes.object,
+    teamItem: PropTypes.object
   },
 
   mixins: [ReactMeteorData],

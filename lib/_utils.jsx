@@ -86,3 +86,5 @@ if (!String.prototype.repeat) {
     return rpt;
   };
 }
+
+createReactClass = require('create-react-class');

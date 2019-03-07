@@ -1,15 +1,16 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-ItemUserRating = React.createClass({
+ItemUserRating = createReactClass({
 
   displayName: 'ItemUserRating',
 
   propTypes: {
-    channel: React.PropTypes.object,
-    item: React.PropTypes.object,
-    team: React.PropTypes.object,
-    teamItem: React.PropTypes.object
+    channel: PropTypes.object,
+    item: PropTypes.object,
+    team: PropTypes.object,
+    teamItem: PropTypes.object
   },
 
   mixins: [ReactMeteorData],

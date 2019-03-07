@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-InvitationCreate = React.createClass({
+InvitationCreate = createReactClass({
 
   displayName: 'InvitationCreate',
 
   propTypes: {
-    team: React.PropTypes.object
+    team: PropTypes.object
   },
 
   getInitialState: function() {

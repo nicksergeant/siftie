@@ -1,14 +1,15 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-FeedDelete = React.createClass({
+FeedDelete = createReactClass({
 
   displayName: 'FeedDelete',
 
   propTypes: {
-    channel: React.PropTypes.object,
-    feed: React.PropTypes.object,
-    team: React.PropTypes.object
+    channel: PropTypes.object,
+    feed: PropTypes.object,
+    team: PropTypes.object
   },
 
   onClick: function(e) {

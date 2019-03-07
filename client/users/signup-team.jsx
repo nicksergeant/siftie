@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-SignupTeam = React.createClass({
+SignupTeam = createReactClass({
 
   displayName: 'SignupTeam',
 
   propTypes: {
-    switchToTab: React.PropTypes.func
+    switchToTab: PropTypes.func
   },
 
   getInitialState: function() {

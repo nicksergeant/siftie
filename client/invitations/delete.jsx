@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-InvitationDelete = React.createClass({
+InvitationDelete = createReactClass({
 
   displayName: 'InvitationDelete',
 
   propTypes: {
-    invitation: React.PropTypes.object,
-    team: React.PropTypes.object
+    invitation: PropTypes.object,
+    team: PropTypes.object
   },
 
   onClick: function(e) {

@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-ResetPassword = React.createClass({
+ResetPassword = createReactClass({
 
   displayName: 'ResetPassword',
 
   propTypes: {
-    resetPasswordToken: React.PropTypes.string
+    resetPasswordToken: PropTypes.string
   },
  
   getInitialState: function() {

@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-MemberDetail = React.createClass({
+MemberDetail = createReactClass({
 
   displayName: 'MemberDetail',
 
   propTypes: {
-    userId: React.PropTypes.string
+    userId: PropTypes.string
   },
 
   mixins: [ReactMeteorData],

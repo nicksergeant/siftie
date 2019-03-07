@@ -1,19 +1,20 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 let analyticsInitialized = false;
 
-App = React.createClass({
+App = createReactClass({
   displayName: 'App',
 
   propTypes: {
-    channelSlug: React.PropTypes.string,
-    itemId: React.PropTypes.string,
-    resetPasswordToken: React.PropTypes.string,
-    teamItemChannelId: React.PropTypes.string,
-    teamSlug: React.PropTypes.string,
-    token: React.PropTypes.string,
-    userId: React.PropTypes.string
+    channelSlug: PropTypes.string,
+    itemId: PropTypes.string,
+    resetPasswordToken: PropTypes.string,
+    teamItemChannelId: PropTypes.string,
+    teamSlug: PropTypes.string,
+    token: PropTypes.string,
+    userId: PropTypes.string
   },
 
   mixins: [ReactMeteorData],

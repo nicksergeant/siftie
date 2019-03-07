@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-MemberDelete = React.createClass({
+MemberDelete = createReactClass({
 
   displayName: 'MemberDelete',
 
   propTypes: {
-    member: React.PropTypes.object,
-    team: React.PropTypes.object
+    member: PropTypes.object,
+    team: PropTypes.object
   },
 
   onClick: function(e) {

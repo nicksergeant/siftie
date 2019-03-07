@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
-CommentList = React.createClass({
+CommentList = createReactClass({
 
   displayName: 'CommentList',
 
   propTypes: {
-    comments: React.PropTypes.array,
-    team: React.PropTypes.object,
-    teamItem: React.PropTypes.object
+    comments: PropTypes.array,
+    team: PropTypes.object,
+    teamItem: PropTypes.object
   },
 
   sorted: function() {

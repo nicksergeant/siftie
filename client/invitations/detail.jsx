@@ -1,6 +1,6 @@
 import React from 'react';
 
-InvitationDetail = React.createClass({
+InvitationDetail = createReactClass({
 
   displayName: 'InvitationDetail',
 

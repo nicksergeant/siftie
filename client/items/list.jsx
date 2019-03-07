@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
-ItemList = React.createClass({
+ItemList = createReactClass({
 
   displayName: 'ItemList',
 
   propTypes: {
-    channel: React.PropTypes.object,
-    items: React.PropTypes.array,
-    team: React.PropTypes.object
+    channel: PropTypes.object,
+    items: PropTypes.array,
+    team: PropTypes.object
   },
 
   render: function() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-Messages = React.createClass({
+Messages = createReactClass({
 
   displayName: 'Messages',
 

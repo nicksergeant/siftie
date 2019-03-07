@@ -1,18 +1,19 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-Sidebar = React.createClass({
+Sidebar = createReactClass({
 
   displayName: 'Sidebar',
 
   propTypes: {
-    channel: React.PropTypes.object,
-    popoverHide: React.PropTypes.func,
-    popoverShown: React.PropTypes.string,
-    popoverToggle: React.PropTypes.func,
-    team: React.PropTypes.object,
-    teams: React.PropTypes.array,
-    user: React.PropTypes.object
+    channel: PropTypes.object,
+    popoverHide: PropTypes.func,
+    popoverShown: PropTypes.string,
+    popoverToggle: PropTypes.func,
+    team: PropTypes.object,
+    teams: PropTypes.array,
+    user: PropTypes.object
   },
 
   getInitialState: function() {
@@ -162,11 +163,11 @@ Sidebar = React.createClass({
 
     let notices = (
       <div className="notices-container">
-        <Notice id="download-mac-app-0.0.4">
+        <Notice id="download-mac-app-0.0.5">
           <div className="bottom-channel-panel-notice">
             On a Mac? <span>🍎</span>
-            <a target="_blank" href="http://download.siftie.com.s3.amazonaws.com/Siftie%20Reader.zip">Download the Siftie Reader OS X app (v0.0.4)</a>
-            <a className="close" onClick={dismissNotice.bind(this, 'download-mac-app-0.0.4')}>
+            <a target="_blank" href="https://download.siftie.com/Siftie%20Reader.zip">Download the Siftie Reader OS X app (v0.0.5)</a>
+            <a className="close" onClick={dismissNotice.bind(this, 'download-mac-app-0.0.5')}>
               <i className="close icon ion-close-round"></i>
             </a>
           </div>

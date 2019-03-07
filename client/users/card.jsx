@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
-UserCard = React.createClass({
+UserCard = createReactClass({
 
   displayName: 'UserCard',
 
   propTypes: {
-    showUserSettingsModal: React.PropTypes.func,
-    user: React.PropTypes.object
+    showUserSettingsModal: PropTypes.func,
+    user: PropTypes.object
   },
 
   gravatar: function() {

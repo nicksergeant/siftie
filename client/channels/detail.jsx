@@ -1,20 +1,21 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
-ChannelDetail = React.createClass({
+ChannelDetail = createReactClass({
 
   displayName: 'ChannelDetail',
 
   propTypes: {
-    channel: React.PropTypes.object,
-    channelIsFirstInList: React.PropTypes.func,
-    channelIsLastInList: React.PropTypes.func,
-    children: React.PropTypes.element,
-    className: React.PropTypes.string,
-    focusInList: React.PropTypes.func,
-    isDetail: React.PropTypes.bool,
-    popoverShown: React.PropTypes.string,
-    popoverToggle: React.PropTypes.func,
-    team: React.PropTypes.object
+    channel: PropTypes.object,
+    channelIsFirstInList: PropTypes.func,
+    channelIsLastInList: PropTypes.func,
+    children: PropTypes.element,
+    className: PropTypes.string,
+    focusInList: PropTypes.func,
+    isDetail: PropTypes.bool,
+    popoverShown: PropTypes.string,
+    popoverToggle: PropTypes.func,
+    team: PropTypes.object
   },
 
   mixins: [ReactMeteorData],

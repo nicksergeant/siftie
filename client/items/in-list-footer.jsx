@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
-ItemInListFooter = React.createClass({
+ItemInListFooter = createReactClass({
   displayName: 'ItemInListFooter',
 
   propTypes: {
-    teamItem: React.PropTypes.object,
+    teamItem: PropTypes.object,
   },
 
   render: function() {

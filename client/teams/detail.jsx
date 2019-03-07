@@ -1,11 +1,12 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
-TeamDetail = React.createClass({
+TeamDetail = createReactClass({
 
   displayName: 'TeamDetail',
 
   propTypes: {
-    team: React.PropTypes.object
+    team: PropTypes.object
   },
 
   render: function() {

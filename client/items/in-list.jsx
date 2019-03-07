@@ -1,14 +1,15 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-ItemInList = React.createClass({
+ItemInList = createReactClass({
 
   displayName: 'ItemInList',
 
   propTypes: {
-    channel: React.PropTypes.object,
-    item: React.PropTypes.object,
-    team: React.PropTypes.object
+    channel: PropTypes.object,
+    item: PropTypes.object,
+    team: PropTypes.object
   },
 
   mixins: [ReactMeteorData],

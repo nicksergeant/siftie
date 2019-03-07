@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-TeamCreate = React.createClass({
+TeamCreate = createReactClass({
 
   displayName: 'TeamCreate',
 

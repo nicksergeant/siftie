@@ -1,22 +1,24 @@
 import ImageLoader from 'react-imageloader';
+import PropTypes from 'prop-types';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 
 let focusedCount = 0;
 let lastItemFocused;
 
-ItemDetail = React.createClass({
+ItemDetail = createReactClass({
   displayName: 'ItemDetail',
 
   propTypes: {
-    channel: React.PropTypes.object,
-    channelIsFirstInList: React.PropTypes.func,
-    channelIsLastInList: React.PropTypes.func,
-    itemId: React.PropTypes.string,
-    popoverShown: React.PropTypes.string,
-    popoverToggle: React.PropTypes.func,
-    team: React.PropTypes.object,
-    teamItemChannelId: React.PropTypes.string,
+    channel: PropTypes.object,
+    channelIsFirstInList: PropTypes.func,
+    channelIsLastInList: PropTypes.func,
+    itemId: PropTypes.string,
+    popoverShown: PropTypes.string,
+    popoverToggle: PropTypes.func,
+    team: PropTypes.object,
+    teamItemChannelId: PropTypes.string,
   },
 
   mixins: [ReactMeteorData],
@@ -122,7 +124,7 @@ ItemDetail = React.createClass({
           <ImageLoader
             preloader={imagePreloader}
             src={this.data.item.featuredImage}
-            wrapper={React.DOM.div}
+            wrapper={ReactDOM.div}
           >
             Image load failed!
           </ImageLoader>

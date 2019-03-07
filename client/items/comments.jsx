@@ -1,14 +1,15 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
-ItemComments = React.createClass({
+ItemComments = createReactClass({
 
   displayName: 'ItemComments',
 
   propTypes: {
-    channel: React.PropTypes.object,
-    item: React.PropTypes.object,
-    team: React.PropTypes.object,
-    teamItem: React.PropTypes.object
+    channel: PropTypes.object,
+    item: PropTypes.object,
+    team: PropTypes.object,
+    teamItem: PropTypes.object
   },
 
   render: function() {

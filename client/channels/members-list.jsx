@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-ChannelMembersList = React.createClass({
+ChannelMembersList = createReactClass({
 
   displayName: 'ChannelMembersList',
 
   propTypes: {
-    channel: React.PropTypes.object,
-    team: React.PropTypes.object
+    channel: PropTypes.object,
+    team: PropTypes.object
   },
 
   getInitialState: function() {

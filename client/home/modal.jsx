@@ -1,19 +1,20 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 let analyticsDebouncing = false;
 
-Modal = React.createClass({
+Modal = createReactClass({
 
   displayName: 'Modal',
 
   propTypes: {
-    channel: React.PropTypes.object,
-    component: React.PropTypes.func,
-    modalStatus: React.PropTypes.bool,
-    modalTitle: React.PropTypes.string,
-    onClose: React.PropTypes.func,
-    team: React.PropTypes.object
+    channel: PropTypes.object,
+    component: PropTypes.func,
+    modalStatus: PropTypes.bool,
+    modalTitle: PropTypes.string,
+    onClose: PropTypes.func,
+    team: PropTypes.object
   },
 
   componentWillReceiveProps: function(props) {

@@ -1,14 +1,15 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-CommentCreate = React.createClass({
+CommentCreate = createReactClass({
 
   displayName: 'CommentCreate',
 
   propTypes: {
-    channel: React.PropTypes.object,
-    item: React.PropTypes.object,
-    team: React.PropTypes.object
+    channel: PropTypes.object,
+    item: PropTypes.object,
+    team: PropTypes.object
   },
 
   getInitialState: function() {

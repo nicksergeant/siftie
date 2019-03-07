@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-ChannelCreate = React.createClass({
+ChannelCreate = createReactClass({
 
   displayName: 'ChannelCreate',
 
   propTypes: {
-    closeModal: React.PropTypes.func,
-    team: React.PropTypes.object,
+    closeModal: PropTypes.func,
+    team: PropTypes.object,
   },
 
   getInitialState: function() {

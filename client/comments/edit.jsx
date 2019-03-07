@@ -1,14 +1,15 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-CommentEdit = React.createClass({
+CommentEdit = createReactClass({
 
   displayName: 'CommentEdit',
 
   propTypes: {
-    comment: React.PropTypes.object,
-    onDone: React.PropTypes.func,
-    teamItem: React.PropTypes.object
+    comment: PropTypes.object,
+    onDone: PropTypes.func,
+    teamItem: PropTypes.object
   },
 
   handleKeyDown: function(e) {

@@ -1,17 +1,18 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-ChannelHeader = React.createClass({
+ChannelHeader = createReactClass({
 
   displayName: 'ChannelHeader',
 
   propTypes: {
-    channel: React.PropTypes.object,
-    channelIsFirstInList: React.PropTypes.func,
-    channelIsLastInList: React.PropTypes.func,
-    popoverShown: React.PropTypes.string,
-    popoverToggle: React.PropTypes.func,
-    team: React.PropTypes.object
+    channel: PropTypes.object,
+    channelIsFirstInList: PropTypes.func,
+    channelIsLastInList: PropTypes.func,
+    popoverShown: PropTypes.string,
+    popoverToggle: PropTypes.func,
+    team: PropTypes.object
   },
 
   getInitialState: function() {

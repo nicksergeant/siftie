@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-CuratedForm = React.createClass({
+CuratedForm = createReactClass({
 
   displayName: 'CuratedForm',
 
   propTypes: {
-    team: React.PropTypes.object
+    team: PropTypes.object
   },
 
   handleSubmit(e) {

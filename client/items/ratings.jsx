@@ -1,14 +1,15 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
-ItemRatings = React.createClass({
+ItemRatings = createReactClass({
 
   displayName: 'ItemRatings',
 
   propTypes: {
-    channel: React.PropTypes.object,
-    item: React.PropTypes.object,
-    team: React.PropTypes.object,
-    teamItem: React.PropTypes.object
+    channel: PropTypes.object,
+    item: PropTypes.object,
+    team: PropTypes.object,
+    teamItem: PropTypes.object
   },
 
   render: function() {

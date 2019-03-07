@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
-ItemCommenters = React.createClass({
+ItemCommenters = createReactClass({
   displayName: 'ItemCommenters',
 
   propTypes: {
-    teamItem: React.PropTypes.object,
+    teamItem: PropTypes.object,
   },
 
   render: function() {

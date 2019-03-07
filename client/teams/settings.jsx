@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-TeamSettings = React.createClass({
+TeamSettings = createReactClass({
 
   displayName: 'TeamSettings',
 
   propTypes: {
-    team: React.PropTypes.object
+    team: PropTypes.object
   },
 
   updateTeam: function(e) {

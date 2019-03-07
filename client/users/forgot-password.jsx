@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-ForgotPassword = React.createClass({
+ForgotPassword = createReactClass({
 
   displayName: 'ForgotPassword',
 

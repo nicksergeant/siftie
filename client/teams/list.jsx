@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
-TeamList = React.createClass({
+TeamList = createReactClass({
 
   displayName: 'TeamList',
 
   propTypes: {
-    onClick: React.PropTypes.func,
-    teams: React.PropTypes.array
+    onClick: PropTypes.func,
+    teams: PropTypes.array
   },
 
   sorted: function() {

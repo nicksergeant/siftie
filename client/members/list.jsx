@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-MemberList = React.createClass({
+MemberList = createReactClass({
 
   displayName: 'MemberList',
 
   propTypes: {
-    team: React.PropTypes.object
+    team: PropTypes.object
   },
 
   mixins: [ReactMeteorData],

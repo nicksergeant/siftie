@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-UserSettings = React.createClass({
+UserSettings = createReactClass({
 
   displayName: 'UserSettings',
 
