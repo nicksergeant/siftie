@@ -3,7 +3,6 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 Sidebar = createReactClass({
-
   displayName: 'Sidebar',
 
   propTypes: {
@@ -13,25 +12,28 @@ Sidebar = createReactClass({
     popoverToggle: PropTypes.func,
     team: PropTypes.object,
     teams: PropTypes.array,
-    user: PropTypes.object
+    user: PropTypes.object,
   },
 
   getInitialState: function() {
     return {
       addChannelModalShown: false,
-      channelsOpen: true
+      channelsOpen: true,
     };
   },
 
   isActive: function(slug) {
-    return FlowRouter.current().path.indexOf(`/${this.props.team.slug}/${slug}`) !== -1 ?
-      'active' : '';
+    return FlowRouter.current().path.indexOf(
+      `/${this.props.team.slug}/${slug}`
+    ) !== -1
+      ? 'active'
+      : '';
   },
 
   hideTeamMenu: function(e) {
     window.analytics.track('Team Menu Toggled', {
       channel: this.props.channel ? this.props.channel.name : null,
-      team: this.props.team.name
+      team: this.props.team.name,
     });
     e.stopPropagation();
     this.props.popoverHide('sidebar-team-selector');
@@ -41,7 +43,7 @@ Sidebar = createReactClass({
     window.analytics.track('Channel Sidebar Toggled', {
       channelsOpen: !this.state.channelsOpen,
       channel: this.props.channel ? this.props.channel.name : null,
-      team: this.props.team.name
+      team: this.props.team.name,
     });
     this.setState({ channelsOpen: !this.state.channelsOpen });
     Meteor.setTimeout(() => {
@@ -52,7 +54,7 @@ Sidebar = createReactClass({
   toggleTeamMenu: function(e) {
     window.analytics.track('Team Menu Toggled', {
       channel: this.props.channel ? this.props.channel.name : null,
-      team: this.props.team.name
+      team: this.props.team.name,
     });
     e.stopPropagation();
     this.props.popoverToggle('sidebar-team-selector');
@@ -78,27 +80,40 @@ Sidebar = createReactClass({
     let channelList;
     let team;
 
-    let iconClass = this.state.channelsOpen ? 'ion-arrow-left-c' : 'ion-arrow-right-c';
+    let iconClass = this.state.channelsOpen
+      ? 'ion-arrow-left-c'
+      : 'ion-arrow-right-c';
 
-    const menuStatus = this.props.popoverShown === 'sidebar-team-selector' ? '-open' : '';
+    const menuStatus =
+      this.props.popoverShown === 'sidebar-team-selector' ? '-open' : '';
 
     if (!this.props.team) return null;
 
     teamSelector = (
       <div className={'team-selector dropdown-menu ' + menuStatus}>
         <a className="trigger" onClick={this.toggleTeamMenu}>
-          <i className="icon ion-ios-people -team-icon"></i>
+          <i className="icon ion-ios-people -team-icon" />
           {this.props.team.name}
-          <i className="icon ion-chevron-down -chevron"></i>
+          <i className="icon ion-chevron-down -chevron" />
         </a>
         <nav className="menu">
-          <TeamList activeTeam={this.props.team.name} onClick={this.hideTeamMenu} teams={this.props.teams} />
-          <a href="/signup"><span className="plus-button">➕</span>Create new team</a>
+          <TeamList
+            activeTeam={this.props.team.name}
+            onClick={this.hideTeamMenu}
+            teams={this.props.teams}
+          />
+          <a href="/signup">
+            <span className="plus-button">➕</span>Create new team
+          </a>
         </nav>
       </div>
     );
     channelList = (
-      <ChannelList channel={this.props.channel} team={this.props.team} toggleChannels={this.toggleChannels} />
+      <ChannelList
+        channel={this.props.channel}
+        team={this.props.team}
+        toggleChannels={this.toggleChannels}
+      />
     );
 
     const teamNav = (
@@ -107,12 +122,14 @@ Sidebar = createReactClass({
         <ul>
           <li className={this.isActive('members')}>
             <a href={'/' + this.props.team.slug + '/members'}>
-              <i className="icon ion-person-stalker"></i>
+              <i className="icon ion-person-stalker" />
               Members
             </a>
           </li>
           <li className={this.isActive('settings')}>
-            <a href={'/' + this.props.team.slug + '/settings'}><i className="icon ion-gear-a"></i>Settings</a>
+            <a href={'/' + this.props.team.slug + '/settings'}>
+              <i className="icon ion-gear-a" />Settings
+            </a>
           </li>
         </ul>
       </nav>
@@ -121,15 +138,18 @@ Sidebar = createReactClass({
     collapsedNav = (
       <nav className="collapsed-nav">
         <a className="nav-item">
-          <i className="icon ion-pound -channels" onClick={this.toggleChannels}></i>
+          <i
+            className="icon ion-pound -channels"
+            onClick={this.toggleChannels}
+          />
           <span className="label">Channels</span>
         </a>
         <a className="nav-item" href={'/' + this.props.team.slug + '/members'}>
-          <i className="icon ion-person-stalker -members"></i>
+          <i className="icon ion-person-stalker -members" />
           <span className="label">Members</span>
-          </a>
+        </a>
         <a className="nav-item" href={'/' + this.props.team.slug + '/settings'}>
-          <i className="icon ion-gear-a -settings"></i>
+          <i className="icon ion-gear-a -settings" />
           <span className="label">Settings</span>
         </a>
       </nav>
@@ -146,7 +166,12 @@ Sidebar = createReactClass({
       />
     );
 
-    const addChannelButton = <i className="add-channel icon ion-plus-round" onClick={this.showAddChannelModal}></i>;
+    const addChannelButton = (
+      <i
+        className="add-channel icon ion-plus-round"
+        onClick={this.showAddChannelModal}
+      />
+    );
 
     let userSettingsModal = (
       <Modal
@@ -166,9 +191,17 @@ Sidebar = createReactClass({
         <Notice id="download-mac-app-0.0.5">
           <div className="bottom-channel-panel-notice">
             On a Mac? <span>🍎</span>
-            <a target="_blank" href="https://download.siftie.com/Siftie%20Reader.zip">Download the Siftie Reader OS X app (v0.0.5)</a>
-            <a className="close" onClick={dismissNotice.bind(this, 'download-mac-app-0.0.5')}>
-              <i className="close icon ion-close-round"></i>
+            <a
+              target="_blank"
+              href="https://download.siftie.com/Siftie%20Reader.zip"
+            >
+              Download the Siftie Reader OS X app (v0.0.5)
+            </a>
+            <a
+              className="close"
+              onClick={dismissNotice.bind(this, 'download-mac-app-0.0.5')}
+            >
+              <i className="close icon ion-close-round" />
             </a>
           </div>
         </Notice>
@@ -183,22 +216,26 @@ Sidebar = createReactClass({
           <a className="logo" href="/">
             <img alt="" src="/img/logo.png" />
           </a>
-          <i className={'panel-toggle icon ' + iconClass} onClick={this.toggleChannels}></i>
+          <i
+            className={'panel-toggle icon ' + iconClass}
+            onClick={this.toggleChannels}
+          />
         </header>
         <div className="channel-panel__body">
           {teamSelector}
           <nav className="channel-panel__list">
-            <h3 className="section-label">
-              Channels {addChannelButton}
-            </h3>
+            <h3 className="section-label">Channels {addChannelButton}</h3>
             {channelList}
           </nav>
           {teamNav}
           {notices}
         </div>
         {collapsedNav}
-        <UserCard showUserSettingsModal={this.showUserSettingsModal} user={this.props.user} />
+        <UserCard
+          showUserSettingsModal={this.showUserSettingsModal}
+          user={this.props.user}
+        />
       </div>
     );
-  }
+  },
 });
