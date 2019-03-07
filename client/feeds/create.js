@@ -3,23 +3,22 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 FeedCreate = createReactClass({
-
   displayName: 'FeedCreate',
 
   propTypes: {
     channel: PropTypes.object,
-    team: PropTypes.object
+    team: PropTypes.object,
   },
 
   getInitialState: function() {
     return {
-      url: ''
+      url: '',
     };
   },
 
   handleChange: function() {
     this.setState({
-      url: elem('url', this).value
+      url: elem('url', this).value,
     });
   },
 
@@ -27,10 +26,12 @@ FeedCreate = createReactClass({
     e.preventDefault();
 
     if (!this.isValid()) {
-      return Session.set('messages', [{
-        type: 'error',
-        message: 'Please enter a URL.'
-      }]);
+      return Session.set('messages', [
+        {
+          type: 'error',
+          message: 'Please enter a URL.',
+        },
+      ]);
     }
 
     const feedUrl = elem('url', this).value;
@@ -42,18 +43,28 @@ FeedCreate = createReactClass({
         window.analytics.track('Feed Created', {
           url: feedUrl,
           channel: this.props.channel.name,
-          team: this.props.team.name
+          team: this.props.team.name,
         });
-        Meteor.call('subscribeFeed', result, this.props.team._id, this.props.channel.id, (subError) => {
-          if (subError) {
-            Session.set('messages', [{ type: 'error', message: subError.reason }]);
-          } else {
-            Session.set('messages', [{
-              type: 'success',
-              message: 'Your feed was created successfully.'
-            }]);
+        Meteor.call(
+          'subscribeFeed',
+          result,
+          this.props.team._id,
+          this.props.channel.id,
+          subError => {
+            if (subError) {
+              Session.set('messages', [
+                { type: 'error', message: subError.reason },
+              ]);
+            } else {
+              Session.set('messages', [
+                {
+                  type: 'success',
+                  message: 'Your feed was created successfully.',
+                },
+              ]);
+            }
           }
-        });
+        );
         Meteor.call('crawlFeed', result);
       }
     });
@@ -61,7 +72,7 @@ FeedCreate = createReactClass({
     elem('url', this).focus();
 
     this.setState({
-      url: ''
+      url: '',
     });
   },
 
@@ -83,9 +94,9 @@ FeedCreate = createReactClass({
             type="url"
             value={this.state.url}
           />
-        <button type="submit">Add Feed</button>
+          <button type="submit">Add Feed</button>
         </form>
       </div>
     );
-  }
+  },
 });

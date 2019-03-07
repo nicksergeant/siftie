@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 
-Meteor.startup(function () {
+Meteor.startup(function() {
   Accounts.onCreateUser(function(options, newUser) {
     if (options.profile) {
       newUser.profile = options.profile;

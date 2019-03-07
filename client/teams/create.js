@@ -2,18 +2,17 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 TeamCreate = createReactClass({
-
   displayName: 'TeamCreate',
 
   getInitialState: function() {
     return {
-      name: ''
+      name: '',
     };
   },
 
   handleChange: function() {
     this.setState({
-      name: elem('name', this).value
+      name: elem('name', this).value,
     });
   },
 
@@ -21,35 +20,36 @@ TeamCreate = createReactClass({
     e.preventDefault();
 
     if (!this.isValid()) {
-      return Session.set('messages', [{
-        type: 'error',
-        message: 'Please enter a name.'
-      }]);
+      return Session.set('messages', [
+        {
+          type: 'error',
+          message: 'Please enter a name.',
+        },
+      ]);
     }
 
     const teamName = elem('name', this).value.trim();
 
-    Meteor.call('createTeam',
-      teamName,
-      document.location.hostname,
-      (error) => {
+    Meteor.call('createTeam', teamName, document.location.hostname, error => {
       if (error) {
         Session.set('messages', [{ type: 'error', message: error.reason }]);
       } else {
         window.analytics.track('Team Created', {
-          name: teamName
+          name: teamName,
         });
-        Session.set('messages', [{
-          type: 'success',
-          message: 'Your team was created successfully.'
-        }]);
+        Session.set('messages', [
+          {
+            type: 'success',
+            message: 'Your team was created successfully.',
+          },
+        ]);
       }
     });
 
     elem('name', this).focus();
 
     this.setState({
-      name: ''
+      name: '',
     });
   },
 
@@ -76,5 +76,5 @@ TeamCreate = createReactClass({
         </form>
       </div>
     );
-  }
+  },
 });

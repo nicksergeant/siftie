@@ -11,7 +11,7 @@ Tracker.autorun(function() {
         Session.setDefault(channelLimit, config.ITEMS_PER_PAGE);
         Meteor.subscribe('items', {
           feeds: channel.feeds,
-          limit: Session.get(channelLimit)
+          limit: Session.get(channelLimit),
         });
       });
     }
@@ -20,7 +20,7 @@ Tracker.autorun(function() {
     Session.setDefault(activeChannelLimit, config.ITEMS_PER_PAGE);
     Meteor.subscribe('itemsActive', {
       teamId: team._id,
-      limit: Session.get(activeChannelLimit)
+      limit: Session.get(activeChannelLimit),
     });
   });
 });

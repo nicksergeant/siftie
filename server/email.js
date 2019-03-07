@@ -1,14 +1,22 @@
 import { Meteor } from 'meteor/meteor';
 
-Meteor.startup(function () {
+Meteor.startup(function() {
   const smtp = {
     username: process.env.POSTMARK_API_KEY,
     password: process.env.POSTMARK_API_KEY,
     server: 'smtp.postmarkapp.com',
-    port: 587
+    port: 587,
   };
 
-  process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
+  process.env.MAIL_URL =
+    'smtp://' +
+    encodeURIComponent(smtp.username) +
+    ':' +
+    encodeURIComponent(smtp.password) +
+    '@' +
+    encodeURIComponent(smtp.server) +
+    ':' +
+    smtp.port;
 
   Accounts.emailTemplates.from = 'Siftie Reader <team@siftie.com>';
   Accounts.emailTemplates.siteName = 'Siftie Reader';

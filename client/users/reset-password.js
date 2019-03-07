@@ -3,24 +3,23 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 ResetPassword = createReactClass({
-
   displayName: 'ResetPassword',
 
   propTypes: {
-    resetPasswordToken: PropTypes.string
+    resetPasswordToken: PropTypes.string,
   },
- 
+
   getInitialState: function() {
     return {
       newPassword: '',
-      newPasswordConfirmation: ''
-    }
+      newPasswordConfirmation: '',
+    };
   },
 
   handleChange: function() {
     this.setState({
       newPassword: elem('new-password', this).value,
-      newPasswordConfirmation: elem('new-password-confirmation', this).value
+      newPasswordConfirmation: elem('new-password-confirmation', this).value,
     });
   },
 
@@ -28,27 +27,38 @@ ResetPassword = createReactClass({
     e.preventDefault();
 
     if (this.state.newPassword !== this.state.newPasswordConfirmation) {
-      return Session.set('messages', [{ type: 'error', message: 'Passwords do not match.' }]);
+      return Session.set('messages', [
+        { type: 'error', message: 'Passwords do not match.' },
+      ]);
     }
 
-    Meteor.call('resetPasswordWithToken', this.props.resetPasswordToken, this.state.newPassword, (err) => {
-      if (err) {
-        Session.set('messages', [{
-          type: 'error',
-          message: `Error: ${ err.reason }.`
-        }]);
-      } else {
-        Session.set('messages', [{
-          type: 'success',
-          message: 'New password saved succesfully.'
-        }]);
+    Meteor.call(
+      'resetPasswordWithToken',
+      this.props.resetPasswordToken,
+      this.state.newPassword,
+      err => {
+        if (err) {
+          Session.set('messages', [
+            {
+              type: 'error',
+              message: `Error: ${err.reason}.`,
+            },
+          ]);
+        } else {
+          Session.set('messages', [
+            {
+              type: 'success',
+              message: 'New password saved succesfully.',
+            },
+          ]);
 
-        this.setState({
-          newPassword: '',
-          newPasswordConfirmation: ''
-        });
+          this.setState({
+            newPassword: '',
+            newPasswordConfirmation: '',
+          });
+        }
       }
-    });
+    );
   },
 
   render: function() {
@@ -81,6 +91,5 @@ ResetPassword = createReactClass({
         </form>
       </div>
     );
-  }
-
+  },
 });

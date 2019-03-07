@@ -3,11 +3,10 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 InvitationList = createReactClass({
-
   displayName: 'InvitationList',
 
   propTypes: {
-    team: PropTypes.object
+    team: PropTypes.object,
   },
 
   isOwner: function() {
@@ -21,33 +20,24 @@ InvitationList = createReactClass({
   },
 
   render: function() {
-    const invitations = this.props.team.invitations.map((invitation) => {
+    const invitations = this.props.team.invitations.map(invitation => {
       let deleteInvitation;
       if (this.isOwner()) {
         deleteInvitation = (
-          <InvitationDelete
-            invitation={invitation}
-            team={this.props.team}
-          />
+          <InvitationDelete invitation={invitation} team={this.props.team} />
         );
       }
       return (
         <li key={invitation.token} className="members__item group">
           <span>
-            <i className="avatar-placeholder icon ion-person"></i>
-            <div className="details">
-              {invitation.email}
-            </div>
+            <i className="avatar-placeholder icon ion-person" />
+            <div className="details">{invitation.email}</div>
             {deleteInvitation}
           </span>
         </li>
       );
     });
 
-    return (
-      <ul className="members -pending">
-        {invitations}
-      </ul>
-    );
-  }
+    return <ul className="members -pending">{invitations}</ul>;
+  },
 });

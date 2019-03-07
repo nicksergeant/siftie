@@ -2,18 +2,23 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 TeamDetail = createReactClass({
-
   displayName: 'TeamDetail',
 
   propTypes: {
-    team: PropTypes.object
+    team: PropTypes.object,
   },
 
   render: function() {
-    if (this.props.team && this.props.team.channels && this.props.team.channels.length) {
+    if (
+      this.props.team &&
+      this.props.team.channels &&
+      this.props.team.channels.length
+    ) {
       return (
         <div>
-          <div className="tour-point tour-create-channel">Create a channel by clicking the "+" here.</div>
+          <div className="tour-point tour-create-channel">
+            Create a channel by clicking the "+" here.
+          </div>
         </div>
       );
     } else {
@@ -26,5 +31,5 @@ TeamDetail = createReactClass({
         </div>
       );
     }
-  }
+  },
 });

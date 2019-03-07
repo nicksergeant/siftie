@@ -3,24 +3,23 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 CommentCreate = createReactClass({
-
   displayName: 'CommentCreate',
 
   propTypes: {
     channel: PropTypes.object,
     item: PropTypes.object,
-    team: PropTypes.object
+    team: PropTypes.object,
   },
 
   getInitialState: function() {
     return {
-      comment: ''
+      comment: '',
     };
   },
 
   handleChange: function() {
     this.setState({
-      comment: elem('comment', this).value
+      comment: elem('comment', this).value,
     });
   },
 
@@ -35,29 +34,33 @@ CommentCreate = createReactClass({
     e.preventDefault();
 
     if (!this.isValid()) {
-      return Session.set('messages', [{
-        type: 'error',
-        message: 'Please enter a comment.'
-      }]);
+      return Session.set('messages', [
+        {
+          type: 'error',
+          message: 'Please enter a comment.',
+        },
+      ]);
     }
 
-    Meteor.call('createComment',
+    Meteor.call(
+      'createComment',
       this.props.item._id,
       this.props.team._id,
       this.props.channel.id,
       elem('comment', this).value.trim(),
-      (error) => {
-      window.analytics.track('Comment Created', {
-        channel: this.props.channel.name,
-        team: this.props.team.name
-      });
-      if (error) {
-        Session.set('messages', [{ type: 'error', message: error.reason }]);
+      error => {
+        window.analytics.track('Comment Created', {
+          channel: this.props.channel.name,
+          team: this.props.team.name,
+        });
+        if (error) {
+          Session.set('messages', [{ type: 'error', message: error.reason }]);
+        }
       }
-    });
+    );
 
     this.setState({
-      comment: ''
+      comment: '',
     });
   },
 
@@ -73,19 +76,20 @@ CommentCreate = createReactClass({
           className="comments__create group"
           id="new-comment"
           onKeyDown={this.handleKeyDown}
-          onSubmit={this.handleSubmit}>
+          onSubmit={this.handleSubmit}
+        >
           <textarea
             className="text"
             onChange={this.handleChange}
             placeholder="Type comment here"
             ref="comment"
             required
-            style={{width: '100%'}}
+            style={{ width: '100%' }}
             value={this.state.comment}
           />
-        <button type="submit">Post</button>
+          <button type="submit">Post</button>
         </form>
       </div>
     );
-  }
+  },
 });

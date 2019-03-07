@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 ChannelDetail = createReactClass({
-
   displayName: 'ChannelDetail',
 
   propTypes: {
@@ -15,7 +14,7 @@ ChannelDetail = createReactClass({
     isDetail: PropTypes.bool,
     popoverShown: PropTypes.string,
     popoverToggle: PropTypes.func,
-    team: PropTypes.object
+    team: PropTypes.object,
   },
 
   mixins: [ReactMeteorData],
@@ -23,31 +22,33 @@ ChannelDetail = createReactClass({
   getMeteorData: function() {
     const channelLimit = Session.get(this.channelLimitKey());
 
-    if (this.props.team && this.props.channel && this.props.channel.id === 'active') {
+    if (
+      this.props.team &&
+      this.props.channel &&
+      this.props.channel.id === 'active'
+    ) {
       return {
         channelLimit: channelLimit,
         items: Items.find().fetch(),
         teamItems: TeamItems.find(
-          { teamId: this.props.team._id,
-            lastActiveDate: { $exists: true }
-          },
-          { limit: channelLimit,
-            sort: { lastActiveDate: -1 }}
+          { teamId: this.props.team._id, lastActiveDate: { $exists: true } },
+          { limit: channelLimit, sort: { lastActiveDate: -1 } }
         ).fetch(),
-        user: Meteor.user()
+        user: Meteor.user(),
       };
     } else {
       return {
         channelLimit: channelLimit,
         items: Items.find(
-          { feedId: { $in: this.props.channel ? this.props.channel.feeds : [] }},
-          { limit: channelLimit,
-            sort: { pubDate: -1 } }
+          {
+            feedId: { $in: this.props.channel ? this.props.channel.feeds : [] },
+          },
+          { limit: channelLimit, sort: { pubDate: -1 } }
         ).fetch(),
         teamItems: TeamItems.find({
-          channelId: this.props.channel.id
+          channelId: this.props.channel.id,
         }).fetch(),
-        user: Meteor.user()
+        user: Meteor.user(),
       };
     }
   },
@@ -70,31 +71,45 @@ ChannelDetail = createReactClass({
 
   getFirstItemUrl: function(items) {
     if (this.props.channel.id === 'active') {
-      return '/' +
-        this.props.team.slug + '/active/' +
-        items[0].teamItemChannelId + '/' +
-        items[0]._id;
+      return (
+        '/' +
+        this.props.team.slug +
+        '/active/' +
+        items[0].teamItemChannelId +
+        '/' +
+        items[0]._id
+      );
     } else {
-      return '/' +
-        this.props.team.slug + '/' +
-        this.props.channel.slug + '/' +
-        items[0]._id;
+      return (
+        '/' +
+        this.props.team.slug +
+        '/' +
+        this.props.channel.slug +
+        '/' +
+        items[0]._id
+      );
     }
   },
 
   loadLess: function() {
-    Session.set(this.channelLimitKey(), this.data.channelLimit - config.ITEMS_PER_PAGE);
+    Session.set(
+      this.channelLimitKey(),
+      this.data.channelLimit - config.ITEMS_PER_PAGE
+    );
   },
 
   loadMore: function() {
-    Session.set(this.channelLimitKey(), this.data.channelLimit + config.ITEMS_PER_PAGE);
+    Session.set(
+      this.channelLimitKey(),
+      this.data.channelLimit + config.ITEMS_PER_PAGE
+    );
   },
 
   processItems: function() {
     let items = this.data.items;
 
     if (this.props.channel.id === 'active') {
-      let activeItems = this.data.teamItems.map((teamItem) => {
+      let activeItems = this.data.teamItems.map(teamItem => {
         const found = _.findWhere(this.data.items, { _id: teamItem.itemId });
         if (found) {
           found.teamItemChannelId = teamItem.channelId;
@@ -110,12 +125,23 @@ ChannelDetail = createReactClass({
   render: function() {
     let showMore;
     if (this.canShowMore()) {
-      showMore = <button className="load-more button -dark" onClick={this.loadMore}><i className="icon ion-plus"></i>More</button>;
+      showMore = (
+        <button className="load-more button -dark" onClick={this.loadMore}>
+          <i className="icon ion-plus" />More
+        </button>
+      );
     }
 
     let showLess;
     if (this.canShowLess()) {
-      showLess = <button className="load-less  button -secondary" onClick={this.loadLess}><i className="icon ion-minus"></i>Less</button>;
+      showLess = (
+        <button
+          className="load-less  button -secondary"
+          onClick={this.loadLess}
+        >
+          <i className="icon ion-minus" />Less
+        </button>
+      );
     }
 
     const items = this.processItems();
@@ -128,9 +154,11 @@ ChannelDetail = createReactClass({
       });
     }
 
-    if (items.length === this.data.channelLimit &&
-        this.data.channelLimit <= config.ITEMS_PER_PAGE &&
-        this.props.isDetail) {
+    if (
+      items.length === this.data.channelLimit &&
+      this.data.channelLimit <= config.ITEMS_PER_PAGE &&
+      this.props.isDetail
+    ) {
       Meteor.setTimeout(() => {
         this.props.focusInList();
       });
@@ -142,13 +170,17 @@ ChannelDetail = createReactClass({
         <div className="posts-panel__pagination">
           {showLess}
           {showMore}
-          <br />(showing {this.data.channelLimit})
+          <br />
+          (showing {this.data.channelLimit})
         </div>
       );
     }
 
     let inner;
-    if ((this.props.channel.feeds && this.props.channel.feeds.length) || this.props.channel.id === 'active') {
+    if (
+      (this.props.channel.feeds && this.props.channel.feeds.length) ||
+      this.props.channel.id === 'active'
+    ) {
       inner = (
         <div className="posts-panel">
           <div className="posts-panel__list">
@@ -165,7 +197,8 @@ ChannelDetail = createReactClass({
       inner = (
         <div className="posts-panel">
           <div className="tour-point tour-add-feed">
-            Add a feed to this channel by clicking the menu icon, then "Manage feeds".
+            Add a feed to this channel by clicking the menu icon, then "Manage
+            feeds".
           </div>
         </div>
       );
@@ -185,5 +218,5 @@ ChannelDetail = createReactClass({
         {this.props.children}
       </div>
     );
-  }
+  },
 });

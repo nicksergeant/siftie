@@ -2,11 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 SignupInvite = createReactClass({
-
   displayName: 'SignupInvite',
 
   propTypes: {
-    switchToTab: PropTypes.func
+    switchToTab: PropTypes.func,
   },
 
   handleSubmit: function(e) {
@@ -18,7 +17,7 @@ SignupInvite = createReactClass({
     return (
       <div className="signup">
         <div className="signup__sidebar">
-          <a className="logo" href="/"></a>
+          <a className="logo" href="/" />
           <h1>Team</h1>
           <p>Blah blah.</p>
           <p>team</p>
@@ -33,12 +32,12 @@ SignupInvite = createReactClass({
             this is some clever onboarding
             <footer>
               <button className="-right" type="submit">
-                Next <i className="icon -right ion-chevron-right"></i>
+                Next <i className="icon -right ion-chevron-right" />
               </button>
             </footer>
           </form>
         </div>
       </div>
     );
-  }
+  },
 });

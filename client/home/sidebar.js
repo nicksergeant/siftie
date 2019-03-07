@@ -128,7 +128,8 @@ Sidebar = createReactClass({
           </li>
           <li className={this.isActive('settings')}>
             <a href={'/' + this.props.team.slug + '/settings'}>
-              <i className="icon ion-gear-a" />Settings
+              <i className="icon ion-gear-a" />
+              Settings
             </a>
           </li>
         </ul>

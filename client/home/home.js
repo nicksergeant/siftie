@@ -56,9 +56,9 @@ Home = createReactClass({
                     An RSS reader for <em>everyone</em>
                   </h1>
                   <p>
-                    Siftie Reader is a simple RSS reader with built-in rating and
-                    commenting features for friends, family, and team members
-                    (or just yourself!).
+                    Siftie Reader is a simple RSS reader with built-in rating
+                    and commenting features for friends, family, and team
+                    members (or just yourself!).
                   </p>
                   <a className="button -green" href="/signup">
                     Create an account (Free)

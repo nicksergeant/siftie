@@ -2,14 +2,13 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 Notice = createReactClass({
-
   displayName: 'Notice',
 
   mixins: [ReactMeteorData],
 
   getMeteorData: function() {
     return {
-      user: Meteor.user()
+      user: Meteor.user(),
     };
   },
 
@@ -19,11 +18,6 @@ Notice = createReactClass({
         return null;
       }
     }
-    return (
-      <div className="notice-container">
-        {this.props.children}
-      </div>
-    );
-  }
-
+    return <div className="notice-container">{this.props.children}</div>;
+  },
 });

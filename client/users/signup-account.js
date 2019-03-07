@@ -2,11 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 SignupAccount = createReactClass({
-
   displayName: 'SignupAccount',
 
   propTypes: {
-    switchToTab: PropTypes.func
+    switchToTab: PropTypes.func,
   },
 
   handleSubmit: function(e) {
@@ -16,15 +15,17 @@ SignupAccount = createReactClass({
     const passwordConfirmation = elem('password-confirmation', this).value;
 
     if (password !== passwordConfirmation) {
-      return Session.set('messages', [{ type: 'error', message: 'Passwords do not match.' }]);
+      return Session.set('messages', [
+        { type: 'error', message: 'Passwords do not match.' },
+      ]);
     }
 
-    Accounts.createUser({ email: email, password: password }, (err) => {
+    Accounts.createUser({ email: email, password: password }, err => {
       if (err) {
         Session.set('messages', [{ type: 'error', message: err.reason }]);
       } else {
         window.analytics.track('User Signed Up', {
-          email: email
+          email: email,
         });
         const $teamJoin = Session.get('$teamJoin');
         const $teamInvitation = Session.get('$teamInvitation');
@@ -40,28 +41,43 @@ SignupAccount = createReactClass({
   render: function() {
     return (
       <div className="fill -signup">
-      <div className="marketing-page signup group">
-        <div className="signup__sidebar">
-          <a className="logo" href="/"></a>
-          <h1>Sign up</h1>
-          <p>In order to try out the beta, you're going to need a Siftie Reader account.</p>
-        </div>
-        <div className="signup__forms">
-          <ol className="progress-indicators">
-            <li className="-active">•</li>
-            <li>•</li>
-          </ol>
-          <form onSubmit={this.handleSubmit}>
-            <label className="field">
-              <strong className="field__label">Email</strong>
-              <input className="text" placeholder="you@yourdomain.com" ref="email" required type="text" />
-            </label>
-            <label className="field">
-              <strong className="field__label">Password</strong>
-              <input className="text" placeholder="••••••••••••" ref="password" required type="password" />
-            </label>
-            <label className="field">
-              <strong className="field__label">Confirm Password</strong>
+        <div className="marketing-page signup group">
+          <div className="signup__sidebar">
+            <a className="logo" href="/" />
+            <h1>Sign up</h1>
+            <p>
+              In order to try out the beta, you're going to need a Siftie Reader
+              account.
+            </p>
+          </div>
+          <div className="signup__forms">
+            <ol className="progress-indicators">
+              <li className="-active">•</li>
+              <li>•</li>
+            </ol>
+            <form onSubmit={this.handleSubmit}>
+              <label className="field">
+                <strong className="field__label">Email</strong>
+                <input
+                  className="text"
+                  placeholder="you@yourdomain.com"
+                  ref="email"
+                  required
+                  type="text"
+                />
+              </label>
+              <label className="field">
+                <strong className="field__label">Password</strong>
+                <input
+                  className="text"
+                  placeholder="••••••••••••"
+                  ref="password"
+                  required
+                  type="password"
+                />
+              </label>
+              <label className="field">
+                <strong className="field__label">Confirm Password</strong>
                 <input
                   className="text"
                   placeholder="••••••••••••"
@@ -69,19 +85,20 @@ SignupAccount = createReactClass({
                   required
                   type="password"
                 />
-            </label>
+              </label>
 
-            <footer>
-              <a className="cancel -left" href="/" >Cancel</a>
-              <button className="-right" type="submit">
-                Create Account
-              </button>
-            </footer>
-
-          </form>
+              <footer>
+                <a className="cancel -left" href="/">
+                  Cancel
+                </a>
+                <button className="-right" type="submit">
+                  Create Account
+                </button>
+              </footer>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
     );
-  }
+  },
 });

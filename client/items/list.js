@@ -2,17 +2,16 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 ItemList = createReactClass({
-
   displayName: 'ItemList',
 
   propTypes: {
     channel: PropTypes.object,
     items: PropTypes.array,
-    team: PropTypes.object
+    team: PropTypes.object,
   },
 
   render: function() {
-    const items = this.props.items.map((item) => {
+    const items = this.props.items.map(item => {
       return (
         <ItemInList
           channel={this.props.channel}
@@ -24,16 +23,13 @@ ItemList = createReactClass({
     });
 
     if (items.length) {
-      return (
-        <div>
-          {items}
-        </div>
-      );
+      return <div>{items}</div>;
     } else {
       if (this.props.channel.id === 'active') {
         return (
           <div style={{ padding: '20px' }}>
-            Items will appear here once someone on your team either rates or comments on an item.
+            Items will appear here once someone on your team either rates or
+            comments on an item.
           </div>
         );
       } else if (this.props.channel.id === 'curated') {
@@ -50,6 +46,5 @@ ItemList = createReactClass({
         );
       }
     }
-  }
-
+  },
 });

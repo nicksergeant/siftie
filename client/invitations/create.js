@@ -3,22 +3,21 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 InvitationCreate = createReactClass({
-
   displayName: 'InvitationCreate',
 
   propTypes: {
-    team: PropTypes.object
+    team: PropTypes.object,
   },
 
   getInitialState: function() {
     return {
-      email: ''
+      email: '',
     };
   },
 
   handleChange: function() {
     this.setState({
-      email: elem('email', this).value
+      email: elem('email', this).value,
     });
   },
 
@@ -26,30 +25,39 @@ InvitationCreate = createReactClass({
     e.preventDefault();
 
     if (!this.isValid()) {
-      return Session.set('messages', [{
-        type: 'error',
-        message: 'Please enter an email.'
-      }]);
+      return Session.set('messages', [
+        {
+          type: 'error',
+          message: 'Please enter an email.',
+        },
+      ]);
     }
 
-    Meteor.call('createInvitation', this.props.team._id, elem('email', this).value.trim(), (error) => {
-      if (error) {
-        Session.set('messages', [{ type: 'error', message: error.reason }]);
-      } else {
-        window.analytics.track('Invitation Created', {
-          team: this.props.team.name
-        });
-        Session.set('messages', [{
-          type: 'success',
-          message: 'Invite sent.'
-        }]);
+    Meteor.call(
+      'createInvitation',
+      this.props.team._id,
+      elem('email', this).value.trim(),
+      error => {
+        if (error) {
+          Session.set('messages', [{ type: 'error', message: error.reason }]);
+        } else {
+          window.analytics.track('Invitation Created', {
+            team: this.props.team.name,
+          });
+          Session.set('messages', [
+            {
+              type: 'success',
+              message: 'Invite sent.',
+            },
+          ]);
+        }
       }
-    });
+    );
 
     elem('email', this).focus();
 
     this.setState({
-      email: ''
+      email: '',
     });
   },
 
@@ -76,5 +84,5 @@ InvitationCreate = createReactClass({
         </form>
       </div>
     );
-  }
+  },
 });

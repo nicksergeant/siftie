@@ -3,11 +3,10 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 MemberList = createReactClass({
-
   displayName: 'MemberList',
 
   propTypes: {
-    team: PropTypes.object
+    team: PropTypes.object,
   },
 
   mixins: [ReactMeteorData],
@@ -19,7 +18,7 @@ MemberList = createReactClass({
       if (ownerUser) {
         owner = {
           _id: ownerUser._id,
-          email: ownerUser.emails[0].address
+          email: ownerUser.emails[0].address,
         };
       }
     }
@@ -32,7 +31,7 @@ MemberList = createReactClass({
           if (memberUser) {
             return {
               _id: memberUser._id,
-              email: memberUser.emails[0].address
+              email: memberUser.emails[0].address,
             };
           }
         }
@@ -41,7 +40,7 @@ MemberList = createReactClass({
 
     return {
       members: members,
-      owner: owner
+      owner: owner,
     };
   },
 
@@ -63,10 +62,12 @@ MemberList = createReactClass({
   render: function() {
     let members;
     if (this.data.members) {
-      members = _.compact(this.data.members).map((member) => {
+      members = _.compact(this.data.members).map(member => {
         let deleteMember;
         if (this.isOwner()) {
-          deleteMember = <MemberDelete member={member} team={this.props.team} />;
+          deleteMember = (
+            <MemberDelete member={member} team={this.props.team} />
+          );
         }
         return (
           <li key={member._id} className="members__item group">
@@ -94,7 +95,14 @@ MemberList = createReactClass({
           <li className="members__item group">
             <img className="avatar" src={this.gravatar(this.data.owner._id)} />
             <div className="details">
-              <a href={'/' + this.props.team.slug + '/members/' + this.data.owner._id}>{userName(this.data.owner._id)}</a>   (owner)
+              <a
+                href={
+                  '/' + this.props.team.slug + '/members/' + this.data.owner._id
+                }
+              >
+                {userName(this.data.owner._id)}
+              </a>{' '}
+              (owner)
             </div>
           </li>
           {members}
@@ -104,15 +112,17 @@ MemberList = createReactClass({
         <InvitationCreate team={this.props.team} />
         <p>
           Team Join Key:
-          <code style={{display: 'inline-block', margin: '0 5px'}}>{this.props.team.inviteKey}</code>
+          <code style={{ display: 'inline-block', margin: '0 5px' }}>
+            {this.props.team.inviteKey}
+          </code>
           <a onClick={this.regenerateTeamInviteKey}>Regenerate &raquo;</a>
           <br />
-          Shareable link: <a href={Meteor.absoluteUrl() + 'join/' + this.props.team.inviteKey}>
+          Shareable link:{' '}
+          <a href={Meteor.absoluteUrl() + 'join/' + this.props.team.inviteKey}>
             {Meteor.absoluteUrl() + 'join/' + this.props.team.inviteKey}
-            </a>
+          </a>
         </p>
       </div>
     );
-  }
-
+  },
 });

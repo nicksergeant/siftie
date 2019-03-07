@@ -3,21 +3,20 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 ItemUserRating = createReactClass({
-
   displayName: 'ItemUserRating',
 
   propTypes: {
     channel: PropTypes.object,
     item: PropTypes.object,
     team: PropTypes.object,
-    teamItem: PropTypes.object
+    teamItem: PropTypes.object,
   },
 
   mixins: [ReactMeteorData],
 
   getInitialState: function() {
     return {
-      userRating: null
+      userRating: null,
     };
   },
 
@@ -26,36 +25,41 @@ ItemUserRating = createReactClass({
     if (this.props.teamItem && this.props.teamItem.ratings.length) {
       userRating = _.result(
         _.find(this.props.teamItem.ratings, {
-          user: Meteor.userId()
+          user: Meteor.userId(),
         }),
-      'rating');
+        'rating'
+      );
     }
     return {
-      userRating: userRating
+      userRating: userRating,
     };
   },
 
   rate: function(rating) {
-    Meteor.call('createRating',
+    Meteor.call(
+      'createRating',
       this.props.item._id,
       this.props.team._id,
       this.props.channel.id,
       rating,
-      (error) => {
-      if (error) {
-        Session.set('messages', [{ type: 'error', message: error.reason }]);
+      error => {
+        if (error) {
+          Session.set('messages', [{ type: 'error', message: error.reason }]);
+        }
       }
-    });
+    );
     this.setState({
-      userRating: rating
+      userRating: rating,
     });
   },
 
   star: function(rating) {
     if (!this.data.userRating) return <span className="star">★</span>;
-    return this.data.userRating >= rating ?
-      <span className="star -active">★</span> :
-      <span className="star">★</span>;
+    return this.data.userRating >= rating ? (
+      <span className="star -active">★</span>
+    ) : (
+      <span className="star">★</span>
+    );
   },
 
   render: function() {
@@ -71,6 +75,5 @@ ItemUserRating = createReactClass({
         </div>
       </div>
     );
-  }
-
+  },
 });

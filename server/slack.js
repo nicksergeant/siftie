@@ -7,9 +7,9 @@ Slack = {
         data: {
           username: 'Siftie Reader',
           text: text,
-          icon_url: 'https://siftie.s3.amazonaws.com/icon.png'
-        }
+          icon_url: 'https://siftie.s3.amazonaws.com/icon.png',
+        },
       });
     }
-  }
+  },
 };

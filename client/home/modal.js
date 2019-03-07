@@ -5,7 +5,6 @@ import { Meteor } from 'meteor/meteor';
 let analyticsDebouncing = false;
 
 Modal = createReactClass({
-
   displayName: 'Modal',
 
   propTypes: {
@@ -14,7 +13,7 @@ Modal = createReactClass({
     modalStatus: PropTypes.bool,
     modalTitle: PropTypes.string,
     onClose: PropTypes.func,
-    team: PropTypes.object
+    team: PropTypes.object,
   },
 
   componentWillReceiveProps: function(props) {
@@ -23,7 +22,7 @@ Modal = createReactClass({
       window.analytics.track('Modal Shown', {
         name: this.props.modalTitle,
         channel: this.props.channel ? this.props.channel.name : null,
-        team: this.props.team ? this.props.team.name : null
+        team: this.props.team ? this.props.team.name : null,
       });
       Meteor.setTimeout(() => {
         analyticsDebouncing = false;
@@ -38,11 +37,14 @@ Modal = createReactClass({
 
     return (
       <div className={'modal ' + modalStatus}>
-        <div className="modal__bg" onClick={this.props.onClose}></div>
+        <div className="modal__bg" onClick={this.props.onClose} />
         <div className="modal__container">
           <header className="modal__header">
             <h1>{this.props.modalTitle}</h1>
-            <a className="close icon ion-close-round" onClick={this.props.onClose}></a>
+            <a
+              className="close icon ion-close-round"
+              onClick={this.props.onClose}
+            />
           </header>
           <div className="modal__body">
             <this.props.component
@@ -54,6 +56,5 @@ Modal = createReactClass({
         </div>
       </div>
     );
-  }
-
+  },
 });

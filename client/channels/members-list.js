@@ -3,17 +3,16 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 ChannelMembersList = createReactClass({
-
   displayName: 'ChannelMembersList',
 
   propTypes: {
     channel: PropTypes.object,
-    team: PropTypes.object
+    team: PropTypes.object,
   },
 
   getInitialState: function() {
     return {
-      members: this.props.team.members
+      members: this.props.team.members,
     };
   },
 
@@ -24,17 +23,18 @@ ChannelMembersList = createReactClass({
     });
 
     this.setState({
-      members: members
+      members: members,
     });
   },
 
   render: function() {
-    const members = this.state.members.map((member) => {
+    const members = this.state.members.map(member => {
       return (
-        <li className="feeds__item channel-member-in-list group" key={member._id}>
-          <span>
-            {userEmail(member._id)}
-          </span>
+        <li
+          className="feeds__item channel-member-in-list group"
+          key={member._id}
+        >
+          <span>{userEmail(member._id)}</span>
         </li>
       );
     });
@@ -45,7 +45,7 @@ ChannelMembersList = createReactClass({
           onChange={this.search}
           placeholder="Quick search..."
           ref="query"
-          style={{width: '100%'}}
+          style={{ width: '100%' }}
           type="text"
         />
         <ul className="feeds" style={{ marginTop: '1.5rem' }}>
@@ -53,5 +53,5 @@ ChannelMembersList = createReactClass({
         </ul>
       </div>
     );
-  }
+  },
 });

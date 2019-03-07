@@ -8,25 +8,24 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 
 CommentDetail = createReactClass({
-
   displayName: 'CommentDetail',
 
   propTypes: {
     comment: PropTypes.object,
     team: PropTypes.object,
-    teamItem: PropTypes.object
+    teamItem: PropTypes.object,
   },
 
   mixins: [ReactMeteorData],
 
   getInitialState: function() {
     emojify.setConfig({
-      img_dir: '/img/emoji'
+      img_dir: '/img/emoji',
     });
 
     return {
-      editing: false
-    }
+      editing: false,
+    };
   },
 
   componentDidMount: function() {
@@ -39,7 +38,7 @@ CommentDetail = createReactClass({
 
   getMeteorData: function() {
     return {
-      user: Meteor.users.findOne(this.props.comment.user)
+      user: Meteor.users.findOne(this.props.comment.user),
     };
   },
 
@@ -63,7 +62,9 @@ CommentDetail = createReactClass({
   },
 
   imgify: function(comment) {
-    let matches = comment.match(/https?:\/\/.*?\.(?:png|jpg|jpeg|gif)(\s|$|\"|\')/ig);
+    let matches = comment.match(
+      /https?:\/\/.*?\.(?:png|jpg|jpeg|gif)(\s|$|\"|\')/gi
+    );
     _.uniq(matches).forEach(function(match) {
       comment += `<img src="${match}" />`;
     });
@@ -76,25 +77,26 @@ CommentDetail = createReactClass({
 
   toggleEditing: function(e) {
     if (e) e.preventDefault();
-    this.setState({ 
-      editing: !this.state.editing
+    this.setState({
+      editing: !this.state.editing,
     });
   },
 
   render: function() {
     const linkified = linkifyHtml(this.props.comment.comment, {
-      defaultProtocol: 'http'
+      defaultProtocol: 'http',
     });
     const linkifiedComment = {
-      __html: this.linebreakify(this.imgify(linkified))
+      __html: this.linebreakify(this.imgify(linkified)),
     };
 
     let editToggle;
     if (this.props.comment.user === Meteor.userId()) {
       editToggle = (
-        <a className={'edit-toggle icon ion-edit'}
-          onClick={this.toggleEditing}>
-        </a>
+        <a
+          className={'edit-toggle icon ion-edit'}
+          onClick={this.toggleEditing}
+        />
       );
     }
 
@@ -108,7 +110,13 @@ CommentDetail = createReactClass({
         />
       );
     } else {
-      body = <span ref="spanText" className="text" dangerouslySetInnerHTML={linkifiedComment} />
+      body = (
+        <span
+          ref="spanText"
+          className="text"
+          dangerouslySetInnerHTML={linkifiedComment}
+        />
+      );
     }
 
     return (
@@ -117,17 +125,19 @@ CommentDetail = createReactClass({
           <img src={this.gravatar()} />
         </div>
         <div className="body">
-          <a href={'/' + this.props.team.slug + '/members/' + this.data.user._id}>
+          <a
+            href={'/' + this.props.team.slug + '/members/' + this.data.user._id}
+          >
             <strong className="user">{userName(this.data.user._id)}</strong>
           </a>
           <small className="timestamp" data-livestamp={this.createdAtString()}>
             {this.createdAtTimeago()}
-          </small><br />
+          </small>
+          <br />
           {body}
           {editToggle}
         </div>
       </li>
     );
-  }
-
+  },
 });

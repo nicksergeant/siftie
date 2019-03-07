@@ -2,12 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 UserCard = createReactClass({
-
   displayName: 'UserCard',
 
   propTypes: {
     showUserSettingsModal: PropTypes.func,
-    user: PropTypes.object
+    user: PropTypes.object,
   },
 
   gravatar: function() {
@@ -27,9 +26,11 @@ UserCard = createReactClass({
           <a className="account" onClick={this.props.showUserSettingsModal}>
             <strong>{userName(this.props.user._id)}</strong>
           </a>
-          <a className="logout" href="/logout">Log out</a>
+          <a className="logout" href="/logout">
+            Log out
+          </a>
         </p>
       </footer>
     );
-  }
+  },
 });

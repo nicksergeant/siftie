@@ -2,13 +2,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 CommentList = createReactClass({
-
   displayName: 'CommentList',
 
   propTypes: {
     comments: PropTypes.array,
     team: PropTypes.object,
-    teamItem: PropTypes.object
+    teamItem: PropTypes.object,
   },
 
   sorted: function() {
@@ -20,7 +19,7 @@ CommentList = createReactClass({
   },
 
   render: function() {
-    const comments = this.sorted().map((comment) => {
+    const comments = this.sorted().map(comment => {
       return (
         <CommentDetail
           comment={comment}
@@ -32,11 +31,8 @@ CommentList = createReactClass({
     });
     return (
       <div>
-        <ul>
-          {comments}
-        </ul>
+        <ul>{comments}</ul>
       </div>
     );
-  }
-
+  },
 });

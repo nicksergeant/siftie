@@ -2,14 +2,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 ItemComments = createReactClass({
-
   displayName: 'ItemComments',
 
   propTypes: {
     channel: PropTypes.object,
     item: PropTypes.object,
     team: PropTypes.object,
-    teamItem: PropTypes.object
+    teamItem: PropTypes.object,
   },
 
   render: function() {
@@ -38,6 +37,5 @@ ItemComments = createReactClass({
         />
       </div>
     );
-  }
-
+  },
 });

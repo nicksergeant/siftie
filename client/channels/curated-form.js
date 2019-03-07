@@ -3,11 +3,10 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 CuratedForm = createReactClass({
-
   displayName: 'CuratedForm',
 
   propTypes: {
-    team: PropTypes.object
+    team: PropTypes.object,
   },
 
   handleSubmit(e) {
@@ -19,22 +18,25 @@ CuratedForm = createReactClass({
 
     this.refs.url.value = '';
 
-    Session.set('messages', [{
-      type: 'success',
-      message: 'Link submitted. We will grab the content and it will appear here shortly!'
-    }]);
+    Session.set('messages', [
+      {
+        type: 'success',
+        message:
+          'Link submitted. We will grab the content and it will appear here shortly!',
+      },
+    ]);
   },
 
   render: function() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input className="curated-form-input"
+        <input
+          className="curated-form-input"
           placeholder="Share a link"
           ref="url"
           type="url"
         />
       </form>
     );
-  }
-
+  },
 });

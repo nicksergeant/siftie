@@ -3,13 +3,12 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 CommentEdit = createReactClass({
-
   displayName: 'CommentEdit',
 
   propTypes: {
     comment: PropTypes.object,
     onDone: PropTypes.func,
-    teamItem: PropTypes.object
+    teamItem: PropTypes.object,
   },
 
   handleKeyDown: function(e) {
@@ -21,7 +20,8 @@ CommentEdit = createReactClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
-    Meteor.call('saveComment',
+    Meteor.call(
+      'saveComment',
       this.props.teamItem._id,
       this.props.comment.id,
       elem('new-comment', this).value
@@ -37,13 +37,15 @@ CommentEdit = createReactClass({
             defaultValue={this.props.comment.comment}
             onKeyDown={this.handleKeyDown}
             ref="new-comment"
-          >
-          </textarea>
-          <button className="button" type="submit">Save</button>
-          <a className="cancel-link" href="" onClick={this.props.onDone}>Cancel</a>
+          />
+          <button className="button" type="submit">
+            Save
+          </button>
+          <a className="cancel-link" href="" onClick={this.props.onDone}>
+            Cancel
+          </a>
         </form>
       </div>
     );
-  }
-
+  },
 });

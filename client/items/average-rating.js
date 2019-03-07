@@ -2,13 +2,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 ItemAverageRating = createReactClass({
-
   displayName: 'ItemAverageRating',
 
   propTypes: {
     detail: PropTypes.bool,
     team: PropTypes.object,
-    teamItem: PropTypes.object
+    teamItem: PropTypes.object,
   },
 
   stars: function() {
@@ -35,13 +34,26 @@ ItemAverageRating = createReactClass({
 
     if (this.props.teamItem && this.props.teamItem.ratings.length) {
       let stars = this.stars().map((star, i) => {
-        return star === '★' ?
-          <span className="star -active" key={`${this.props.teamItem._id}-${i}-active`}>★</span> :
-          <span className="star" key={`${this.props.teamItem._id}-${i}-inactive`}>★</span>;
+        return star === '★' ? (
+          <span
+            className="star -active"
+            key={`${this.props.teamItem._id}-${i}-active`}
+          >
+            ★
+          </span>
+        ) : (
+          <span
+            className="star"
+            key={`${this.props.teamItem._id}-${i}-inactive`}
+          >
+            ★
+          </span>
+        );
       });
 
-      const label = this.props.detail ?
-        <h5 className="section-label">Average rating</h5> : null;
+      const label = this.props.detail ? (
+        <h5 className="section-label">Average rating</h5>
+      ) : null;
 
       const ratingsLabel = this.props.detail ? ' ratings' : '';
       const detailClass = this.props.detail ? ' -detail' : '';
@@ -49,14 +61,15 @@ ItemAverageRating = createReactClass({
       averageRating = (
         <div className={'ratings' + detailClass}>
           {label}
-          <span className="stars">
-            {stars}
+          <span className="stars">{stars}</span>
+          <span className="ratings__count">
+            {this.props.teamItem.ratings.length}
+            {ratingsLabel}
           </span>
-          <span className="ratings__count">{this.props.teamItem.ratings.length}{ratingsLabel}</span>
         </div>
       );
     }
 
     return averageRating;
-  }
+  },
 });

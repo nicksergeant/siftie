@@ -14,39 +14,44 @@ App = createReactClass({
     teamItemChannelId: PropTypes.string,
     teamSlug: PropTypes.string,
     token: PropTypes.string,
-    userId: PropTypes.string
+    userId: PropTypes.string,
   },
 
   mixins: [ReactMeteorData],
 
   getInitialState: function() {
     return {
-      popoverShown: ''
+      popoverShown: '',
     };
   },
 
   getMeteorData: function() {
-    if (!analyticsInitialized && Meteor.absoluteUrl() === 'https://reader.siftie.com/') {
+    if (
+      !analyticsInitialized &&
+      Meteor.absoluteUrl() === 'https://reader.siftie.com/'
+    ) {
       const user = Meteor.user();
       analyticsInitialized = true;
       window.analytics.load('fSyh4K1pVqOVEi0loRHZST7wKzm79qyX');
-      window.analytics.page()
+      window.analytics.page();
       if (user) {
         window.analytics.identify(user._id, {
-          email: userEmail(user)
+          email: userEmail(user),
         });
       }
     }
 
     return {
-      teams: Meteor.user() ? Teams.find({}, { sort: { createdAt: -1 }}).fetch() : [],
-      user: Meteor.user()
+      teams: Meteor.user()
+        ? Teams.find({}, { sort: { createdAt: -1 } }).fetch()
+        : [],
+      user: Meteor.user(),
     };
   },
 
   popoverHide: function(name, e) {
     this.setState({
-      popoverShown: ''
+      popoverShown: '',
     });
   },
 
@@ -55,17 +60,21 @@ App = createReactClass({
       window.analytics.track('Popover Shown', {
         name: name,
         channel: this.getChannel() ? this.getChannel().name : null,
-        team: this.getTeam().name
+        team: this.getTeam().name,
       });
     }
     this.setState({
-      popoverShown: this.state.popoverShown === name ? '' : name
+      popoverShown: this.state.popoverShown === name ? '' : name,
     });
   },
 
   getChannel: function() {
     let channel;
-    if (this.props.channelSlug && this.props.teamSlug && this.data.teams.length) {
+    if (
+      this.props.channelSlug &&
+      this.props.teamSlug &&
+      this.data.teams.length
+    ) {
       const team = this.getTeam();
       if (team) {
         if (this.props.channelSlug === 'active') {
@@ -73,10 +82,10 @@ App = createReactClass({
             id: 'active',
             slug: 'active',
             name: 'Active',
-            feeds: []
+            feeds: [],
           };
         } else {
-          const matches = team.channels.filter((c) => {
+          const matches = team.channels.filter(c => {
             return c.slug === this.props.channelSlug;
           });
           if (matches.length) {
@@ -99,7 +108,7 @@ App = createReactClass({
   getTeam: function() {
     let team;
     if (this.props.teamSlug && this.data.teams.length) {
-      const matches = this.data.teams.filter((t) => {
+      const matches = this.data.teams.filter(t => {
         return t.slug === this.props.teamSlug;
       });
       if (matches.length) {
@@ -111,7 +120,7 @@ App = createReactClass({
 
   handleClick: function() {
     this.setState({
-      popoverShown: ''
+      popoverShown: '',
     });
   },
 
@@ -139,7 +148,7 @@ App = createReactClass({
             teams={this.data.teams}
             user={this.data.user}
           />
-        <section className={pageContext}>
+          <section className={pageContext}>
             <Messages />
             <this.props.page
               channel={channel}
@@ -170,5 +179,5 @@ App = createReactClass({
         </div>
       );
     }
-  }
+  },
 });

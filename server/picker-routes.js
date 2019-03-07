@@ -3,17 +3,20 @@ Picker.route('/:teamSlug/active/rss', function(params, req, res, next) {
 
   if (!team) return res.end();
 
-  const teamItems = TeamItems.find({ teamId: team._id }, {
-    sort: { lastActiveDate: -1 }
-  }).fetch();
+  const teamItems = TeamItems.find(
+    { teamId: team._id },
+    {
+      sort: { lastActiveDate: -1 },
+    }
+  ).fetch();
 
   const items = [];
 
-  teamItems.forEach((teamItem) => {
+  teamItems.forEach(teamItem => {
     items.push(Items.findOne({ _id: teamItem.itemId }));
   });
 
-  const itemizer = (item) => {
+  const itemizer = item => {
     return `
       <item>
         <title><![CDATA[${item.title}]]></title>
@@ -24,9 +27,11 @@ Picker.route('/:teamSlug/active/rss', function(params, req, res, next) {
     `;
   };
 
-  const itemsXml = items.map((item) => {
-    return itemizer(item);
-  }).join('');
+  const itemsXml = items
+    .map(item => {
+      return itemizer(item);
+    })
+    .join('');
 
   res.setHeader('Content-Type', 'text/xml');
   res.end(`<?xml version="1.0" encoding="utf-8" ?>
@@ -43,11 +48,14 @@ Picker.route('/:teamSlug/curated/rss', function(params, req, res, next) {
 
   if (!team) return res.end();
 
-  const items = CuratedItems.find({ teamId: team._id }, {
-    sort: { date_published: -1 }
-  }).fetch();
+  const items = CuratedItems.find(
+    { teamId: team._id },
+    {
+      sort: { date_published: -1 },
+    }
+  ).fetch();
 
-  const itemizer = (item) => {
+  const itemizer = item => {
     return `
       <item>
         <title><![CDATA[${item.title}]]></title>
@@ -58,9 +66,11 @@ Picker.route('/:teamSlug/curated/rss', function(params, req, res, next) {
     `;
   };
 
-  const itemsXml = items.map((item) => {
-    return itemizer(item);
-  }).join('');
+  const itemsXml = items
+    .map(item => {
+      return itemizer(item);
+    })
+    .join('');
 
   res.setHeader('Content-Type', 'text/xml');
   res.end(`<?xml version="1.0" encoding="utf-8" ?>

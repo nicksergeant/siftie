@@ -3,12 +3,11 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 ChannelList = createReactClass({
-
   displayName: 'ChannelList',
 
   propTypes: {
     channel: PropTypes.object,
-    team: PropTypes.object
+    team: PropTypes.object,
   },
 
   mixins: [ReactMeteorData],
@@ -20,13 +19,16 @@ ChannelList = createReactClass({
   getMeteorData: function() {
     return {
       items: Items.find().fetch(),
-      user: Meteor.user()
+      user: Meteor.user(),
     };
   },
 
   isActive: function(slug) {
-    return FlowRouter.current().path.indexOf(`/${this.props.team.slug}/${slug}`) !== -1 ?
-      'active' : '';
+    return FlowRouter.current().path.indexOf(
+      `/${this.props.team.slug}/${slug}`
+    ) !== -1
+      ? 'active'
+      : '';
   },
 
   sorted: function() {
@@ -38,7 +40,7 @@ ChannelList = createReactClass({
       })
       .sortBy('name')
       .value();
-    return sorted.filter((channel) => {
+    return sorted.filter(channel => {
       return channel.slug !== 'curated';
     });
   },
@@ -47,7 +49,7 @@ ChannelList = createReactClass({
     const activeChannel = (
       <li className={'active-channel ' + this.isActive('active')}>
         <a href={'/' + this.props.team.slug + '/active'}>
-          <i className="icon ion-arrow-graph-up-right"></i>Active
+          <i className="icon ion-arrow-graph-up-right" />Active
         </a>
       </li>
     );
@@ -55,17 +57,17 @@ ChannelList = createReactClass({
     const curatedChannel = (
       <li className={'curated-channel ' + this.isActive('curated')}>
         <a href={'/' + this.props.team.slug + '/curated'}>
-          <i className="icon ion-star"></i>Curated
+          <i className="icon ion-star" />Curated
         </a>
       </li>
     );
 
-    const channels = this.sorted().map((channel) => {
+    const channels = this.sorted().map(channel => {
       const newestItemForChannel = _(this.data.items)
-        .filter((item) => {
+        .filter(item => {
           return _.contains(channel.feeds, item.feedId);
         })
-        .sortBy((item) => {
+        .sortBy(item => {
           return new Date(item.created);
         })
         .reverse()
@@ -77,7 +79,9 @@ ChannelList = createReactClass({
       }
 
       if (this.data.user.profile && this.data.user.profile.channelsRead) {
-        const readChannel = _.find(this.data.user.profile.channelsRead, { id: channel.id });
+        const readChannel = _.find(this.data.user.profile.channelsRead, {
+          id: channel.id,
+        });
 
         if (readChannel && newestItemForChannel) {
           if (newestItemForChannel.created > readChannel.date) {
@@ -92,9 +96,8 @@ ChannelList = createReactClass({
 
       return (
         <li className={classes} key={channel.id}>
-          <a
-           href={'/' + this.props.team.slug + '/' + channel.slug}>
-          {channel.name}
+          <a href={'/' + this.props.team.slug + '/' + channel.slug}>
+            {channel.name}
           </a>
         </li>
       );
@@ -107,5 +110,5 @@ ChannelList = createReactClass({
         {channels}
       </ul>
     );
-  }
+  },
 });

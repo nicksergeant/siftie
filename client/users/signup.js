@@ -2,20 +2,19 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 Signup = createReactClass({
-
   displayName: 'Signup',
 
   getInitialState: function() {
     return {
       args: {},
-      tab: Meteor.userId() ? 'team' : null
-    }
+      tab: Meteor.userId() ? 'team' : null,
+    };
   },
 
   switchToTab: function(tab, args) {
     this.setState({
       args: args,
-      tab: tab
+      tab: tab,
     });
   },
 
@@ -25,21 +24,21 @@ Signup = createReactClass({
     switch (this.state.tab) {
       case 'team':
         component = <SignupTeam switchToTab={this.switchToTab} />;
-      break;
+        break;
       case 'invite':
         component = <SignupInvite switchToTab={this.switchToTab} />;
-      break;
+        break;
       case 'done':
-        component = <div></div>;
+        component = <div />;
         Meteor.setTimeout(() => {
           FlowRouter.go('/' + this.state.args ? this.state.args.teamSlug : '');
         });
-      break;
+        break;
       default:
         component = <SignupAccount switchToTab={this.switchToTab} />;
-      break;
+        break;
     }
 
     return component;
-  }
+  },
 });

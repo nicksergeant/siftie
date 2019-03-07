@@ -39,52 +39,61 @@ FlowRouter.route('/', {
     window.analytics.page('Home');
     const hostname = document.location.hostname;
     ReactDOM.render(<App page={Home} />, document.getElementById('app'));
-  }
+  },
 });
 FlowRouter.route('/login', {
   action: function() {
     window.analytics.page('Login');
     ReactDOM.render(<App page={Login} />, document.getElementById('app'));
-  }
+  },
 });
 FlowRouter.route('/forgot-password', {
   action: function() {
     window.analytics.page('Forgot Password');
-    ReactDOM.render(<App page={ForgotPassword} />, document.getElementById('app'));
-  }
+    ReactDOM.render(
+      <App page={ForgotPassword} />,
+      document.getElementById('app')
+    );
+  },
 });
 FlowRouter.route('/forgot-password/:resetPasswordToken', {
   action: function(params) {
     window.analytics.page('Reset Password');
     ReactDOM.render(
-      <App page={ResetPassword} resetPasswordToken={params.resetPasswordToken} />,
+      <App
+        page={ResetPassword}
+        resetPasswordToken={params.resetPasswordToken}
+      />,
       document.getElementById('app')
     );
-  }
+  },
 });
 FlowRouter.route('/logout', {
   action: function() {
     const user = Meteor.user();
     window.analytics.track('User Logged Out', {
-      email: userEmail(user)
+      email: userEmail(user),
     });
     Meteor.logout();
     Meteor.setTimeout(function() {
       FlowRouter.go('/login');
     }, 500);
-  }
+  },
 });
 FlowRouter.route('/signup', {
   action: function() {
     window.analytics.page('Signup');
     ReactDOM.render(<App page={Signup} />, document.getElementById('app'));
-  }
+  },
 });
 FlowRouter.route('/account', {
   action: function() {
     window.analytics.page('UserSettings');
-    ReactDOM.render(<App page={UserSettings} />, document.getElementById('app'));
-  }
+    ReactDOM.render(
+      <App page={UserSettings} />,
+      document.getElementById('app')
+    );
+  },
 });
 FlowRouter.route('/join/:id', {
   action: function(params) {
@@ -95,10 +104,13 @@ FlowRouter.route('/join/:id', {
       if (Meteor.userId()) {
         FlowRouter.go('/' + result.slug);
       } else {
-        return ReactDOM.render(<App page={TeamJoin} />, document.getElementById('app'));
+        return ReactDOM.render(
+          <App page={TeamJoin} />,
+          document.getElementById('app')
+        );
       }
     });
-  }
+  },
 });
 FlowRouter.route('/invite/:id', {
   action: function(params) {
@@ -109,10 +121,13 @@ FlowRouter.route('/invite/:id', {
       if (Meteor.userId()) {
         FlowRouter.go('/' + result.slug);
       } else {
-        return ReactDOM.render(<App page={InvitationDetail} />, document.getElementById('app'));
+        return ReactDOM.render(
+          <App page={InvitationDetail} />,
+          document.getElementById('app')
+        );
       }
     });
-  }
+  },
 });
 FlowRouter.route('/:teamSlug/members', {
   action: function(params) {
@@ -122,7 +137,7 @@ FlowRouter.route('/:teamSlug/members', {
       <App page={MemberList} teamSlug={params.teamSlug} />,
       document.getElementById('app')
     );
-  }
+  },
 });
 FlowRouter.route('/:teamSlug/members/:userId', {
   action: function(params) {
@@ -136,7 +151,7 @@ FlowRouter.route('/:teamSlug/members/:userId', {
       />,
       document.getElementById('app')
     );
-  }
+  },
 });
 FlowRouter.route('/:teamSlug/settings', {
   action: function(params) {
@@ -146,7 +161,7 @@ FlowRouter.route('/:teamSlug/settings', {
       <App page={TeamSettings} teamSlug={params.teamSlug} />,
       document.getElementById('app')
     );
-  }
+  },
 });
 FlowRouter.route('/:teamSlug/:channelSlug', {
   action: function(params) {
@@ -160,13 +175,11 @@ FlowRouter.route('/:teamSlug/:channelSlug', {
       />,
       document.getElementById('app')
     );
-  }
+  },
 });
 FlowRouter.route('/:teamSlug/:channelSlug/:itemId', {
   subscriptions: function(params) {
-    this.register('item',
-      Meteor.subscribe('item', params)
-    );
+    this.register('item', Meteor.subscribe('item', params));
   },
   action: function(params) {
     if (!Meteor.userId()) return redirectToLogin();
@@ -180,13 +193,11 @@ FlowRouter.route('/:teamSlug/:channelSlug/:itemId', {
       />,
       document.getElementById('app')
     );
-  }
+  },
 });
 FlowRouter.route('/:teamSlug/:channelSlug/:channelId/:itemId', {
   subscriptions: function(params) {
-    this.register('item',
-      Meteor.subscribe('item', params)
-    );
+    this.register('item', Meteor.subscribe('item', params));
   },
   action: function(params) {
     if (!Meteor.userId()) return redirectToLogin();
@@ -201,7 +212,7 @@ FlowRouter.route('/:teamSlug/:channelSlug/:channelId/:itemId', {
       />,
       document.getElementById('app')
     );
-  }
+  },
 });
 FlowRouter.route('/:teamSlug', {
   action: function(params) {
@@ -211,7 +222,7 @@ FlowRouter.route('/:teamSlug', {
       <App page={TeamDetail} teamSlug={params.teamSlug} />,
       document.getElementById('app')
     );
-  }
+  },
 });
 FlowRouter.notFound = {
   action: function() {
@@ -219,7 +230,11 @@ FlowRouter.notFound = {
       <App page={PageNotFound} />,
       document.getElementById('app')
     );
-  }
+  },
 };
 
-FlowRouter.triggers.enter([autoAcceptInvitation, autoAcceptJoin, clearSessionVariables]);
+FlowRouter.triggers.enter([
+  autoAcceptInvitation,
+  autoAcceptJoin,
+  clearSessionVariables,
+]);
