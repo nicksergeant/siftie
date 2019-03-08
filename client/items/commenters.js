@@ -17,7 +17,7 @@ ItemCommenters = createReactClass({
       return (
         <img
           className="commenter-avatar"
-          key={comment.user}
+          key={comment.id}
           src={userAvatar(comment.user)}
         />
       );

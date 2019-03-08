@@ -1,50 +1,41 @@
 {
+  "author": "Siftie",
+  "description": "Siftie Reader",
+  "homepage": "https://github.com/siftie/reader#readme",
+  "license": "ISC",
+  "main": "index.js",
   "name": "siftie-reader",
   "version": "0.0.1",
-  "description": "Siftie Reader",
-  "main": "index.js",
+  "bugs": {
+    "url": "https://github.com/siftie/reader/issues"
+  },
   "dependencies": {
     "@babel/runtime": "^7.3.4",
-    "babel-runtime": "^6.26.0",
     "bcrypt": "^3.0.4",
     "core-js": "^2.6.5",
     "create-react-class": "^15.6.3",
     "emojify.js": "^1.1.0",
-    "linkifyjs": "^2.1.5",
-    "meteor-node-stubs": "^0.2.11",
+    "linkifyjs": "^2.1.8",
+    "meteor-node-stubs": "^0.4.1",
     "node-uuid": "^1.4.8",
-    "prettier": "^1.16.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
-    "react-addons-create-fragment": "^15.0.2",
-    "react-addons-css-transition-group": "^15.0.2",
-    "react-addons-linked-state-mixin": "^15.0.2",
-    "react-addons-perf": "^15.0.2",
-    "react-addons-pure-render-mixin": "^15.5.2",
-    "react-addons-test-utils": "^15.0.2",
-    "react-addons-transition-group": "^15.0.2",
-    "react-addons-update": "^15.0.2",
     "react-dom": "^16.8.4",
-    "react-imageloader": "^3.0.0",
-    "slug": "^0.9.1"
+    "react-imageloader": "^3.0.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.16.4"
   },
   "prettier": {
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "devDependencies": {},
-  "scripts": {
-    "prettier": "prettier --write",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/siftie/reader.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/siftie/reader/issues"
-  },
-  "homepage": "https://github.com/siftie/reader#readme"
+  "scripts": {
+    "prettier": "prettier --write",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
