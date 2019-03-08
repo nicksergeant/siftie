@@ -12,7 +12,7 @@ Login = createReactClass({
       if (err) {
         Session.set('messages', [{ type: 'error', message: err.reason }]);
       } else {
-        window.analytics.track('User Logged In', {
+        analytics.track('User Logged In', {
           email: email,
         });
         FlowRouter.go('/');

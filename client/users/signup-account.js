@@ -24,7 +24,7 @@ SignupAccount = createReactClass({
       if (err) {
         Session.set('messages', [{ type: 'error', message: err.reason }]);
       } else {
-        window.analytics.track('User Signed Up', {
+        analytics.track('User Signed Up', {
           email: email,
         });
         const $teamJoin = Session.get('$teamJoin');

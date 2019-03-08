@@ -12,7 +12,7 @@ TeamDelete = createReactClass({
   onClick: function(e) {
     if (confirm('Are you sure you want to delete this team?')) {
       const teamName = this.props.team.name;
-      window.analytics.track('Team Deleted', {
+      analytics.track('Team Deleted', {
         team: teamName,
       });
       e.preventDefault();

@@ -40,7 +40,7 @@ FeedCreate = createReactClass({
       if (error) {
         Session.set('messages', [{ type: 'error', message: error.reason }]);
       } else {
-        window.analytics.track('Feed Created', {
+        analytics.track('Feed Created', {
           url: feedUrl,
           channel: this.props.channel.name,
           team: this.props.team.name,

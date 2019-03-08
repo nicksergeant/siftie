@@ -43,7 +43,7 @@ SignupTeam = createReactClass({
         if (error) {
           Session.set('messages', [{ type: 'error', message: error.reason }]);
         } else {
-          window.analytics.track('Team Created', {
+          analytics.track('Team Created', {
             name: teamName,
           });
           Meteor.setTimeout(() => {

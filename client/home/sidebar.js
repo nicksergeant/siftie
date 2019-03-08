@@ -31,7 +31,7 @@ Sidebar = createReactClass({
   },
 
   hideTeamMenu: function(e) {
-    window.analytics.track('Team Menu Toggled', {
+    analytics.track('Team Menu Toggled', {
       channel: this.props.channel ? this.props.channel.name : null,
       team: this.props.team.name,
     });
@@ -40,7 +40,7 @@ Sidebar = createReactClass({
   },
 
   toggleChannels: function() {
-    window.analytics.track('Channel Sidebar Toggled', {
+    analytics.track('Channel Sidebar Toggled', {
       channelsOpen: !this.state.channelsOpen,
       channel: this.props.channel ? this.props.channel.name : null,
       team: this.props.team.name,
@@ -52,7 +52,7 @@ Sidebar = createReactClass({
   },
 
   toggleTeamMenu: function(e) {
-    window.analytics.track('Team Menu Toggled', {
+    analytics.track('Team Menu Toggled', {
       channel: this.props.channel ? this.props.channel.name : null,
       team: this.props.team.name,
     });

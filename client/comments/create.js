@@ -49,7 +49,7 @@ CommentCreate = createReactClass({
       this.props.channel.id,
       elem('comment', this).value.trim(),
       error => {
-        window.analytics.track('Comment Created', {
+        analytics.track('Comment Created', {
           channel: this.props.channel.name,
           team: this.props.team.name,
         });

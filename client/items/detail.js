@@ -87,7 +87,7 @@ ItemDetail = createReactClass({
   },
 
   togglePhotoModal: function() {
-    window.analytics.track('Photo Modal Toggled', {
+    analytics.track('Photo Modal Toggled', {
       channel: this.props.channel.name,
       item: this.props.itemId,
       team: this.props.team.name,

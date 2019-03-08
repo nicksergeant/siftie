@@ -32,10 +32,10 @@ App = createReactClass({
     ) {
       const user = Meteor.user();
       analyticsInitialized = true;
-      window.analytics.load('fSyh4K1pVqOVEi0loRHZST7wKzm79qyX');
-      window.analytics.page();
+      analytics.load('fSyh4K1pVqOVEi0loRHZST7wKzm79qyX');
+      analytics.page();
       if (user) {
-        window.analytics.identify(user._id, {
+        analytics.identify(user._id, {
           email: userEmail(user),
         });
       }
@@ -57,7 +57,7 @@ App = createReactClass({
 
   popoverToggle: function(name, e) {
     if (this.state.popoverShown !== name) {
-      window.analytics.track('Popover Shown', {
+      analytics.track('Popover Shown', {
         name: name,
         channel: this.getChannel() ? this.getChannel().name : null,
         team: this.getTeam().name,

@@ -13,7 +13,7 @@ ChannelDelete = createReactClass({
   onClick: function(e) {
     if (confirm('Are you sure you want to delete this channel?')) {
       const channelName = this.props.channel.name;
-      window.analytics.track('Channel Deleted', {
+      analytics.track('Channel Deleted', {
         name: channelName,
         team: this.props.team.name,
       });

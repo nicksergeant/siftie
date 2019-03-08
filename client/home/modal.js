@@ -19,7 +19,7 @@ Modal = createReactClass({
   componentWillReceiveProps: function(props) {
     if (props.modalStatus && !analyticsDebouncing) {
       analyticsDebouncing = true;
-      window.analytics.track('Modal Shown', {
+      analytics.track('Modal Shown', {
         name: this.props.modalTitle,
         channel: this.props.channel ? this.props.channel.name : null,
         team: this.props.team ? this.props.team.name : null,

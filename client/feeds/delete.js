@@ -21,7 +21,7 @@ FeedDelete = createReactClass({
         this.props.channel.id,
         (error, result) => {
           if (!error) {
-            window.analytics.track('Feed Deleted', {
+            analytics.track('Feed Deleted', {
               url: this.props.feed.url,
               channel: this.props.channel.name,
               team: this.props.team.name,

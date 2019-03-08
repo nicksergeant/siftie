@@ -36,20 +36,20 @@ function redirectToLogin() {
 
 FlowRouter.route('/', {
   action: function() {
-    window.analytics.page('Home');
+    analytics.page('Home');
     const hostname = document.location.hostname;
     ReactDOM.render(<App page={Home} />, document.getElementById('app'));
   },
 });
 FlowRouter.route('/login', {
   action: function() {
-    window.analytics.page('Login');
+    analytics.page('Login');
     ReactDOM.render(<App page={Login} />, document.getElementById('app'));
   },
 });
 FlowRouter.route('/forgot-password', {
   action: function() {
-    window.analytics.page('Forgot Password');
+    analytics.page('Forgot Password');
     ReactDOM.render(
       <App page={ForgotPassword} />,
       document.getElementById('app')
@@ -58,7 +58,7 @@ FlowRouter.route('/forgot-password', {
 });
 FlowRouter.route('/forgot-password/:resetPasswordToken', {
   action: function(params) {
-    window.analytics.page('Reset Password');
+    analytics.page('Reset Password');
     ReactDOM.render(
       <App
         page={ResetPassword}
@@ -71,7 +71,7 @@ FlowRouter.route('/forgot-password/:resetPasswordToken', {
 FlowRouter.route('/logout', {
   action: function() {
     const user = Meteor.user();
-    window.analytics.track('User Logged Out', {
+    analytics.track('User Logged Out', {
       email: userEmail(user),
     });
     Meteor.logout();
@@ -82,13 +82,13 @@ FlowRouter.route('/logout', {
 });
 FlowRouter.route('/signup', {
   action: function() {
-    window.analytics.page('Signup');
+    analytics.page('Signup');
     ReactDOM.render(<App page={Signup} />, document.getElementById('app'));
   },
 });
 FlowRouter.route('/account', {
   action: function() {
-    window.analytics.page('UserSettings');
+    analytics.page('UserSettings');
     ReactDOM.render(
       <App page={UserSettings} />,
       document.getElementById('app')
@@ -100,7 +100,7 @@ FlowRouter.route('/join/:id', {
     Meteor.call('getTeamJoinKey', params.id, function(error, result) {
       if (!result) return FlowRouter.go('/login');
       Session.set('$teamJoin', result);
-      window.analytics.page('Join Team');
+      analytics.page('Join Team');
       if (Meteor.userId()) {
         FlowRouter.go('/' + result.slug);
       } else {
@@ -116,7 +116,7 @@ FlowRouter.route('/invite/:id', {
   action: function(params) {
     Meteor.call('getInvitation', params.id, function(error, result) {
       if (!result) return FlowRouter.go('/login');
-      window.analytics.page('Invitation Detail');
+      analytics.page('Invitation Detail');
       Session.set('$teamInvitation', result);
       if (Meteor.userId()) {
         FlowRouter.go('/' + result.slug);
@@ -132,7 +132,7 @@ FlowRouter.route('/invite/:id', {
 FlowRouter.route('/:teamSlug/members', {
   action: function(params) {
     if (!Meteor.userId()) return redirectToLogin();
-    window.analytics.page('Team Members');
+    analytics.page('Team Members');
     ReactDOM.render(
       <App page={MemberList} teamSlug={params.teamSlug} />,
       document.getElementById('app')
@@ -142,7 +142,7 @@ FlowRouter.route('/:teamSlug/members', {
 FlowRouter.route('/:teamSlug/members/:userId', {
   action: function(params) {
     if (!Meteor.userId()) return redirectToLogin();
-    window.analytics.page('Team Members');
+    analytics.page('Team Members');
     ReactDOM.render(
       <App
         page={MemberDetail}
@@ -156,7 +156,7 @@ FlowRouter.route('/:teamSlug/members/:userId', {
 FlowRouter.route('/:teamSlug/settings', {
   action: function(params) {
     if (!Meteor.userId()) return redirectToLogin();
-    window.analytics.page('Team Settings');
+    analytics.page('Team Settings');
     ReactDOM.render(
       <App page={TeamSettings} teamSlug={params.teamSlug} />,
       document.getElementById('app')
@@ -166,7 +166,7 @@ FlowRouter.route('/:teamSlug/settings', {
 FlowRouter.route('/:teamSlug/:channelSlug', {
   action: function(params) {
     if (!Meteor.userId()) return redirectToLogin();
-    window.analytics.page('Channel Detail');
+    analytics.page('Channel Detail');
     ReactDOM.render(
       <App
         channelSlug={params.channelSlug}
@@ -183,7 +183,7 @@ FlowRouter.route('/:teamSlug/:channelSlug/:itemId', {
   },
   action: function(params) {
     if (!Meteor.userId()) return redirectToLogin();
-    window.analytics.page('Item Detail');
+    analytics.page('Item Detail');
     ReactDOM.render(
       <App
         channelSlug={params.channelSlug}
@@ -201,7 +201,7 @@ FlowRouter.route('/:teamSlug/:channelSlug/:channelId/:itemId', {
   },
   action: function(params) {
     if (!Meteor.userId()) return redirectToLogin();
-    window.analytics.page('Active Item Detail');
+    analytics.page('Active Item Detail');
     ReactDOM.render(
       <App
         channelSlug={params.channelSlug}
@@ -217,7 +217,7 @@ FlowRouter.route('/:teamSlug/:channelSlug/:channelId/:itemId', {
 FlowRouter.route('/:teamSlug', {
   action: function(params) {
     if (!Meteor.userId()) return redirectToLogin();
-    window.analytics.page('Team Detail');
+    analytics.page('Team Detail');
     ReactDOM.render(
       <App page={TeamDetail} teamSlug={params.teamSlug} />,
       document.getElementById('app')

@@ -44,7 +44,7 @@ ChannelCreate = createReactClass({
         if (error) {
           Session.set('messages', [{ type: 'error', message: error.reason }]);
         } else {
-          window.analytics.track('Channel Created', {
+          analytics.track('Channel Created', {
             name: channelName,
             team: this.props.team.name,
           });

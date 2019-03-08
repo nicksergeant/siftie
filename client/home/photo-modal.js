@@ -19,7 +19,7 @@ PhotoModal = createReactClass({
   componentWillReceiveProps: function(props) {
     if (props.modalStatus && !analyticsDebouncing) {
       analyticsDebouncing = true;
-      window.analytics.track('Modal Shown', {
+      analytics.track('Modal Shown', {
         name: this.props.modalTitle,
         channel: this.props.channel.name,
         team: this.props.team.name,

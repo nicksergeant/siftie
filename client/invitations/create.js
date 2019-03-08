@@ -41,7 +41,7 @@ InvitationCreate = createReactClass({
         if (error) {
           Session.set('messages', [{ type: 'error', message: error.reason }]);
         } else {
-          window.analytics.track('Invitation Created', {
+          analytics.track('Invitation Created', {
             team: this.props.team.name,
           });
           Session.set('messages', [

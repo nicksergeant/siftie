@@ -13,7 +13,7 @@ InvitationDelete = createReactClass({
   onClick: function(e) {
     event.preventDefault();
     if (confirm('Are you sure you want to delete this invitation?')) {
-      window.analytics.track('Invitation Deleted', {
+      analytics.track('Invitation Deleted', {
         team: this.props.team.name,
       });
       Meteor.call(
