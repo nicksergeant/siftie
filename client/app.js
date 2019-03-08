@@ -84,6 +84,13 @@ App = createReactClass({
             name: 'Active',
             feeds: [],
           };
+        } else if (this.props.channelSlug === 'best') {
+          channel = {
+            id: 'best',
+            slug: 'best',
+            name: 'Best',
+            feeds: [],
+          };
         } else {
           const matches = team.channels.filter(c => {
             return c.slug === this.props.channelSlug;

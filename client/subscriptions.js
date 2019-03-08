@@ -22,5 +22,12 @@ Tracker.autorun(function() {
       teamId: team._id,
       limit: Session.get(activeChannelLimit),
     });
+
+    const bestChannelLimit = `$${team._id}-best-limit`;
+    Session.setDefault(bestChannelLimit, config.ITEMS_PER_PAGE);
+    Meteor.subscribe('itemsBest', {
+      teamId: team._id,
+      limit: Session.get(bestChannelLimit),
+    });
   });
 });

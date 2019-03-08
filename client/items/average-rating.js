@@ -14,7 +14,9 @@ ItemAverageRating = createReactClass({
     let avg;
     let stars = [];
 
-    if (this.props.teamItem && this.props.teamItem.ratings.length) {
+    if (this.props.teamItem && this.props.teamItem.rating) {
+      avg = this.props.teamItem.rating;
+    } else if (this.props.teamItem && this.props.teamItem.ratings.length) {
       const ratings = _(this.props.teamItem.ratings).pluck('rating');
       const avgFloat = ratings.sum() / ratings.value().length;
       avg = Math.round(avgFloat * 1) / 1;

@@ -18,10 +18,9 @@ ItemInList = createReactClass({
       teamItem: TeamItems.findOne({
         itemId: this.props.item._id,
         teamId: this.props.team._id,
-        channelId:
-          this.props.channel.id !== 'active'
-            ? this.props.channel.id
-            : this.props.item.teamItemChannelId,
+        channelId: !['active', 'best'].includes(this.props.channel.id)
+          ? this.props.channel.id
+          : this.props.item.teamItemChannelId,
       }),
     };
   },
@@ -75,6 +74,15 @@ ItemInList = createReactClass({
         '/' +
         this.props.team.slug +
         '/active/' +
+        this.props.item.teamItemChannelId +
+        '/' +
+        this.props.item._id
+      );
+    } else if (this.props.channel.id === 'best') {
+      return (
+        '/' +
+        this.props.team.slug +
+        '/best/' +
         this.props.item.teamItemChannelId +
         '/' +
         this.props.item._id

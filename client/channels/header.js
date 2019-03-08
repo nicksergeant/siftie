@@ -47,6 +47,8 @@ ChannelHeader = createReactClass({
         <i className="icon ion-arrow-graph-up-right active-icon" />
       );
     } else if (this.props.channel.slug === 'curated') {
+      permanentChannelIndicator = <i className="icon ion-heart active-icon" />;
+    } else if (this.props.channel.slug === 'best') {
       permanentChannelIndicator = <i className="icon ion-star active-icon" />;
     }
 
@@ -66,6 +68,7 @@ ChannelHeader = createReactClass({
     let dropdownMenu;
     if (
       this.props.channel.slug !== 'active' &&
+      this.props.channel.slug !== 'best' &&
       this.props.channel.slug !== 'curated'
     ) {
       dropdownMenu = (

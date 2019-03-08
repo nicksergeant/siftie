@@ -25,13 +25,23 @@ ChannelDetail = createReactClass({
     if (
       this.props.team &&
       this.props.channel &&
-      this.props.channel.id === 'active'
+      ['active', 'best'].includes(this.props.channel.id)
     ) {
+      const options =
+        this.props.channel.id === 'best'
+          ? {
+              rating: { $gte: 3 },
+            }
+          : {};
       return {
         channelLimit: channelLimit,
         items: Items.find().fetch(),
         teamItems: TeamItems.find(
-          { teamId: this.props.team._id, lastActiveDate: { $exists: true } },
+          {
+            teamId: this.props.team._id,
+            lastActiveDate: { $exists: true },
+            ...options,
+          },
           { limit: channelLimit, sort: { lastActiveDate: -1 } }
         ).fetch(),
         user: Meteor.user(),
@@ -70,11 +80,11 @@ ChannelDetail = createReactClass({
   },
 
   getFirstItemUrl: function(items) {
-    if (this.props.channel.id === 'active') {
+    if (['active', 'best'].includes(this.props.channel.id)) {
       return (
         '/' +
         this.props.team.slug +
-        '/active/' +
+        `/${this.props.channel.id}/` +
         items[0].teamItemChannelId +
         '/' +
         items[0]._id
@@ -108,15 +118,15 @@ ChannelDetail = createReactClass({
   processItems: function() {
     let items = this.data.items;
 
-    if (this.props.channel.id === 'active') {
-      let activeItems = this.data.teamItems.map(teamItem => {
+    if (['active', 'best'].includes(this.props.channel.id)) {
+      let processedItems = this.data.teamItems.map(teamItem => {
         const found = _.findWhere(this.data.items, { _id: teamItem.itemId });
         if (found) {
           found.teamItemChannelId = teamItem.channelId;
         }
         return found;
       });
-      items = _.compact(activeItems);
+      items = _.compact(processedItems);
     }
 
     return items;
@@ -127,7 +137,8 @@ ChannelDetail = createReactClass({
     if (this.canShowMore()) {
       showMore = (
         <button className="load-more button -dark" onClick={this.loadMore}>
-          <i className="icon ion-plus" />More
+          <i className="icon ion-plus" />
+          More
         </button>
       );
     }
@@ -139,7 +150,8 @@ ChannelDetail = createReactClass({
           className="load-less  button -secondary"
           onClick={this.loadLess}
         >
-          <i className="icon ion-minus" />Less
+          <i className="icon ion-minus" />
+          Less
         </button>
       );
     }
@@ -179,7 +191,7 @@ ChannelDetail = createReactClass({
     let inner;
     if (
       (this.props.channel.feeds && this.props.channel.feeds.length) ||
-      this.props.channel.id === 'active'
+      ['active', 'best'].includes(this.props.channel.id)
     ) {
       inner = (
         <div className="posts-panel">

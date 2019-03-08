@@ -118,6 +118,38 @@ Meteor.publishComposite('itemsActive', function(options) {
   };
 });
 
+Meteor.publishComposite('itemsBest', function(options) {
+  return {
+    find: function() {
+      let limit = parseInt(options.limit);
+      if (!limit || isNaN(limit) || limit > config.MAX_CHANNEL_ITEMS) {
+        limit = config.ITEMS_PER_PAGE;
+      }
+
+      return TeamItems.find(
+        {
+          teamId: options.teamId,
+          lastActiveDate: { $exists: true },
+          rating: { $gte: 3 },
+        },
+        {
+          limit: limit,
+          sort: { lastActiveDate: -1 },
+        }
+      );
+    },
+    children: [
+      {
+        find: function(teamItem) {
+          return Items.find({
+            _id: teamItem.itemId,
+          });
+        },
+      },
+    ],
+  };
+});
+
 Meteor.publishComposite('item', function(options) {
   const userTeamIds = [];
 

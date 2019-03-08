@@ -32,6 +32,13 @@ ItemList = createReactClass({
             comments on an item.
           </div>
         );
+      } else if (this.props.channel.id === 'best') {
+        return (
+          <div style={{ padding: '20px' }}>
+            Items will appear here once someone on your team rates an item 3
+            stars or higher.
+          </div>
+        );
       } else if (this.props.channel.id === 'curated') {
         return (
           <div style={{ padding: '20px' }}>

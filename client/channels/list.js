@@ -49,7 +49,17 @@ ChannelList = createReactClass({
     const activeChannel = (
       <li className={'active-channel ' + this.isActive('active')}>
         <a href={'/' + this.props.team.slug + '/active'}>
-          <i className="icon ion-arrow-graph-up-right" />Active
+          <i className="icon ion-arrow-graph-up-right" />
+          Active
+        </a>
+      </li>
+    );
+
+    const bestChannel = (
+      <li className={'best-channel ' + this.isActive('best')}>
+        <a href={'/' + this.props.team.slug + '/best'}>
+          <i className="icon ion-star" />
+          Best
         </a>
       </li>
     );
@@ -57,7 +67,8 @@ ChannelList = createReactClass({
     const curatedChannel = (
       <li className={'curated-channel ' + this.isActive('curated')}>
         <a href={'/' + this.props.team.slug + '/curated'}>
-          <i className="icon ion-star" />Curated
+          <i className="icon ion-heart" />
+          Curated
         </a>
       </li>
     );
@@ -106,6 +117,7 @@ ChannelList = createReactClass({
     return (
       <ul>
         {activeChannel}
+        {bestChannel}
         {curatedChannel}
         {channels}
       </ul>
