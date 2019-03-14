@@ -38,38 +38,51 @@ ChannelHeader = createReactClass({
   },
 
   render: function() {
+    const {
+      channel,
+      channelIsFirstInList,
+      channelIsLastInList,
+      team,
+    } = this.props;
+
     const menuStatus =
       this.props.popoverShown === 'channel-menu' ? '-open' : '';
 
     let permanentChannelIndicator;
-    if (this.props.channel.slug === 'active') {
+    if (channel.slug === 'active') {
       permanentChannelIndicator = (
         <i className="icon ion-arrow-graph-up-right active-icon" />
       );
-    } else if (this.props.channel.slug === 'curated') {
+    } else if (channel.slug === 'curated') {
       permanentChannelIndicator = <i className="icon ion-heart active-icon" />;
-    } else if (this.props.channel.slug === 'best') {
+    } else if (channel.slug === 'best') {
       permanentChannelIndicator = <i className="icon ion-star active-icon" />;
     }
 
-    const prevChannelButtonInactive = this.props.channelIsFirstInList()
-      ? '-inactive'
-      : '';
-    const nextChannelButtonInactive = this.props.channelIsLastInList()
-      ? '-inactive'
-      : '';
+    let channelRssLink;
+    if (['active', 'best', 'curated'].includes(channel.slug)) {
+      channelRssLink = (
+        <a href={`/${team.slug}/${channel.slug}/rss`} target="_blank">
+          <i
+            className="icon ion-social-rss"
+            style={{ color: '#f26522', float: 'right' }}
+          />
+        </a>
+      );
+    }
 
-    let deleteChannel = (
-      <ChannelDelete channel={this.props.channel} team={this.props.team} />
-    );
+    const prevChannelButtonInactive = channelIsFirstInList() ? '-inactive' : '';
+    const nextChannelButtonInactive = channelIsLastInList() ? '-inactive' : '';
+
+    let deleteChannel = <ChannelDelete channel={channel} team={team} />;
 
     const manageFeeds = <a onClick={this.showFeedsModal}>Manage feeds</a>;
 
     let dropdownMenu;
     if (
-      this.props.channel.slug !== 'active' &&
-      this.props.channel.slug !== 'best' &&
-      this.props.channel.slug !== 'curated'
+      channel.slug !== 'active' &&
+      channel.slug !== 'best' &&
+      channel.slug !== 'curated'
     ) {
       dropdownMenu = (
         <div className={'dropdown-menu ' + menuStatus}>
@@ -87,18 +100,18 @@ ChannelHeader = createReactClass({
 
     const feedsModal = (
       <Modal
-        channel={this.props.channel}
+        channel={channel}
         component={FeedList}
         modalStatus={this.state.feedsModalShown}
         modalTitle="Manage Feeds"
         onClose={this.hideFeedsModal}
-        team={this.props.team}
+        team={team}
       />
     );
 
     let curatedForm;
-    if (this.props.channel.slug === 'curated') {
-      curatedForm = <CuratedForm team={this.props.team} />;
+    if (channel.slug === 'curated') {
+      curatedForm = <CuratedForm team={team} />;
     }
 
     return (
@@ -121,11 +134,12 @@ ChannelHeader = createReactClass({
               onClick={keyBindings.nextChannel}
             />
             <h2>
-              {permanentChannelIndicator} {this.props.channel.name}
+              {permanentChannelIndicator} {channel.name}
             </h2>
           </div>
-          {curatedForm}
           {dropdownMenu}
+          {curatedForm}
+          {channelRssLink}
         </header>
       </div>
     );

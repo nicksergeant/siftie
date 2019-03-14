@@ -118,7 +118,6 @@ ChannelList = createReactClass({
       <ul>
         {activeChannel}
         {bestChannel}
-        {curatedChannel}
         {channels}
       </ul>
     );
