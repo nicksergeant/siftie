@@ -46,7 +46,7 @@ SignupAccount = createReactClass({
             <a className="logo" href="/" />
             <h1>Sign up</h1>
             <p>
-              In order to try out the beta, you're going to need a Siftie Reader
+              In order to try out the beta, you're going to need a Siftie
               account.
             </p>
           </div>

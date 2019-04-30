@@ -189,14 +189,14 @@ Sidebar = createReactClass({
 
     let notices = (
       <div className="notices-container">
-        <Notice id="download-mac-app-0.0.5">
+        <Notice id="download-mac-app-0.0.6">
           <div className="bottom-channel-panel-notice">
             On a Mac? <span>🍎</span>
             <a
               target="_blank"
-              href="https://download.siftie.com/Siftie%20Reader.zip"
+              href="https://download.siftie.com/Siftie-0.0.4.dmg"
             >
-              Download the Siftie Reader OS X app (v0.0.5)
+              Download the Siftie OS X app (v0.0.4)
             </a>
             <a
               className="close"

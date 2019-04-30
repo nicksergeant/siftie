@@ -1,13 +1,13 @@
 {
   "author": "Siftie",
-  "description": "Siftie Reader",
-  "homepage": "https://github.com/siftie/reader#readme",
+  "description": "Siftie",
+  "homepage": "https://github.com/nicksergeant/siftie#readme",
   "license": "ISC",
   "main": "index.js",
-  "name": "siftie-reader",
+  "name": "siftie",
   "version": "0.0.1",
   "bugs": {
-    "url": "https://github.com/siftie/reader/issues"
+    "url": "https://github.com/nicksergeant/siftie/issues"
   },
   "dependencies": {
     "@babel/runtime": "^7.3.4",
@@ -34,7 +34,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/siftie/reader.git"
+    "url": "git+https://github.com/nicksergeant/siftie.git"
   },
   "scripts": {
     "prettier": "prettier --write",

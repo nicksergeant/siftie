@@ -28,7 +28,7 @@ App = createReactClass({
   getMeteorData: function() {
     if (
       !analyticsInitialized &&
-      Meteor.absoluteUrl() === 'https://reader.siftie.com/'
+      Meteor.absoluteUrl() === 'https://siftie.com/'
     ) {
       const user = Meteor.user();
       analyticsInitialized = true;
