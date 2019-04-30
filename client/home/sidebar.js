@@ -200,7 +200,7 @@ Sidebar = createReactClass({
             </a>
             <a
               className="close"
-              onClick={dismissNotice.bind(this, 'download-mac-app-0.0.5')}
+              onClick={dismissNotice.bind(this, 'download-mac-app-0.0.6')}
             >
               <i className="close icon ion-close-round" />
             </a>
