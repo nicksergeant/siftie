@@ -32,8 +32,6 @@ App = createReactClass({
     ) {
       const user = Meteor.user();
       analyticsInitialized = true;
-      analytics.load('fSyh4K1pVqOVEi0loRHZST7wKzm79qyX');
-      analytics.page();
       if (user) {
         analytics.identify(user._id, {
           email: userEmail(user),
