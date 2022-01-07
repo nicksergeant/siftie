@@ -13,7 +13,7 @@
     "@babel/runtime": "^7.16.7",
     "@sentry/browser": "^4.6.6",
     "@sentry/node": "^4.6.4",
-    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "core-js": "^2.6.5",
     "create-react-class": "^15.7.0",
     "emojify.js": "^1.1.0",
