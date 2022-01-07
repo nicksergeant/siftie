@@ -2,8 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-
-
 let analyticsInitialized = false;
 
 App = createReactClass({
