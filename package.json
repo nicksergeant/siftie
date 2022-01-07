@@ -10,19 +10,19 @@
     "url": "https://github.com/nicksergeant/siftie/issues"
   },
   "dependencies": {
-    "@babel/runtime": "^7.3.4",
-    "@sentry/browser": "^4.6.4",
+    "@babel/runtime": "^7.16.7",
+    "@sentry/browser": "^4.6.6",
     "@sentry/node": "^4.6.4",
-    "bcrypt": "^5.0.0",
+    "bcrypt": "^5.0.1",
     "core-js": "^2.6.5",
-    "create-react-class": "^15.6.3",
+    "create-react-class": "^15.7.0",
     "emojify.js": "^1.1.0",
-    "linkifyjs": "^2.1.8",
+    "linkifyjs": "^2.1.9",
     "meteor-node-stubs": "^0.4.1",
     "node-uuid": "^1.4.8",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
+    "prop-types": "^15.8.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-imageloader": "^3.0.0"
   },
   "devDependencies": {
