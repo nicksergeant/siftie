@@ -19,6 +19,7 @@
     "emojify.js": "^1.1.0",
     "linkifyjs": "^2.1.9",
     "meteor-node-stubs": "^0.4.1",
+    "node-sass": "^7.0.1",
     "node-uuid": "^1.4.8",
     "prop-types": "^15.8.1",
     "react": "^16.14.0",
