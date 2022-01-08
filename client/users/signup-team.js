@@ -71,7 +71,7 @@ SignupTeam = createReactClass({
         <div className="marketing-page signup group">
           <div className="signup__sidebar">
             <a className="logo" href="/" />
-            <h1>Create an account name</h1>
+            <h1>Create a team</h1>
           </div>
           <div className="signup__forms">
             <ol className="progress-indicators">
@@ -81,12 +81,12 @@ SignupTeam = createReactClass({
             <form id="new-team" onSubmit={this.handleSubmit}>
               <label className="field">
                 <strong className="field__label">
-                  Account name (group, family, team name, etc.)
+                  Team name
                 </strong>
                 <input
                   className="text"
                   onChange={this.handleChange}
-                  placeholder="Account name"
+                  placeholder="Team name"
                   ref="name"
                   required
                   type="text"
@@ -96,7 +96,7 @@ SignupTeam = createReactClass({
 
               <footer>
                 <button className="-right" type="submit">
-                  Create Account
+                  Create Team
                 </button>
               </footer>
             </form>
