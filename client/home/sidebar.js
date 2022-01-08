@@ -16,9 +16,16 @@ Sidebar = createReactClass({
   },
 
   getInitialState: function() {
+    let channelsOpen = true;
+
+    if (window.outerWidth <= 640) {
+      $('body').toggleClass('channels-hidden');
+      channelsOpen = false;
+    }
+
     return {
       addChannelModalShown: false,
-      channelsOpen: true,
+      channelsOpen: channelsOpen,
     };
   },
 
