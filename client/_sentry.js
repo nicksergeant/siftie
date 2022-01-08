@@ -1,6 +1,7 @@
 import * as Sentry from '@sentry/browser';
+import { Integrations } from "@sentry/tracing";
 
 Sentry.init({
-  dsn: 'https://024bc68997b346cca9b819bf59a73955@sentry.io/276228',
-  environment: 'client',
+  dsn: 'https://0526af5e7b5f4c05bc03d004ecd547e2@o3491.ingest.sentry.io/6139678',
+  integrations: [new Integrations.BrowserTracing()],
 });
