@@ -158,14 +158,6 @@ ChannelDetail = createReactClass({
 
     const items = this.processItems();
 
-    if (items.length && !this.props.isDetail) {
-      Meteor.setTimeout(() => {
-        FlowRouter.withReplaceState(() => {
-          FlowRouter.go(this.getFirstItemUrl(items));
-        });
-      });
-    }
-
     if (
       items.length === this.data.channelLimit &&
       this.data.channelLimit <= config.ITEMS_PER_PAGE &&

@@ -13,9 +13,12 @@ keyBindings = {
   },
   nextItem: function(e) {
     e.preventDefault();
-    $('article.post.-active')
-      .next()
-      .click();
+    const current = $('article.post.-active');
+    if (current.length) {
+      current.next().click();
+    } else {
+      $('article.post')[0].click();
+    }
   },
   nextTeam: function(e) {
     e.preventDefault();
@@ -46,9 +49,12 @@ keyBindings = {
   },
   prevItem: function(e) {
     e.preventDefault();
-    $('article.post.-active')
-      .prev()
-      .click();
+    const current = $('article.post.-active');
+    if (current.length) {
+      current.prev().click();
+    } else {
+      $('article.post')[0].click();
+    }
   },
   prevTeam: function(e) {
     e.preventDefault();
