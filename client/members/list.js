@@ -111,16 +111,10 @@ MemberList = createReactClass({
 
         <InvitationCreate team={this.props.team} />
         <p>
-          Team Join Key:
+          <h4 style={{marginBottom: '.3rem'}}>Team invite URL (<a onClick={this.regenerateTeamInviteKey}>Regenerate</a>):</h4>
           <code style={{ display: 'inline-block', margin: '0 5px' }}>
-            {this.props.team.inviteKey}
-          </code>
-          <a onClick={this.regenerateTeamInviteKey}>Regenerate &raquo;</a>
-          <br />
-          Shareable link:{' '}
-          <a href={Meteor.absoluteUrl() + 'join/' + this.props.team.inviteKey}>
             {Meteor.absoluteUrl() + 'join/' + this.props.team.inviteKey}
-          </a>
+          </code>
         </p>
       </div>
     );

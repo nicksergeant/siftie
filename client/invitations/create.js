@@ -68,8 +68,8 @@ InvitationCreate = createReactClass({
 
   render: function() {
     return (
-      <div className="invite-user">
-        <h4>Invite team member:</h4>
+      <div className="invite-user" style={{marginBottom: '2rem'}}>
+        <h4 style={{marginBottom: 0}}>Invite team member:</h4>
         <form id="invite-member" onSubmit={this.handleSubmit}>
           <input
             className="text"
