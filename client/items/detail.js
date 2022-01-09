@@ -71,13 +71,6 @@ ItemDetail = createReactClass({
     };
   },
 
-  onClick: function(e) {
-    if (window.macgap && e.target.tagName === 'A' && e.target.href) {
-      e.preventDefault();
-      macgap.app.open(e.target.href);
-    }
-  },
-
   pubDateTimeago: function() {
     return moment(this.data.item.pubDate).fromNow();
   },
@@ -192,7 +185,6 @@ ItemDetail = createReactClass({
               <div
                 className="post__body"
                 dangerouslySetInnerHTML={this.itemDescription()}
-                onClick={this.onClick}
               />
               <div className="post__footer">
                 <a

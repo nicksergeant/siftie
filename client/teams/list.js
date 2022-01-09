@@ -9,6 +9,17 @@ TeamList = createReactClass({
     teams: PropTypes.array,
   },
 
+  getInitialState: function() {
+    const sortedTeams = this.sorted();
+
+    window.switchToTeam = number => {
+      const team = sortedTeams[number - 1];
+      if (team) FlowRouter.go(`/${team.slug}/active/`);
+    };
+
+    return { sortedTeams };
+  },
+
   sorted: function() {
     return _(this.props.teams)
       .sortBy('name')
@@ -16,7 +27,7 @@ TeamList = createReactClass({
   },
 
   render: function() {
-    const teams = this.sorted().map(team => {
+    const teams = this.state.sortedTeams.map(team => {
       let className = '';
       if (this.props.activeTeam && this.props.activeTeam === team.name) {
         className = 'active';

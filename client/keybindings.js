@@ -34,11 +34,7 @@ keyBindings = {
   openItem: function(e) {
     e.preventDefault();
     const link = $('a.item-link').attr('href');
-    if (window.macgap) {
-      macgap.app.open(link);
-    } else {
-      window.open(link);
-    }
+    window.open(link);
   },
   prevChannel: function(e) {
     e.preventDefault();
@@ -95,9 +91,11 @@ $(document).bind('keydown', e => {
         keyBindings.prevItem(e);
         break;
       case 73:
+      case 27:
         keyBindings.expandImage(e);
         break;
       case 13:
+      case 79:
         keyBindings.openItem(e);
         break;
       case 67:
