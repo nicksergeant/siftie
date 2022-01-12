@@ -18,7 +18,7 @@ http@1.4.1
 differential:workers
 meteor-base@1.5.1
 mobile-experience@1.1.0
-mongo@1.13.0
+mongo@1.14.0-beta260.2
 blaze-html-templates
 session@1.2.0
 jquery@1.11.10
