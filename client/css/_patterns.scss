@@ -749,8 +749,11 @@ div.bottom-channel-panel-notice {
    position: relative;
    text-align: center;
 
+   p {
+     margin-bottom: 0;
+   }
+
    a {
-     display: block;
      margin-top: 2px;
 
      &.close {

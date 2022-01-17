@@ -196,18 +196,15 @@ Sidebar = createReactClass({
 
     let notices = (
       <div className="notices-container">
-        <Notice id="download-mac-app-0.0.6">
+        <Notice id="download-mac-app-1.0.0">
           <div className="bottom-channel-panel-notice">
             On a Mac? <span>🍎</span>
-            <a
-              target="_blank"
-              href="https://download.siftie.com/Siftie-0.0.4.dmg"
-            >
-              Download the Siftie OS X app (v0.0.4)
-            </a>
+            <p>Download the Siftie macOS app (1.0.0):</p>
+            <a target="_blank" href="https://download.siftie.com/Siftie-1.0.0.dmg">Intel</a>{' / '}
+            <a target="_blank" href="https://download.siftie.com/Siftie-1.0.0-arm64.dmg">Apple Silicon</a>
             <a
               className="close"
-              onClick={dismissNotice.bind(this, 'download-mac-app-0.0.6')}
+              onClick={dismissNotice.bind(this, 'download-mac-app-1.0.0')}
             >
               <i className="close icon ion-close-round" />
             </a>
