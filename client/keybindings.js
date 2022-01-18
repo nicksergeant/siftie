@@ -1,7 +1,14 @@
 keyBindings = {
   expandImage: function(e) {
     e.preventDefault();
-    $('i.expand-img').click();
+    const expandImg = $('i.expand-img');
+
+    if (expandImg.length) {
+      expandImg.click();
+    } else {
+      const link = $('a.item-link').attr('href');
+      window.open(link);
+    }
   },
   nextChannel: function(e) {
     e.preventDefault();
@@ -96,12 +103,11 @@ $(document).bind('keydown', e => {
       case 38:
         keyBindings.prevItem(e);
         break;
-      case 73:
+      case 79:
       case 27:
         keyBindings.expandImage(e);
         break;
       case 13:
-      case 79:
         keyBindings.openItem(e);
         break;
       case 67:
