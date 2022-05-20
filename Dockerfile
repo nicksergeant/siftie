@@ -6,9 +6,7 @@ ENV ROOT_URL="http://localhost:3000"
 
 RUN curl --insecure "https://install.meteor.com/" | sh
 
-WORKDIR /root/
-
-RUN chmod -R 700 /root/.meteor/local
+RUN meteor --version
 RUN meteor npm install
 
 EXPOSE 3000
