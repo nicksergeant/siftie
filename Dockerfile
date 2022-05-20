@@ -4,12 +4,7 @@ FROM node:6.9
 ENV METEOR_ALLOW_SUPERUSER=true
 ENV ROOT_URL="http://localhost:3000"
 
-RUN \
-  apt-get update && \
-  apt-get install openssl ca-certificates && \
-  apt-get clean
-
-RUN curl "https://install.meteor.com/" | sh
+RUN curl --insecure "https://install.meteor.com/" | sh
 
 COPY . /usr/src/app
 WORKDIR /usr/src/app
