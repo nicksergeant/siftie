@@ -6,11 +6,10 @@ ENV ROOT_URL="http://localhost:3000"
 
 RUN curl --insecure "https://install.meteor.com/" | sh
 
-RUN meteor --version
-RUN pwd
-RUN ls -la
-RUN which meteor
-RUN meteor npm install
+COPY . /app
+WORKDIR /app
+
+RUN ls -la /app
 
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["meteor"]
