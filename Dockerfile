@@ -8,6 +8,8 @@ RUN curl --insecure "https://install.meteor.com/" | sh
 
 RUN meteor --version
 RUN pwd
+RUN ls -la
+RUN which meteor
 RUN meteor npm install
 
 EXPOSE 3000
