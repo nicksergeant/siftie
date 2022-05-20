@@ -11,4 +11,3 @@ WORKDIR /app
 RUN meteor npm install
 
 EXPOSE 3000
-CMD ["meteor"]
