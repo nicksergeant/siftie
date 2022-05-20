@@ -6,7 +6,7 @@ ENV ROOT_URL="http://localhost:3000"
 
 RUN \
   apt-get update && \
-  apt-get install ca-certificates && \
+  apt-get install openssl ca-certificates && \
   apt-get clean
 
 RUN curl "https://install.meteor.com/" | sh
