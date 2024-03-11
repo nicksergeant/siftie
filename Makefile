@@ -2,6 +2,6 @@ deploy:
 	@git push dokku
 
 run:
-	@meteor
+	@meteor --port=3002
 
 .PHONY: deploy run
